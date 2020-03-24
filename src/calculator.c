@@ -1,7 +1,7 @@
 #include <gtk/gtk.h>
 
-#define FILE_UI			"calculator_ui.glade"
-#define WIDGET_WINDOW	"mainWindow"
+#define FILE_UI         "calculator_ui.glade"
+#define WIDGET_WINDOW   "mainWindow"
 
 
 /*
