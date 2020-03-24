@@ -1,0 +1,28 @@
+--------IVS--PROJEKT--2----PLÁN--------
+
+• Stanovené termíny:
+	16.3. - Sepsání plánu
+	20.3. - Readme, inicializace a struktura souborů v repozitáři, konečný výběr prog. jazyku a vývojové platformy
+	27.3. - Tvorba testů, makefile
+	30.3. - Struktura programu a implementace matematické knihovny (základní operace)
+	31.3. - Tvorba GUI
+	4.4. - Implementace složitějších mat. operací - včetně profiling
+	10.4. - Případné manuální testování
+	16.4. - Instalátor, odinstalátor
+	18.4. - Vytvoření dokumentace
+	22.4. - Odevzdání kompletního projektu
+	5.5. - Sepsání a odevzdání problémů (každý člen zvlášť)
+	
+	*Poznámka: Tvorba bude probíhat paralelně (kvůli rozdělení úkolů), proto jsou některá data ve zvláštním pořadí, či blízko u sebe
+
+• Rozdělení úkolů:
+	xpysik00 - Testy, matematická knihovna (pokročilé operace), instalátor
+	xtrant02 - Dokumentace, matematická knihovna (základní operace), readme, profiling
+	xjirgl01 - Vytvoření/údržba repozitáře, GUI, zapouzdření (tvorba mainu který volá funkce z knihovny)
+
+• Komunikační kanály:
+	Discord (hlasový kanál) - Při společné aktivní práci
+	Facebook Messenger skupinový chat - Pro rychlý návrh nápadů, sdělení o provedených úpravách, ...
+
+• Systém pro správu verzí/hosting:
+	Github - Náš repozitář: https://github.com/F3lda/vut-fit-ivs-project2
