@@ -182,14 +182,14 @@ static void Activate(GtkApplication *app, gpointer userData)
 	// Setup window
 	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
 	gtk_window_set_default_size(GTK_WINDOW(window), 320, 240);
-    gtk_window_set_title(GTK_WINDOW(window), "Calculator COGFIT-19-20");
+	gtk_window_set_title(GTK_WINDOW(window), "Calculator COGFIT-19-20");
 	// Connect signal handlers to the widgets
 	g_signal_connect(window, "destroy", G_CALLBACK(on_window_destroy), NULL);
-    g_signal_connect(window, "delete_event", G_CALLBACK(on_window_close), NULL);  
+	g_signal_connect(window, "delete_event", G_CALLBACK(on_window_close), NULL);  
 
 	// key events
-    g_signal_connect(window, "key_press_event", G_CALLBACK(on_key_press), NULL);
-    g_signal_connect(window, "key_release_event", G_CALLBACK(on_key_release), NULL);
+	g_signal_connect(window, "key_press_event", G_CALLBACK(on_key_press), NULL);
+	g_signal_connect(window, "key_release_event", G_CALLBACK(on_key_release), NULL);
 
 	// setup application
 	mainSetup(app, window, builder);
@@ -202,9 +202,9 @@ static void Activate(GtkApplication *app, gpointer userData)
 
 int main(int argc, char *argv[])
 {
-    GtkApplication *app = gtk_application_new("cz.vutbr.fit.ivs.calculator", G_APPLICATION_FLAGS_NONE);
-    g_signal_connect(app, "activate", G_CALLBACK(Activate), NULL);
+	GtkApplication *app = gtk_application_new("cz.vutbr.fit.ivs.calculator", G_APPLICATION_FLAGS_NONE);
+	g_signal_connect(app, "activate", G_CALLBACK(Activate), NULL);
 	int status = g_application_run(G_APPLICATION(app), argc, argv);
 	g_object_unref(app);
-    return status;
+	return status;
 }
