@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include "adv_math.h"
+#include "basic_math.h"
+
 
 
 //absolutni hodnota
@@ -24,6 +26,10 @@ int IntFactorial(int n)
 //hotovy faktorial (osetreny chyby)
 double factorial(double num)
 {
+	int a = ZERO_DIVISION;	
+	
+	std::cout << "prvni error zero div je " << a << "\n";
+	
 	int tmp = static_cast<int>(num);
 
 	if(num != tmp) return -69; //TODO throw error
@@ -46,8 +52,7 @@ double IntExp(double cislo, int power)
 	for(int i = 0; i < power; i++)
 	{
 		num *= cislo;
-	}
-	return num;
+	}	
 }
 
 
@@ -84,7 +89,9 @@ double Exponent(double num, double power, double eps)
 		if(temp >= 0) return IntExp(num, temp);
 		else return 1/(IntExp(num, -temp));  //exponent je zaporne cele cislo
 	}
-	else if(num < 0) return -6969; // TODO error (zaporny cislo a zlomek exp)
+	else if(num < 0) return -69; // TODO error (zaporny cislo a zlomek exp)
+
+	if(num == 0 && power < 0) return -69; //TODO error (deleni nulou)
 
 	if(power < 0) return 1/Exponent(num, -power, eps);
 	if(power >= 10) return (Exponent(num, power/2, eps/2)*Exponent(num, power/2, eps/2));
@@ -138,7 +145,7 @@ double log(double base, double num, double eps)
 
 	if(num == base) return 1;
 
-	if(base <= 0 || num <= 0) return -6969; //TODO throw error
+	if(base <= 0 || num <= 0) return -69; //TODO throw error
 
 	double spodni = 0;
 	double horni = num;
