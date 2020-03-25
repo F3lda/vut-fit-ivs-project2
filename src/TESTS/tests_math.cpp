@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include "basic_math.h"
-#include "adv_math.h"
+#include "../basic_math.h"
+#include "../adv_math.h"
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
