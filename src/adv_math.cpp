@@ -46,7 +46,8 @@ double IntExp(double cislo, int power)
 	for(int i = 0; i < power; i++)
 	{
 		num *= cislo;
-	}	
+	}
+	return num;
 }
 
 

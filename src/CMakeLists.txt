@@ -8,5 +8,14 @@ include_directories(${GTK3_INCLUDE_DIRS})
 link_directories(${GTK3_LIBRARY_DIRS})
 add_definitions(${GTK3_CFLAGS_OTHER})
 
-add_executable(${PROJECT_NAME} calculator.c)
+set(sources
+	basic_math.h
+	basic_math.cpp
+	adv_math.h
+	adv_math.cpp
+)
+add_library(MATH_LIBRARIES ${sources})
+
+add_executable(${PROJECT_NAME} calculator.cpp)
 target_link_libraries(${PROJECT_NAME} ${GTK3_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} MATH_LIBRARIES)

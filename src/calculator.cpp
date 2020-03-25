@@ -1,4 +1,7 @@
 #include <gtk/gtk.h>
+#include "basic_math.h"
+#include "adv_math.h"
+#include <string.h>
 
 #define FILE_UI         "calculator_ui.glade"
 #define WIDGET_WINDOW   "mainWindow"
@@ -44,7 +47,7 @@ void on_key_release(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 /*
 ** Show question dialog
 *********************************************************/
-int show_question(char *title, char *message, GtkApplication *app)
+int show_question(const char *title, const char *message, GtkApplication *app)
 {
 /*
 	GTK_RESPONSE_NONE         = -1,
@@ -133,12 +136,19 @@ void CreateWindow(GtkApplication *app)
 /* Callback for the buttons */
 void on_button_clicked(GtkButton* button, gpointer user_data)
 {
+	const char *buttonLabel = gtk_button_get_label(button);
 	g_print("Hello World\n");
+	g_print("Button: %s\n", buttonLabel);
 	
-	int result = show_question("Question", "Are you sure to quit?", user_data);
-	g_print("Response is %s\n", result == GTK_RESPONSE_YES ? "Yes" : "No");
-	if(result == GTK_RESPONSE_YES){
-		CreateWindow(user_data);
+	if(strcmp(buttonLabel, "10 + 20") == 0){
+		double result = add(10, 20);
+		g_print("10 + 20 = %f\n", result);
+	} else if(strcmp(buttonLabel, "Close") == 0){
+		int result = show_question("Question", "Are you sure to quit?", (GtkApplication *)user_data);
+		g_print("Response is %s\n", result == GTK_RESPONSE_YES ? "Yes" : "No");
+		if(result == GTK_RESPONSE_YES){
+			CreateWindow((GtkApplication *)user_data);
+		}
 	}
 	
 	//on_window_destroy(button, user_data);
@@ -153,6 +163,9 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 	// test button
 	GtkWidget *button;
 	button = GTK_WIDGET(gtk_builder_get_object(builder, "button1"));
+	g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), app);
+	
+	button = GTK_WIDGET(gtk_builder_get_object(builder, "button2"));
 	g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), app);
 }
 /* ********************************************************
