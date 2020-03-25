@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include <iostream>
 #include "adv_math.h"
 
