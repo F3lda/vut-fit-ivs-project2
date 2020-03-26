@@ -9,6 +9,7 @@
 
 int error = 0;
 double temp = 0;
+double eps = 0.000000000001;
 
 TEST_CASE( "Function add" )
 {
@@ -70,6 +71,62 @@ TEST_CASE( "Function factorial" )
 	REQUIRE( error == INVALID_FACTORIAL);
 	temp = factorial(-8, &error);
 	REQUIRE( error == INVALID_FACTORIAL);
+}
+
+TEST_CASE( "Function Exponent, special Squared case" )
+{
+	temp = Exponent(3.3, 2, eps, &error);
+	REQUIRE( temp > 10.88);
+	REQUIRE( temp < 10.9);	
+	REQUIRE( Exponent(-8.24, 2, eps, &error) == 67.8976);
+	REQUIRE( Exponent(0, 2, eps, &error) == 0);
+	REQUIRE( Exponent(-0.5, 2, eps, &error) == 0.25);
+	REQUIRE( error == 0);
+
+	REQUIRE( Exponent(0.32, 2, eps, &error) == 0.1024);
+	REQUIRE( Exponent(0, 2, eps, &error) == 0);
+	REQUIRE( error == 0);
+}
+
+TEST_CASE( "Function Exponent" )
+{
+	REQUIRE( Exponent(-3, 3, eps, &error) == -27);
+	REQUIRE( error == 0);
+	REQUIRE( Exponent(-3.9, 0, eps, &error) == 1);
+       	REQUIRE( Exponent(0.012, 0, eps, &error) == 1);
+
+	temp = Exponent(-0.32, 4, eps, &error);
+	REQUIRE( temp > 0.0098);
+	REQUIRE( temp < 0.011);
+	REQUIRE( error == 0);
+
+	temp = Exponent(0.32, -5, eps, &error);
+	REQUIRE( temp > 297.8);
+	REQUIRE( temp < 298.2);
+	REQUIRE( error == 0);
+
+	temp = Exponent(-3.6, -3, eps, &error);
+	REQUIRE( temp > -0.028);
+	REQUIRE( temp < -0.016);
+	REQUIRE( error == 0);
+
+	temp = Exponent(1.98, -5.3, eps, &error);
+	REQUIRE( temp > 0.026);
+	REQUIRE( temp < 0.027);
+	REQUIRE( error == 0);
+
+
+	temp = Exponent(-28, 1.9, eps, &error);
+	REQUIRE( error == EXPONENT_NEG_BASE_FRAC_POW);
+
+	temp = Exponent(-0.01, 0.003, eps, &error);
+	REQUIRE( error == EXPONENT_NEG_BASE_FRAC_POW);
+
+	REQUIRE( Exponent(4, 0.5, eps, &error) == 2);
+	REQUIRE( error == 0);
+
+	temp = Exponent(0, -3, eps, &error);
+	REQUIRE( error == ZERO_DIVISION);
 }
 
 

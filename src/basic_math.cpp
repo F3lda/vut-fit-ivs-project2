@@ -11,6 +11,7 @@ const int ROOT_NEGATIVE = 4;
 const int EXPONENT_NEG_BASE_FRAC_POW = 5;
 const int LOG_DF_BASE = 6;
 const int LOG_DF_NUM = 7;
+const int LOG_BASE_1 = 8;
 
 
 
