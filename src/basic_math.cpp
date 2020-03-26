@@ -34,11 +34,11 @@ double multiply(double num1, double num2)
 
 double divide(double num1, double num2, int *err)
 {
-	if(*err != NULL) *err = 0;
+	if(err != NULL) *err = 0;
 
 	if (num2 == 0)
 	{
-		if(*err != NULL) *err = ZERO_DIVISION;
+		if(err != NULL) *err = ZERO_DIVISION;
 		return -69;
 	}
 	else return num1/num2;
