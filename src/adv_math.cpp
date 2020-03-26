@@ -130,9 +130,13 @@ double NthRoot(double num, double base, double eps, int *err)
 
 	if(base <= 0)
 	{
-		if(err != NULL) *err = ROOT_BASE;
-	}	return -69;
+		if(err != NULL) *err = ROOT_BASE;	
+		return -69;
+	}
 
+	return Exponent(num, 1/base, eps, err);
+
+/*     STARA PUVODNI METODA
 	int power = static_cast<int>(base);
 
 	if(base != power) return Exponent(num, 1/base, eps, err);
@@ -157,7 +161,7 @@ double NthRoot(double num, double base, double eps, int *err)
 		else spodni = vysledek;
 	}
 
-	return vysledek;
+	return vysledek;  */
 }
 
 
