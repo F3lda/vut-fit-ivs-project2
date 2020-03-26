@@ -14,7 +14,7 @@ double absVal(double num)
 }
 
 
-//faktorial prirozenych cisel
+//faktorial prirozenych cisel .. POMOCNA FCE, nevola se primo
 int IntFactorial(int n)
 {
 	if(n == 0 || n == 1) return 1;
@@ -44,7 +44,7 @@ double factorial(double num, int *err)
 }
 
 
-//mocnina s prirozenym exponentem
+//mocnina s prirozenym exponentem ... POMOCNA FCE, nevola se primo
 double IntExp(double cislo, int power)
 {
 	if(! power) return 1.0;
@@ -60,7 +60,7 @@ double IntExp(double cislo, int power)
 }
 
 
-//druha odmocnina pro zjednoduseni Exponent funkce
+//druha odmocnina ... POUZE POMOCNA FCE, nevola se primo (ale pomoci NthRoot(cislo, 2, eps, &err ))
 double sqrt(double num, double eps)
 {
 	if(num == 0 || num == 1) return num;

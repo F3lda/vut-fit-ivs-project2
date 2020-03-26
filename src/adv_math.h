@@ -4,13 +4,7 @@
 
 double absVal(double num);
 
-int IntFactorial(int n);
-
 double factorial(double num, int *err);
-
-double IntExp(double cislo, int power);
-
-double sqrt(double num, double eps);
 
 double Exponent(double num, double power, double eps, int *err);
 
