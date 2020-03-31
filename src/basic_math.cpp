@@ -11,6 +11,7 @@ const int ROOT_NEGATIVE = 4;
 const int EXPONENT_NEG_BASE_FRAC_POW = 5;
 const int LOG_DF_BASE = 6;
 const int LOG_DF_NUM = 7;
+const int LOG_BASE_1 = 8;
 
 
 
@@ -32,9 +33,15 @@ double multiply(double num1, double num2)
 }
 
 
-double divide(double num1, double num2)
+double divide(double num1, double num2, int *err)
 {
-	if (num2 == 0) return -69; // TODO HODIT ZERO DIV ERROR
+	if(err != NULL) *err = 0;
+
+	if (num2 == 0)
+	{
+		if(err != NULL) *err = ZERO_DIVISION;
+		return -69;
+	}
 	else return num1/num2;
 }
 

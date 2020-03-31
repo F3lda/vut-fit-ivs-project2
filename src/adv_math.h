@@ -2,21 +2,16 @@
 #define ADV_MATH_H_
 
 
+
 double absVal(double num);
 
-int IntFactorial(int n);
+double factorial(double num, int *err);
 
-double factorial(double num);
+double Exponent(double num, double power, double eps, int *err);
 
-double IntExp(double cislo, int power);
+double NthRoot(double num, double base, double eps, int *err);
 
-double sqrt(double num, double eps);
-
-double Exponent(double num, double power, double eps);
-
-double NthRoot(double num, double base, double eps);
-
-double log(double base, double num, double eps);
+double logab(double base, double num, int *err);
 
 #endif
 
