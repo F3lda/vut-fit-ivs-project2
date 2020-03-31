@@ -134,10 +134,9 @@ void CreateWindow(GtkApplication *app)
 
 
 /* Callback for the buttons */
-void on_button_clicked(GtkButton* button, gpointer user_data)
+void on_button_clicked(GtkButton *button, gpointer user_data)
 {
 	const char *buttonLabel = gtk_button_get_label(button);
-	g_print("Hello World\n");
 	g_print("Button: %s\n", buttonLabel);
 	
 	if(strcmp(buttonLabel, "10 + 20") == 0){
@@ -167,6 +166,26 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 	
 	button = GTK_WIDGET(gtk_builder_get_object(builder, "button2"));
 	g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), app);
+
+	button = GTK_WIDGET(gtk_builder_get_object(builder, "button3"));
+	gtk_widget_set_name(button, "tlacidlo");
+	g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), app);
+	
+	
+	
+	// CSS
+	GtkCssProvider *cssProvider = gtk_css_provider_new();
+	const char *CSS_DATA = "GtkButton#tlacidlo {border-radius: 0; color: red;}";
+	GError *gerror = NULL;
+	gtk_css_provider_load_from_data(cssProvider, CSS_DATA, strlen(CSS_DATA), &gerror);
+	if(gerror != NULL){
+		g_warning("ERROR loading CSS: %s", gerror->message);
+		g_free(gerror);
+	}
+	
+	//gtk_css_provider_load_from_file(cssProvider, "styles.css", NULL);
+	gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), GTK_STYLE_PROVIDER(cssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER); // _PRIORITY_APPLICATION
+	
 }
 /* ********************************************************
 ******************************************************** */
@@ -181,6 +200,8 @@ static void Activate(GtkApplication *app, gpointer userData)
 
 	// Load UI from file. If error occurs, report it and quit application.
 	GError *gerror = NULL;
+	//const char *XML_DATA = "";
+	//gtk_builder_add_from_string(builder, XML_DATA, strlne(XML_DATA), &gerror);
 	if(!gtk_builder_add_from_file(builder, FILE_UI, &gerror)){
 		g_warning("ERROR loading UI: %s", gerror->message);
 		g_free(gerror);
@@ -194,7 +215,7 @@ static void Activate(GtkApplication *app, gpointer userData)
 	
 	// Setup window
 	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
-	gtk_window_set_default_size(GTK_WINDOW(window), 320, 240);
+	gtk_window_set_default_size(GTK_WINDOW(window), 480, 380);
 	gtk_window_set_title(GTK_WINDOW(window), "Calculator COGFIT-19-20");
 	// Connect signal handlers to the widgets
 	g_signal_connect(window, "destroy", G_CALLBACK(on_window_destroy), NULL);
