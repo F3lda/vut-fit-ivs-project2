@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include <math.h>    //pouze pro pomoc u logaritmu a funkci sqrt
+#include <math.h>    //pouze pro pomoc u logaritmu a pro funkci sqrt
 #include "adv_math.h"
 #include "basic_math.h"
 
@@ -67,31 +67,6 @@ double IntExp(double cislo, int power)
 }
 
 
-/*  PUVODNE POMOCNA FUNKCE, NYNI NENI DIKY MATH.H POTREBA
-double sqrt(double num, double eps)
-{
-	if(num == 0 || num == 1) return num;
-	
-	double vysledek, guess, horni;
-	if(num > 1) horni = num;
-	else horni = 1;
-	double spodni = guess = vysledek = 0;
-	
-	while(absVal(num - guess) > eps)
-	{
-		vysledek = (horni+spodni)/2;
-
-		guess = vysledek*vysledek;
-
-		
-		if(guess > num) horni = vysledek;
-		else spodni = vysledek;
-	}
-
-	return vysledek;
-}
-*/
-
 //obecna mocnina, kdyz je exponent cele cislo prepne na funkci pro prirozeny exponent
 double Exponent(double num, double power, double eps, int *err)
 {
@@ -149,33 +124,6 @@ double NthRoot(double num, double base, double eps, int *err)
 	}
 	
 	return Exponent(num, 1/base, eps, err);
-
-/*     STARA PUVODNI METODA
-	int power = static_cast<int>(base);
-
-	if(base != power) return Exponent(num, 1/base, eps, err);
-	
-	
-	double vysledek, guess;
-	double horni = num;
-	double spodni = guess = vysledek = 0;
-	
-	while(absVal(num - guess) > eps)
-	{
-		guess = (horni+spodni)/2;
-
-		vysledek = guess;
-		
-		for(int i = 1; i < power; i++)
-		{
-			guess *= vysledek;
-		}
-		
-		if(guess > num) horni = vysledek;
-		else spodni = vysledek;
-	}
-
-	return vysledek;  */
 }
 
 
@@ -211,26 +159,7 @@ double logab(double base, double num, int *err)
 	if(num > 1 && base < 1) return -logab(1/base, num, err);
 	if(num < 1 && base < 1) return logab(1/base, 1/num, err);
 	
-	return log(num)/log(base);
-	
-	/*
-	double spodni = 0;
-	double horni = num;
-	double guess = (horni+spodni)/2;
-	double vysledek = guess;
-
-	while(absVal(num - vysledek) > eps)
-	{
-		guess = (horni+spodni)/2;
-		vysledek = Exponent(base, guess, eps/100000, err);
-
-		if(vysledek > num) horni = guess;
-		else spodni = guess;
-	}
-
-	return guess;
-	
-	^^^^^PUVODNI VERZE PRED POUZITIM math.h */
+	return log(num)/log(base);	
 }
 
 
