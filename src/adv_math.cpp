@@ -28,6 +28,12 @@ int IntFactorial(int n)
 double factorial(double num, int *err)
 {
 	if(err != NULL) *err = 0;
+
+	if(num > 16 && err != NULL)
+	{
+		*err = FACTORIAL_OVERFLOW;
+		return -69;
+	}
 	
 	int tmp = static_cast<int>(num);
 
@@ -128,12 +134,20 @@ double NthRoot(double num, double base, double eps, int *err)
 
 	if(base == 1) return num;
 
-	if(base <= 0)
+	if(num < 0)
 	{
-		if(err != NULL) *err = ROOT_BASE;	
+		if(err != NULL) *err = ROOT_NEGATIVE;	
 		return -69;
 	}
+	
+	if(base == 0 && num == 0) return 0;
 
+	if(base == 0)
+	{
+		*err = ZERO_DIVISION;
+		return -69;
+	}
+	
 	return Exponent(num, 1/base, eps, err);
 
 /*     STARA PUVODNI METODA

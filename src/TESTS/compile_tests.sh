@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-c++ $(cd .. ; pwd)/basic_math.cpp $(cd .. ; pwd)/adv_math.cpp tests_math.cpp
+c++ -o run_tests $(cd .. ; pwd)/basic_math.cpp $(cd .. ; pwd)/adv_math.cpp tests_math.cpp
 
 exit 0

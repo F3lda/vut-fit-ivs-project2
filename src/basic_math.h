@@ -3,7 +3,7 @@
 
 extern const int ZERO_DIVISION;
 extern const int INVALID_FACTORIAL;
-extern const int ROOT_BASE;
+extern const int FACTORIAL_OVERFLOW;
 extern const int ROOT_NEGATIVE;
 extern const int EXPONENT_NEG_BASE_FRAC_POW;
 extern const int LOG_DF_BASE;
