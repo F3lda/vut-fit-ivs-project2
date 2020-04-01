@@ -11,4 +11,4 @@ Ubuntu 18.04 64bit
 
 # Licence
 
-Tento program je poskytován pod licencí [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+Tento program je poskytován pod licencí [GNU General Public License v3](LICENSE.txt)
