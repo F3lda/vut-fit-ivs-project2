@@ -1,0 +1,16 @@
+button.tlacidlo {
+	border-width: 1px;
+	border-radius: 0px;
+	border-color: green;
+	color: red;
+}
+
+button.najete {
+	border: none;
+	color: green;
+}
+
+button.zmackle {
+	border: none;
+	color: black;
+}
