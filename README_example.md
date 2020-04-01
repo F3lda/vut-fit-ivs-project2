@@ -1,19 +1,14 @@
-Prostredi
----------
+# Prostředí
 
-Ubuntu 64bit
-Windows 64bit
+Ubuntu 18.04 64bit
 
-Autori
-------
+# Autoři
 
-Nazev tymu
-- xlogin01 jmeno prijmeni 
-- xlogin02 jmeno prijmeni 
-- xlogin03 jmeno prijmeni 
-- xlogin04 jmeno prijmeni 
+#### GvidDream
+- xjirgl01 Karel Jirgl
+- xpysik00 Michal Pyšík 
+- xtrant02 Thanh Quanh Tran 
 
-Licence
--------
+# Licence
 
-Tento program je poskytovan...
+Tento program je poskytován pod licencí [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
