@@ -1,4 +1,4 @@
-button.tlacidlo {
+button {/*.tlacidlo*/
 	border-width: 1px;
 	border-radius: 0px;
 	border-color: green;
@@ -13,4 +13,19 @@ button.najete {
 button.zmackle {
 	border: none;
 	color: black;
+}
+
+entry {
+	border: none;
+	border-radius: 0px;
+}
+
+textview text {
+  background-color: black;
+  color: white;
+}
+
+textview text selection {
+  background-color: blue;
+  color: yellow;
 }

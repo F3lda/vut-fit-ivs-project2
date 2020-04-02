@@ -190,8 +190,9 @@ int on_release(GtkWidget *button, gpointer user_data)
 *********************************************************/
 void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 {
-	// test button
 	GtkWidget *button;
+	// test button
+	
 	button = GTK_WIDGET(gtk_builder_get_object(builder, "button1"));
 	gtk_style_context_add_class(gtk_widget_get_style_context(button),"tlacidlo");
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
@@ -206,7 +207,7 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 	GtkTextBuffer *buffer;
 	GtkTextMark *mark;
 	GtkTextIter iter;
-	const char *text = "TEXT";
+	const char *text = "TEXT\ndalší text\nještě další text";
 
 	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(gtk_builder_get_object(builder, "textview1")));
 	//text = gtk_entry_get_text(GTK_ENTRY(w->entry));
@@ -214,7 +215,7 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 	mark = gtk_text_buffer_get_insert(buffer);
 	gtk_text_buffer_get_iter_at_mark(buffer, &iter, mark);
 
-	/* Insert newline (only if there's already text in the buffer). */
+	// Insert newline (only if there's already text in the buffer).
 	if (gtk_text_buffer_get_char_count(buffer))
 	    gtk_text_buffer_insert(buffer, &iter, "\n", 1);
 
@@ -226,7 +227,7 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 
 
 	button = GTK_WIDGET(gtk_builder_get_object(builder, "button2"));
-	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);	
+	//gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);	
 	gtk_widget_set_name(button, "tlacidlo2");
 	g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), app);
 
