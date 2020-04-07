@@ -1,31 +1,32 @@
-button {/*.tlacidlo*/
+/* https://elementaryos.stackexchange.com/questions/15936/button-css-not-working-in-juno */
+button {
 	border-width: 1px;
-	border-radius: 0px;
-	border-color: green;
-	color: red;
+	border-radius: 3px;
 }
-
-button.najete {
-	border: none;
+button.button_result {
+	color: blue;
+}
+button.hover {
+	border-color: gray;
 	color: green;
 }
-
-button.zmackle {
-	border: none;
-	color: black;
+button.active {
+	border-color: red;
+	color: orange;
 }
 
+/*
 entry {
 	border: none;
 	border-radius: 0px;
 }
 
 textview text {
-  background-color: black;
-  color: white;
+	background-color: black;
+	color: white;
 }
-
 textview text selection {
-  background-color: blue;
-  color: yellow;
+	background-color: blue;
+	color: yellow;
 }
+*/

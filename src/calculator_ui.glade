@@ -29,7 +29,8 @@
   </object>
   <object class="GtkWindow" id="mainWindow">
     <property name="can_focus">False</property>
-    <child>
+    <property name="icon_name">accessories-calculator</property>
+    <child type="titlebar">
       <placeholder/>
     </child>
     <child>
@@ -38,17 +39,17 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkMenuBar" id="menubar2">
+          <object class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkMenuItem" id="menuitem5">
+              <object class="GtkMenuItem" id="menuitem1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Úpravy</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu4">
+                  <object class="GtkMenu" id="menu1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
@@ -76,17 +77,17 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="menuitem6">
+              <object class="GtkMenuItem" id="menuitem2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Grafy</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu5">
+                  <object class="GtkMenu" id="menu2">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem2">
+                      <object class="GtkImageMenuItem" id="imagemenuitem21">
                         <property name="label">Wolfram Alpha</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -96,7 +97,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem3">
+                      <object class="GtkImageMenuItem" id="imagemenuitem22">
                         <property name="label">GeoGebra</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -106,13 +107,13 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkSeparatorMenuItem" id="separatormenuitem1">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem23">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem4">
+                      <object class="GtkImageMenuItem" id="imagemenuitem24">
                         <property name="label">obvody pajik</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -122,7 +123,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem5">
+                      <object class="GtkImageMenuItem" id="imagemenuitem25">
                         <property name="label">obvody ja</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -136,26 +137,27 @@
               </object>
             </child>
             <child>
-              <object class="GtkMenuItem" id="menuitem8">
+              <object class="GtkMenuItem" id="menuitem3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">_Nápověda</property>
                 <property name="use_underline">True</property>
                 <child type="submenu">
-                  <object class="GtkMenu" id="menu6">
+                  <object class="GtkMenu" id="menu3">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem20">
+                      <object class="GtkImageMenuItem" id="imagemenuitem31">
                         <property name="label">gtk-help</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <property name="always_show_image">True</property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem1">
+                      <object class="GtkImageMenuItem" id="imagemenuitem32">
                         <property name="label">O programu CALCULATOR</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -193,8 +195,8 @@
             <property name="name">entrybox</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="editable">False</property>
             <property name="invisible_char">●</property>
-            <property name="text" translatable="yes">ho</property>
             <property name="truncate_multiline">True</property>
             <property name="caps_lock_warning">False</property>
             <property name="primary_icon_stock">gtk-go-up</property>
@@ -357,6 +359,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -369,6 +372,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -381,6 +385,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -393,6 +398,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -400,11 +406,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button15">
                 <property name="label" translatable="yes">MMr</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -412,11 +419,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button16">
                 <property name="label" translatable="yes">7</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -424,11 +432,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button17">
                 <property name="label" translatable="yes">8</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -436,11 +445,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button18">
                 <property name="label" translatable="yes">9</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -448,11 +458,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button19">
                 <property name="label" translatable="yes">*</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -460,11 +471,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button20">
                 <property name="label" translatable="yes">Mw</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -472,11 +484,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button21">
                 <property name="label" translatable="yes">0</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -484,11 +497,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button22">
                 <property name="label" translatable="yes">.</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -496,11 +510,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">=</property>
+              <object class="GtkButton" id="button23">
+                <property name="label" translatable="yes">===</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -508,11 +523,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button24">
                 <property name="label" translatable="yes">/</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -520,11 +536,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="button25">
                 <property name="label" translatable="yes">MMw</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="relief">none</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -536,22 +553,6 @@
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkTreeView">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <child internal-child="selection">
-              <object class="GtkTreeSelection">
-                <property name="mode">browse</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">4</property>
           </packing>
         </child>
       </object>

@@ -5,6 +5,7 @@
 
 #define FILE_UI         "calculator_ui.glade"
 #define WIDGET_WINDOW   "mainWindow"
+#define APP_TITLE       "Calculator - COGFIT1920"
 
 
 /*
@@ -85,10 +86,9 @@ int show_question(const char *title, const char *message, GtkApplication *app)
 
 
 /*
-** FUNCTIONS
+** Child Window Example
 *********************************************************
 *********************************************************/
-
 void onDestroyWindow(GtkWidget *widget, GtkApplication *app)
 {
 	GtkWindow *parentWindow = gtk_application_get_active_window(app);
@@ -133,6 +133,14 @@ void CreateWindow(GtkApplication *app)
 }
 
 
+/*
+** FUNCTIONS
+*********************************************************
+*********************************************************/
+
+
+
+
 /* Callback for the buttons */
 void on_button_clicked(GtkButton *button, gpointer user_data)
 {
@@ -160,85 +168,120 @@ void on_button_clicked(GtkButton *button, gpointer user_data)
 int on_hover(GtkWidget *button, gpointer user_data)
 {
 	g_print("hover\n");
-	gtk_style_context_add_class(gtk_widget_get_style_context(button),"najete");
+	gtk_style_context_add_class(gtk_widget_get_style_context(button),"hover");
 	return TRUE;
 }
 
 int on_leave(GtkWidget *button, gpointer user_data)
 {
 	g_print("leave\n");
-	gtk_style_context_remove_class(gtk_widget_get_style_context(button),"najete");
+	gtk_style_context_remove_class(gtk_widget_get_style_context(button),"hover");
 	return TRUE;
 }
 
-int on_click(GtkWidget *button, gpointer user_data)
+int on_press(GtkWidget *button, gpointer user_data)
 {
 	g_print("click\n");
-	gtk_style_context_add_class(gtk_widget_get_style_context(button),"zmackle");
+	gtk_style_context_add_class(gtk_widget_get_style_context(button),"active");
+	on_button_clicked(GTK_BUTTON(button), user_data);
 	return TRUE;
 }
 
 int on_release(GtkWidget *button, gpointer user_data)
 {
 	g_print("release\n");
-	gtk_style_context_remove_class(gtk_widget_get_style_context(button),"zmackle");
+	gtk_style_context_remove_class(gtk_widget_get_style_context(button),"active");
 	return TRUE;
 }
+
+void on_icon_click(GtkEntry *entry, int icon_pos)
+{
+	g_print("icon: %d\n",icon_pos);
+}
+
+void on_textview_selection(GtkTextView *text_view)
+{
+
+	GtkTextBuffer *buffer = gtk_text_view_get_buffer(text_view);
+	GtkTextIter start, end;	
+	if(gtk_text_buffer_get_selection_bounds(buffer, &start, &end)){
+		//g_print("selection\n");
+		//g_print("selection line: %d\n",gtk_text_iter_get_line(&start));
+		//g_print("%d %d\n",gtk_text_iter_get_offset(&start)-gtk_text_iter_get_line_offset(&start),gtk_text_iter_get_chars_in_line(&start));
+
+		gtk_text_iter_set_line_offset(&start,0);
+		gtk_text_iter_set_line_offset(&end,gtk_text_iter_get_chars_in_line(&start)-1);
+		char *text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
+		g_print("selection: %s\n",text);
+		free(text);
+	}
+}
+
 /*
 ** MAIN
 *********************************************************
 *********************************************************/
 void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 {
-	GtkWidget *button;
-	// test button
+	GtkWidget *widget;
+	//BUTTONS
+	widget = GTK_WIDGET(gtk_builder_get_object(builder, "button23"));
+	gtk_widget_set_name(widget, "button_result");
+	gtk_style_context_add_class(gtk_widget_get_style_context(widget),"button_result");
+	gtk_button_set_relief(GTK_BUTTON(widget), GTK_RELIEF_NONE);
+	g_signal_connect(widget, "clicked", G_CALLBACK(on_button_clicked), app);
+	g_signal_connect(widget, "enter-notify-event", G_CALLBACK(on_hover), NULL);
+	g_signal_connect(widget, "leave-notify-event", G_CALLBACK(on_leave), NULL);
+	g_signal_connect(widget, "button-press-event", G_CALLBACK(on_press), NULL);
+	g_signal_connect(widget, "button-release-event", G_CALLBACK(on_release), NULL);
 	
-	button = GTK_WIDGET(gtk_builder_get_object(builder, "button1"));
-	gtk_style_context_add_class(gtk_widget_get_style_context(button),"tlacidlo");
-	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
-	g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), app);
-	g_signal_connect(button, "enter-notify-event", G_CALLBACK(on_hover), NULL);
-	g_signal_connect(button, "leave-notify-event", G_CALLBACK(on_leave), NULL);
-	g_signal_connect(button, "button-press-event", G_CALLBACK(on_click), NULL);
-	g_signal_connect(button, "button-release-event", G_CALLBACK(on_release), NULL);
-	
+	int i = 0;
+	while(i < 25){
+		char tempBuffer[24];
+		sprintf(tempBuffer, "button%d", ++i);
+		widget = GTK_WIDGET(gtk_builder_get_object(builder, tempBuffer));
+		g_signal_connect(widget, "enter-notify-event", G_CALLBACK(on_hover), NULL);
+		g_signal_connect(widget, "leave-notify-event", G_CALLBACK(on_leave), NULL);
+		g_signal_connect(widget, "button-press-event", G_CALLBACK(on_press), NULL);
+		g_signal_connect(widget, "button-release-event", G_CALLBACK(on_release), NULL);
+	}
+
+
+	//ENTRY
+	widget = GTK_WIDGET(gtk_builder_get_object(builder, "entry1"));
+	gtk_entry_set_text(GTK_ENTRY(widget), "sdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text");
+	//ENTRY on icon clicked	
+	g_signal_connect(widget, "icon-press", G_CALLBACK(on_icon_click), NULL);
 
 	//TEXT VIEW
+	widget = GTK_WIDGET(gtk_builder_get_object(builder, "textview1"));
+	
 	GtkTextBuffer *buffer;
-	GtkTextMark *mark;
-	GtkTextIter iter;
-	const char *text = "TEXT\ndalší text\nještě další text";
+	const char *text;
 
-	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(gtk_builder_get_object(builder, "textview1")));
-	//text = gtk_entry_get_text(GTK_ENTRY(w->entry));
+	buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(widget));
+	text = gtk_entry_get_text(GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(builder, "entry1"))));
 	
-	mark = gtk_text_buffer_get_insert(buffer);
-	gtk_text_buffer_get_iter_at_mark(buffer, &iter, mark);
-
-	// Insert newline (only if there's already text in the buffer).
+	gtk_text_buffer_set_text(buffer, text, strlen(text));
+	
 	if (gtk_text_buffer_get_char_count(buffer))
-	    gtk_text_buffer_insert(buffer, &iter, "\n", 1);
-
-	gtk_text_buffer_insert(buffer, &iter, text, -1);
-
-
+		gtk_text_buffer_insert_at_cursor(buffer, "\n", 1);
+	
+	gtk_text_buffer_insert_at_cursor(buffer, text, strlen(text));
 
 
+	GtkTextIter start, end;
+	gtk_text_buffer_get_bounds(buffer, &start, &end);
+	text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
 
+	gtk_entry_set_text(GTK_ENTRY(GTK_WIDGET(gtk_builder_get_object(builder, "entry1"))), text);
+	free((char *)text);
+	//TEXT VIEW on get selected
+	g_signal_connect(widget, "extend-selection", G_CALLBACK(on_textview_selection), NULL);
 
-	button = GTK_WIDGET(gtk_builder_get_object(builder, "button2"));
-	//gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);	
-	gtk_widget_set_name(button, "tlacidlo2");
-	g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), app);
-
-
-
-	button = GTK_WIDGET(gtk_builder_get_object(builder, "button3"));
-	gtk_widget_set_name(button, "tlacidlo3");
-	g_signal_connect(button, "clicked", G_CALLBACK(on_button_clicked), app);
 	
 	
-	//https://elementaryos.stackexchange.com/questions/15936/button-css-not-working-in-juno	
+	
 }
 /* ********************************************************
 ******************************************************** */
@@ -282,7 +325,7 @@ static void Activate(GtkApplication *app, gpointer userData)
 	// Setup window
 	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
 	gtk_window_set_default_size(GTK_WINDOW(window), 480, 380);
-	gtk_window_set_title(GTK_WINDOW(window), "Calculator - COGFIT1920");
+	gtk_window_set_title(GTK_WINDOW(window), APP_TITLE);
 	// Connect signal handlers to the widgets
 	g_signal_connect(window, "destroy", G_CALLBACK(on_window_destroy), NULL);
 	g_signal_connect(window, "delete_event", G_CALLBACK(on_window_close), NULL);  
