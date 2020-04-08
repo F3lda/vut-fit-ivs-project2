@@ -177,12 +177,20 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="textview1">
+          <object class="GtkScrolledWindow" id="scrolledwindow1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="editable">False</property>
-            <property name="justification">right</property>
-            <property name="indent">8</property>
+            <property name="hscrollbar_policy">never</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTextView" id="textview1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="justification">right</property>
+                <property name="indent">10</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">True</property>
