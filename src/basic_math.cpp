@@ -14,25 +14,50 @@ const int LOG_DF_NUM = 7;
 const int LOG_BASE_1 = 8;
 
 
-
+/**
+ * Funkce pro sčítání dvou čísel
+ *
+ * @param num1 První číslo sčítání
+ * @param num2 Druhé číslo sčítání
+ * @return Výsledek sčítání
+ */
 double add(double num1, double num2)
 {
 	return num1+num2;
 }
 
-
+/**
+ * Funkce pro odečítání dvou čísel
+ *
+ * @param num1 První číslo odečítání (menšenec)
+ * @param num2 Druhé číslo odečítání (menšitel)
+ * @return Výsledek odčítání
+ */
 double sub(double num1, double num2)
 {
 	return num1-num2;
 }
 
-
+/**
+ * Funkce pro násobení dvou čísel
+ *
+ * @param num1 První číslo násobení
+ * @param num2 Druhé číslo násobení
+ * @return Výsledek násobení
+ */
 double multiply(double num1, double num2)
 {
 	return num1*num2;
 }
 
-
+/**
+ * Funkce pro dělení dvou čísel
+ *
+ * @param num1 První číslo k dělení (dělenec)
+ * @param num2 Druhé číslo k dělení (dělitel)
+ * @param err Proměnná určená k chybě
+ * @return Výsledek dělení
+ */
 double divide(double num1, double num2, int *err)
 {
 	if(err != NULL) *err = 0;
