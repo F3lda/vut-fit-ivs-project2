@@ -194,10 +194,16 @@ void on_textview_cursor_move_timeout(GtkTextView *text_view)
 	if(!gtk_text_iter_ends_line(&end))
 		gtk_text_iter_set_line_offset(&end, gtk_text_iter_get_chars_in_line(&end));
 	char *text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
-	g_print("cursor move: %d\n", gtk_text_iter_get_line(&start));
-	g_print("selection: %s\n",text);
-	//TODO
-	free(text);
+	static int lastTextviewLine = -1;// maybe add line length and line first char OR reset variable on on_textview_resize
+	if(lastTextviewLine == gtk_text_iter_get_line(&start)) {// select only on double click
+		g_print("cursor move: %d\n", gtk_text_iter_get_line(&start));
+		g_print("selection: %s\n",text);
+		//TODO
+		free(text);
+		lastTextviewLine = -1;
+	} else {
+		lastTextviewLine = gtk_text_iter_get_line(&start);
+	}
 }
 
 void on_textview_cursor_move(GtkTextView *text_view)
@@ -295,8 +301,11 @@ void gtk_textview_set_text(GtkTextView *text_view, char * text)
 //*********************************************************
 void handleInput(char keyButton)
 {
-
 	g_print("Key: %c\n", keyButton);
+	if(keyButton == '='){
+	}
+
+
 
 	/*if(strcmp(buttonLabel, "10 + 20") == 0){
 		double result = add(10, 20);
@@ -308,10 +317,6 @@ void handleInput(char keyButton)
 			CreateWindow((GtkApplication *)user_data);
 		}
 	}*/
-	
-	//on_window_destroy(button, user_data);
-	
-	
 	//char buffer[100];
 	//sprintf(buffer, "%u", event->keyval);
 }
@@ -547,7 +552,7 @@ void CreateWindow(GtkApplication *app)
 
 	gtk_container_add(GTK_CONTAINER(window), button);
 	
-	
+
 	g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(onDestroyWindow), app);
 	gtk_widget_show_all(window);
 }
