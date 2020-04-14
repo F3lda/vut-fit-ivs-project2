@@ -7,7 +7,12 @@
 
 
 
-//absolutni hodnota
+/**
+ * @brief Funkce pro výpočet absolutní hodnoty
+ *
+ * @param num Číslo k určení absolutní hodnoty
+ * @return Výsledek v absolutní hodnotě
+ */
 double absVal(double num)
 {
 	if(num >= 0) return num;
@@ -15,7 +20,12 @@ double absVal(double num)
 }
 
 
-//faktorial prirozenych cisel .. POMOCNA FCE, nevola se primo
+/**
+ * @brief Pomocná funkce pro výpočet faktoriálu. Volaná funkcí factorial()
+ *
+ * @param n Základ k určení faktoriálu
+ * @return Výsledek faktoriálu
+ */
 int IntFactorial(int n)
 {
 	if(n == 0 || n == 1) return 1;
@@ -24,7 +34,13 @@ int IntFactorial(int n)
 }
 
 
-//Faktorial, vraci error pro zlomky a zaporna cisla
+/**
+ * @brief Hlavní funkce k výpočtu faktoriálu
+ * 
+ * @param num Číslo k určení faktoriálu
+ * @param err Chybová proměnná
+ * @return Výsledek faktoriálu
+ */
 double factorial(double num, int *err)
 {
 	if(err != NULL) *err = 0;
@@ -51,7 +67,13 @@ double factorial(double num, int *err)
 }
 
 
-//mocnina s prirozenym exponentem ... POMOCNA FCE, nevola se primo
+/**
+ * @brief Pomocná funkce pro výpočet mocniny, pokud základem je celé číslo
+ *
+ * @param num Číslo k určení mocniny
+ * @param power Základ k určení mocniny
+ * @return Výsledek mocniny
+ */
 double IntExp(double cislo, int power)
 {
 	if(! power) return 1.0;
@@ -67,7 +89,15 @@ double IntExp(double cislo, int power)
 }
 
 
-//obecna mocnina, kdyz je exponent cele cislo prepne na funkci pro prirozeny exponent
+/**
+ * @brief Hlavní funkce k výpočtu n-té mocniny
+ * 
+ * @param num Číslo k určení mocniny
+ * @param power Základ mocniny
+ * @param eps Epsilon k měření přesnosti
+ * @param err Chybová proměnná
+ * @return Výsledek mocniny
+ */
 double Exponent(double num, double power, double eps, int *err)
 {
 	if(err != NULL) *err = 0;
@@ -100,7 +130,15 @@ double Exponent(double num, double power, double eps, int *err)
 }
 
 
-//n-ta odmocnina
+/**
+ * @brief Hlavní funkce k výpočtu n-té odmocniny
+ * 
+ * @param num Číslo k určení n-té odmocniny
+ * @param base Základ odmocniny
+ * @param eps Epsilon k měření přesnosti
+ * @param err Chybová proměnná
+ * @return Výsledek n-té odmocniny
+ */
 double NthRoot(double num, double base, double eps, int *err)
 {
 	if(err != NULL) *err = 0;
@@ -127,7 +165,16 @@ double NthRoot(double num, double base, double eps, int *err)
 }
 
 
-//obecne logaritmy
+/**
+ * @brief Hlavní funkce k výpočtu n-té odmocniny
+ * 
+ * @todo Prohodit parametry base a num kvůli konzistenci
+ *
+ * @param base Základ odmocniny
+ * @param num Číslo k určení n-té odmocniny
+ * @param err Chybová proměnná
+ * @return Výsledek n-té odmocniny
+ */
 double logab(double base, double num, int *err)
 {
 	if(err != NULL) *err = 0;

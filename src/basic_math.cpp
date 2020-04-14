@@ -15,7 +15,7 @@ const int LOG_BASE_1 = 8;
 
 
 /**
- * Funkce pro sčítání dvou čísel
+ * @brief Funkce pro sčítání dvou čísel
  *
  * @param num1 První číslo sčítání
  * @param num2 Druhé číslo sčítání
@@ -27,7 +27,7 @@ double add(double num1, double num2)
 }
 
 /**
- * Funkce pro odečítání dvou čísel
+ * @brief Funkce pro odečítání dvou čísel
  *
  * @param num1 První číslo odečítání (menšenec)
  * @param num2 Druhé číslo odečítání (menšitel)
@@ -39,7 +39,7 @@ double sub(double num1, double num2)
 }
 
 /**
- * Funkce pro násobení dvou čísel
+ * @brief Funkce pro násobení dvou čísel
  *
  * @param num1 První číslo násobení
  * @param num2 Druhé číslo násobení
@@ -51,7 +51,7 @@ double multiply(double num1, double num2)
 }
 
 /**
- * Funkce pro dělení dvou čísel
+ * @brief Funkce pro dělení dvou čísel
  *
  * @param num1 První číslo k dělení (dělenec)
  * @param num2 Druhé číslo k dělení (dělitel)
