@@ -4,10 +4,10 @@ Ubuntu 18.04 64bit
 
 # Autoři
 
-#### GvidDream
+#### GviDream
 - xjirgl01 Karel Jirgl
 - xpysik00 Michal Pyšík 
-- xtrant02 Thanh Quanh Tran 
+- xtrant02 Thanh Quang Tran 
 
 # Licence
 
