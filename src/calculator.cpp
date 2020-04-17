@@ -15,6 +15,13 @@
 GtkEntry *ENTRY = NULL;
 GtkTextView *TEXTVIEW = NULL;
 
+char RESULT[STR_BUFFER_SIZE] = "";
+char OPERAND1[STR_BUFFER_SIZE] = "";
+char OPERAND2[STR_BUFFER_SIZE] = "";
+char OPERATION[STR_BUFFER_SIZE] = "";
+char MEM1[STR_BUFFER_SIZE] = "";
+char MEM2[STR_BUFFER_SIZE] = "";
+
 void gtk_textview_scroll_to_bottom(GtkTextView *text_view);
 void handleInput(char keyButton);
 void handleOPERAND(char *operand);
@@ -180,7 +187,7 @@ void on_textview_row_selection(GtkTextView *text_view) // unused
 	GtkTextIter start, end;
 	if(gtk_text_buffer_get_selection_bounds(buffer, &start, &end)){
 		gtk_text_iter_set_line_offset(&start, 0);
-		gtk_text_iter_set_line_offset(&end, gtk_text_iter_get_chars_in_line(&end)-1);
+		gtk_text_iter_forward_to_line_end(&end);
 		if(!gtk_text_iter_ends_line(&end))
 			gtk_text_iter_set_line_offset(&end, gtk_text_iter_get_chars_in_line(&end));
 		char *text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
@@ -198,22 +205,21 @@ void on_textview_cursor_move_timeout(GtkTextView *text_view)
 	
 	end = start;
 	gtk_text_iter_set_line_offset(&start, 0);
-	gtk_text_iter_set_line_offset(&end, gtk_text_iter_get_chars_in_line(&end)-1);
+	gtk_text_iter_forward_to_line_end(&end);
 	if(!gtk_text_iter_ends_line(&end))
 		gtk_text_iter_set_line_offset(&end, gtk_text_iter_get_chars_in_line(&end));
 	char *text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
-	static int lastTextviewLine = -1;// maybe add line length and line first char OR reset variable on on_textview_resize
-	//if(lastTextviewLine == gtk_text_iter_get_line(&start)) {// select only on double click
-		g_print("cursor move: %d\n", gtk_text_iter_get_line(&start));
-		g_print("selection: %s\n",text);
-		//TODO
-		// IF line != entry
-		//	handleOPERAND(); handleOPERATION(); handleOPERAND();
-		free(text);
-		lastTextviewLine = -1;
-	//} else {
-		lastTextviewLine = gtk_text_iter_get_line(&start);
-	//}
+
+	const char *entry_text = gtk_entry_get_text(ENTRY);
+	char operand1[STR_BUFFER_SIZE], operation[STR_BUFFER_SIZE], operand2[STR_BUFFER_SIZE], result[STR_BUFFER_SIZE];
+	if(sscanf(text, "%s %s %s = %s", operand1, operation, operand2, result) == 4){// && strcmp(entry_text, result) != 0
+		strcpy(OPERAND1, operand1);
+		strcpy(OPERATION, operation);
+		strcpy(OPERAND2, operand2);
+		updateUI();
+	}
+
+	free(text);
 }
 
 void on_textview_cursor_move(GtkTextView *text_view)
@@ -242,11 +248,14 @@ void on_entry_icon_click(GtkEntry *entry, int icon_pos, GdkEvent *event, GtkText
 		GtkTextMark *mark = gtk_text_buffer_get_insert(buffer);
 		GtkTextIter iter;
 		gtk_text_buffer_get_iter_at_mark(buffer, &iter, mark);
-		gtk_text_iter_backward_line(&iter);//TODO
+		if(gtk_text_iter_is_end(&iter)){
+			gtk_text_iter_set_line_offset(&iter, 0);
+		} else {
+			gtk_text_iter_backward_line(&iter);
+		}
 		gtk_text_buffer_place_cursor(buffer, &iter);
 		gtk_text_view_scroll_mark_onscreen(text_view, mark);
 		//on_textview_cursor_move_timeout(text_view);
-		//TODO static if line == current line GO else print current//gtk_text_iter_set_line_offset(&iter, 0);
 	} else if(icon_pos == 1){
 		//backspace button
 		handleInput('K');
@@ -314,12 +323,7 @@ void gtk_textview_scroll_to_bottom(GtkTextView *text_view)
 ** WORKING FUNCTIONS
 *********************************************************
 *********************************************************/
-char RESULT[STR_BUFFER_SIZE] = "";
-char OPERAND1[STR_BUFFER_SIZE] = "";
-char OPERAND2[STR_BUFFER_SIZE] = "";
-char OPERATION[STR_BUFFER_SIZE] = "";
-char MEM1[STR_BUFFER_SIZE] = "";
-char MEM2[STR_BUFFER_SIZE] = "";
+
 // Handle input
 //*********************************************************
 void handleInput(char keyButton)
@@ -398,16 +402,17 @@ void handleACTION(char action)
 			}
 		}
 	} else if(action == 'w'){
-		if(strcmp(RESULT, "") == 0){
-			strcpy(MEM1, OPERAND1);
+		//g_print("%s %s %s %s %s\n", OPERAND1, OPERATION, OPERAND2, RESULT, gtk_entry_get_text(ENTRY));
+		if(strcmp(RESULT, "") == 0 && strcmp(OPERAND1, "") == 0){
+			strcpy(MEM1, gtk_entry_get_text(ENTRY));
 		} else {
-			strcpy(MEM1, RESULT);
+			strcpy(MEM1, OPERAND1);
 		}
 	} else if(action == 's'){
-		if(strcmp(RESULT, "") == 0){
-			strcpy(MEM2, OPERAND1);
+		if(strcmp(RESULT, "") == 0 && strcmp(OPERAND1, "") == 0){
+			strcpy(MEM2, gtk_entry_get_text(ENTRY));
 		} else {
-			strcpy(MEM2, RESULT);
+			strcpy(MEM2, OPERAND1);
 		}
 	}
 	// ACTIONS
@@ -439,20 +444,55 @@ void handleResult()
 			if(OPERATION[0] == '+'){
 				sprintf(RESULT, "%f", add(operand1, operand2));
 			} else if(OPERATION[0] == '-'){
-				//TODO
+				sprintf(RESULT, "%f", sub(operand1, operand2));
 			} else if(OPERATION[0] == '*'){
-		
+				sprintf(RESULT, "%f", multiply(operand1, operand2));
 			} else if(OPERATION[0] == '/'){
-		
+				double result = divide(operand1, operand2, &herror);
+				if(herror == ZERO_DIVISION) {
+					strcpy(RESULT, "ZERO_DIVISION");
+				} else {
+					sprintf(RESULT, "%f", result);
+				}
 			}  else if(OPERATION[0] == '^'){
-		
+				double result = Exponent(operand1, operand2, 0.001, &herror);
+				if(herror == ZERO_DIVISION) {
+					strcpy(RESULT, "ZERO_DIVISION");
+				} else if(herror == EXPONENT_NEG_BASE_FRAC_POW) {
+					strcpy(RESULT, "EXPONENT_NEG_BASE_FRAC_POW");
+				} else {
+					sprintf(RESULT, "%f", result);
+				}
 			} else if(strcmp(OPERATION,"\u221A") == 0){
-		
+				double result = NthRoot(operand2, operand1, 0.001, &herror);
+				if(herror == ZERO_DIVISION) {
+					strcpy(RESULT, "ZERO_DIVISION");
+				} else if(herror == ROOT_NEGATIVE) {
+					strcpy(RESULT, "ROOT_NEGATIVE");
+				} else {
+					sprintf(RESULT, "%f", result);
+				}
 			} else if(strcmp(OPERATION,"LOG") == 0){
-		
+				double result = logab(operand1, operand2, &herror);
+				if(herror == LOG_DF_BASE) {
+					strcpy(RESULT, "LOG_DF_BASE");
+				} else if(herror == LOG_DF_NUM) {
+					strcpy(RESULT, "LOG_DF_NUM");
+				} else if(herror == LOG_BASE_1) {
+					strcpy(RESULT, "LOG_BASE_1");
+				} else {
+					sprintf(RESULT, "%f", result);
+				}
 			}
 		} else if(OPERATION[0] == '!'){
-		
+			double result = factorial(operand1, &herror);
+			if(herror == FACTORIAL_OVERFLOW) {
+				strcpy(RESULT, "FACTORIAL_OVERFLOW");
+			} else if(herror == INVALID_FACTORIAL) {
+				strcpy(RESULT, "INVALID_FACTORIAL");
+			} else {
+				sprintf(RESULT, "%f", result);
+			}
 		}
 	}
 }
@@ -533,27 +573,6 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 	//TEXT VIEW on cursor move by arrows
 	g_signal_connect(widget, "move-cursor", G_CALLBACK(on_textview_cursor_move), NULL);
 	TEXTVIEW = GTK_TEXT_VIEW(widget);
-
-
-
-	// EXAMPLES
-	//*********************************************************
-	//ENTRY
-	gtk_entry_set_text(ENTRY, "sdfgdgfdfgf\u221A dg df input\nsdf sdf sdfsddddd input text");
-	
-
-	//TEXT VIEW
-	const char *text = "ahoj jak se mas\n lol dobre";
-	gtk_textview_set_text(TEXTVIEW, (char *)text);
-
-	char *text2 = gtk_textview_get_text(TEXTVIEW);
-	g_print("text: %s\n",text2);
-	free(text2);
-
-	const char *text3 = "sdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input text\nsdfgdgfdfgf dg df input\nsdf sdf sdfsddddd input \u221A text END";
-
-	gtk_textview_append_text(TEXTVIEW, (char *)text3);
-	gtk_textview_append_text(TEXTVIEW, (char *)text);
 }
 /* ********************************************************
 ******************************************************** */
