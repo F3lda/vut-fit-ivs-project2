@@ -269,7 +269,7 @@
             </child>
             <child>
               <object class="GtkButton" id="button4">
-                <property name="label" translatable="yes">RNG</property>
+                <property name="label" translatable="yes">b LOG(x)</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -506,7 +506,7 @@
             </child>
             <child>
               <object class="GtkButton" id="button22">
-                <property name="label" translatable="yes">.</property>
+                <property name="label" translatable="yes">,</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
