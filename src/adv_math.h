@@ -1,3 +1,9 @@
+/**
+ * @file adv_math.h
+ * 
+ * @brief Hlavička pokročilých matematických funkcí
+ */
+
 #ifndef ADV_MATH_H_
 #define ADV_MATH_H_
 

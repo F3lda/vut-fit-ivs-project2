@@ -1,3 +1,9 @@
+/**
+ * @file basic_math.h
+ * 
+ * @brief Hlavička základních matematických funkcí
+ */
+
 #ifndef BASIC_MATH_H_
 #define BASIC_MATH_H_
 
