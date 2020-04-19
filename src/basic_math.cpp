@@ -1,3 +1,9 @@
+/**
+ * @file basic_math.cpp
+ * 
+ * @brief Implementace základních matematických funkcí
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>

@@ -1,3 +1,9 @@
+/**
+ * @file adv_math.cpp
+ * 
+ * @brief Implementace pokročilých matematických funkcí
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>

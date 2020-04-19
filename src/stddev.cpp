@@ -1,3 +1,10 @@
+/**
+ * @file stddev.cpp
+ * 
+ * @brief Program pro výpočet směrodatné odchylky
+ * @author Thanh Quang Tran
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -6,6 +13,7 @@
 #include "basic_math.h"
 #include "adv_math.cpp"
 #include "basic_math.cpp"
+
 
 int main()
 {
@@ -22,10 +30,9 @@ int main()
         //Výpočet sumy čísel ze stdin
         while(scanf("%lf%c", &number, &whiteSpace)!=EOF)
         {
-            //Aritmeticky prumer
+            //Aritmetický průměr
             ariSum = add(ariSum, number);
             count++;
-            //
         }
 
         if(count != 0)
@@ -49,7 +56,6 @@ int main()
         stdDev = NthRoot(divide(devSum, count, 0), 2, 0.000001, 0);
 
         //printf("Smerodatna odchylka:\nCitatel: %lf\nJmenovatel: %.0lf\nSměrodatná odchylka: %0.5lf\n", devSum, count, stdDev);
-
-        return 0;
     }
+    return 0;
 }
