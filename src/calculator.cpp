@@ -343,7 +343,7 @@ void handleInput(char keyButton)
 	updateUI();
 }
 
-void handleOPERAND(char *operand)// this should be a string, if only one key is pressed - string long one char
+void handleOPERAND(char *operand)
 {
 	
 	if(strcmp(OPERATION, "") == 0){// edit first operand
@@ -402,7 +402,6 @@ void handleACTION(char action)
 			}
 		}
 	} else if(action == 'w'){
-		//g_print("%s %s %s %s %s\n", OPERAND1, OPERATION, OPERAND2, RESULT, gtk_entry_get_text(ENTRY));
 		if(strcmp(RESULT, "") == 0 && strcmp(OPERAND1, "") == 0){
 			strcpy(MEM1, gtk_entry_get_text(ENTRY));
 		} else {
@@ -416,7 +415,7 @@ void handleACTION(char action)
 		}
 	}
 	// ACTIONS
-	else if(action == '='){// set result
+	else if(action == '='){// solve
 		handleResult();
 	} else if(action == 'C'){// clear all
 		strcpy(OPERAND1, "");
@@ -552,6 +551,11 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 		char tempBuffer[24];
 		sprintf(tempBuffer, "button%d", ++i);
 		widget = GTK_WIDGET(gtk_builder_get_object(builder, tempBuffer));
+		const char *buttonLabel = gtk_button_get_label(GTK_BUTTON(widget));
+		char ch = buttonLabel[0];
+		if('0' <= ch && ch <= '9'){
+			gtk_style_context_add_class(gtk_widget_get_style_context(widget),"numbers");
+		}
 		g_signal_connect(widget, "enter-notify-event", G_CALLBACK(on_button_hover), NULL);
 		g_signal_connect(widget, "leave-notify-event", G_CALLBACK(on_button_leave), NULL);
 		g_signal_connect(widget, "button-press-event", G_CALLBACK(on_button_press), NULL);

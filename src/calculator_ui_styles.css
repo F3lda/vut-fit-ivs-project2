@@ -2,6 +2,10 @@
 button {
 	border-width: 1px;
 	border-radius: 3px;
+	background-color: #bfbfbf;
+}
+button.numbers {
+	background-color: #e8e8e8;
 }
 button.button_result {
 	color: blue;
