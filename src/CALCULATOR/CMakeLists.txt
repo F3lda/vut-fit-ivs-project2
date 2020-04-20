@@ -9,10 +9,10 @@ link_directories(${GTK3_LIBRARY_DIRS})
 add_definitions(${GTK3_CFLAGS_OTHER})
 
 set(sources
-	basic_math.h
-	basic_math.cpp
-	adv_math.h
-	adv_math.cpp
+	./../libs/basic_math.h
+	./../libs/basic_math.cpp
+	./../libs/adv_math.h
+	./../libs/adv_math.cpp
 )
 add_library(MATH_LIBRARIES ${sources})
 

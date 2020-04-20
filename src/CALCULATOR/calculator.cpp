@@ -1,6 +1,6 @@
 #include <gtk/gtk.h>
-#include "basic_math.h"
-#include "adv_math.h"
+#include "./../libs/basic_math.h"
+#include "./../libs/adv_math.h"
 #include <string.h>
 
 #define APP_TITLE       "Calculator - COGFIT1920"
