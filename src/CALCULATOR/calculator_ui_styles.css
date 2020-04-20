@@ -1,4 +1,9 @@
 /* https://elementaryos.stackexchange.com/questions/15936/button-css-not-working-in-juno */
+/** {
+    color: inherit;
+    background-color: inherit;
+}*/
+
 button {
 	border-width: 1px;
 	border-radius: 3px;
@@ -6,9 +11,10 @@ button {
 }
 button.numbers {
 	background-color: #e8e8e8;
+	color: black;
 }
 button.button_result {
-	color: blue;
+	color: navy;
 }
 button.hover {
 	border-color: gray;
@@ -21,6 +27,7 @@ button.active {
 
 entry {
 	font-size: 24px;
+	color: black;
 }
 
 textview {

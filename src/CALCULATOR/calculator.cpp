@@ -531,6 +531,13 @@ void updateUI()
 *********************************************************/
 void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 {
+
+	GtkSettings *settings;
+	gchar *theme_name;
+	settings = gtk_settings_get_default();
+	g_object_get(settings, "gtk-theme-name", &theme_name, NULL);
+	//g_print("%s\n", theme_name);
+
 	// SETUP CALLBACKS
 	//*********************************************************
 	GtkWidget *widget;
