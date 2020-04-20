@@ -19,6 +19,14 @@ button.active {
 	color: orange;
 }
 
+entry {
+	font-size: 24px;
+}
+
+textview {
+	font-size: 18px;
+}
+
 /*
 entry {
 	border: none;
