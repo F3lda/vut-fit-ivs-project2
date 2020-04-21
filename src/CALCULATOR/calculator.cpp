@@ -556,7 +556,8 @@ int open_url(const char *url)
 
 void show_about(GtkWidget *widget, GtkWindow *parentWindow)
 {
-	GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file("icon.png", NULL);
+	//GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file("icon.png", NULL);
+	GdkPixbuf *pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default(),"accessories-calculator", 48, (GtkIconLookupFlags)NULL, NULL);//TODO GError **error
 	GtkWidget *dialog = gtk_about_dialog_new();
 	gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog), "Calculator");
 	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), "1.0"); 

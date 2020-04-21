@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Calculator
+Exec=bash -c 'cd "$(dirname %k)" && "./calculator"'
+Comment=A sample application from the Advanced GTK+ Techniques tutorial
+Icon=accessories-calculator
+Terminal=false
+Categories=Calculator;
