@@ -345,7 +345,7 @@ void handleInput(char keyButton)
 
 void handleOPERAND(char *operand)
 {
-	
+	// maybe TODO max double size in input
 	if(strcmp(OPERATION, "") == 0){// edit first operand
 		if(STR_BUFFER_SIZE > strlen(operand)+strlen(OPERAND1)){
 			if((operand[0] != ',') || (operand[0] == ',' && strlen(OPERAND1) != 0 && strchr(OPERAND1,',') == NULL)){
@@ -508,6 +508,7 @@ void updateUI()
 			if(strcmp(OPERAND2, "") == 0) spaces_count++;
 		} else {
 			g_print("RESULT: %s %s %s = %s\n", OPERAND1, OPERATION, OPERAND2, RESULT);
+			//TODO zeros count in result			
 			sprintf(temp_string, "%s = %s", temp_string, RESULT);
 			if(TEXTVIEW != NULL){
 				gtk_textview_scroll_to_bottom(TEXTVIEW);
@@ -525,6 +526,56 @@ void updateUI()
 }
 
 
+int open_url(const char *url)
+{
+	char URL[strlen(url)+50];
+	strcpy(URL, "xdg-open ");
+	strcat(URL, url);
+	if(system(URL) == 0){// linux
+		return 0;
+	}
+	strcpy(URL, "start ");
+	strcat(URL, url);
+	if(system(URL) == 0){// windows
+		return 0;
+	}
+	strcpy(URL, "cmd /c start \"\" \"");
+	strcat(URL, url);
+	strcat(URL, "\"");
+	if(system(URL) == 0){// windows
+		return 0;
+	}
+	strcpy(URL, "open ");
+	strcat(URL, url);
+	if(system(URL) == 0){// macos
+		return 0;
+	}
+	return 1;
+}
+
+
+void show_about(GtkWidget *widget, GtkWindow *parentWindow)
+{
+	GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file("icon.png", NULL);
+	GtkWidget *dialog = gtk_about_dialog_new();
+	gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog), "Calculator");
+	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), "1.0"); 
+	gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog),"(c) GviDream");
+	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog), "Simple calculator with two memories.");
+	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), "github.com/F3lda/vut-fit-ivs-project2");
+	gtk_about_dialog_set_logo(GTK_ABOUT_DIALOG(dialog), pixbuf);
+	if (!pixbuf) {
+		g_print("pixbuffer error\n");
+	}
+	else {
+		g_object_unref(pixbuf), pixbuf = NULL;
+	}
+	gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
+	gtk_window_set_transient_for(GTK_WINDOW(dialog), parentWindow);
+	gtk_dialog_run(GTK_DIALOG (dialog));
+	gtk_widget_destroy(dialog);
+}
+
 /*
 ** MAIN
 *********************************************************
@@ -536,17 +587,29 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 	gchar *theme_name;
 	settings = gtk_settings_get_default();
 	g_object_get(settings, "gtk-theme-name", &theme_name, NULL);
-	//g_print("%s\n", theme_name);
+	g_print("Theme: %s\n", theme_name);
+	
+	GtkIconTheme *icon_theme = gtk_icon_theme_get_default();
+	GtkIconInfo *iconinfo = gtk_icon_theme_lookup_icon (icon_theme, "accessories-calculator", 48, (GtkIconLookupFlags)NULL);
+	const char *icon_file = gtk_icon_info_get_filename (iconinfo);
+	g_print("Icon: %s\n", icon_file);
+
+	//g_print("%d\n", open_url("http://www.google.com"));
 
 	// SETUP CALLBACKS
 	//*********************************************************
 	GtkWidget *widget;
+	
+	//MENU ITEMS
+	//imagemenuitem32
+	widget = GTK_WIDGET(gtk_builder_get_object(builder, "imagemenuitem32"));
+	g_signal_connect(widget, "activate", G_CALLBACK(show_about), GTK_WINDOW(window));
 
 	//BUTTONS
 	widget = GTK_WIDGET(gtk_builder_get_object(builder, "button23"));
 	gtk_widget_set_name(widget, "button_result");
 	gtk_style_context_add_class(gtk_widget_get_style_context(widget),"button_result");
-	gtk_button_set_relief(GTK_BUTTON(widget), GTK_RELIEF_NONE);
+	gtk_button_set_relief(GTK_BUTTON(widget), GTK_RELIEF_NORMAL); //GTK_RELIEF_NORMAL or GTK_RELIEF_NONE
 	//g_signal_connect(widget, "clicked", G_CALLBACK(on_button_click), app);
 	g_signal_connect(widget, "enter-notify-event", G_CALLBACK(on_button_hover), NULL);
 	g_signal_connect(widget, "leave-notify-event", G_CALLBACK(on_button_leave), NULL);
@@ -597,9 +660,10 @@ static void Activate(GtkApplication *app, gpointer userData)
 	// Load UI from file. If error occurs, report it and quit application.
 	builder = gtk_builder_new();
 	gerror = NULL;
-	//const char *XML_DATA = "";
-	//gtk_builder_add_from_string(builder, XML_DATA, strlne(XML_DATA), &gerror);
-	if(!gtk_builder_add_from_file(builder, FILE_UI, &gerror)){
+	const char *XML_DATA = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><interface><requires lib=\"gtk+\" version=\"3.20\"/><object class=\"GtkImage\" id=\"iconNo1\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"stock\">gtk-index</property></object><object class=\"GtkImage\" id=\"iconNo2\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"stock\">gtk-index</property></object><object class=\"GtkImage\" id=\"iconNo3\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"resource\">iconNo</property></object><object class=\"GtkImage\" id=\"iconNo4\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"stock\">gtk-index</property></object><object class=\"GtkImage\" id=\"iconNo5\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"stock\">gtk-index</property></object><object class=\"GtkWindow\" id=\"mainWindow\"><property name=\"can_focus\">False</property><property name=\"icon_name\">accessories-calculator</property><child type=\"titlebar\"><placeholder/></child><child><object class=\"GtkBox\" id=\"box1\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"orientation\">vertical</property><child><object class=\"GtkMenuBar\" id=\"menubar1\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><child><object class=\"GtkMenuItem\" id=\"menuitem2\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"label\" translatable=\"yes\">_Odkazy</property><property name=\"use_underline\">True</property><child type=\"submenu\"><object class=\"GtkMenu\" id=\"menu2\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><child><object class=\"GtkImageMenuItem\" id=\"imagemenuitem21\"><property name=\"label\">Wolfram Alpha</property><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"image\">iconNo1</property><property name=\"use_stock\">False</property><property name=\"always_show_image\">True</property></object></child><child><object class=\"GtkImageMenuItem\" id=\"imagemenuitem22\"><property name=\"label\">GeoGebra</property><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"image\">iconNo2</property><property name=\"use_stock\">False</property><property name=\"always_show_image\">True</property></object></child><child><object class=\"GtkSeparatorMenuItem\" id=\"separatormenuitem23\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property></object></child><child><object class=\"GtkImageMenuItem\" id=\"imagemenuitem24\"><property name=\"label\">obvody pajik</property><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"image\">iconNo4</property><property name=\"use_stock\">False</property><property name=\"always_show_image\">True</property></object></child><child><object class=\"GtkImageMenuItem\" id=\"imagemenuitem25\"><property name=\"label\">obvody ja</property><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"image\">iconNo5</property><property name=\"use_stock\">False</property><property name=\"always_show_image\">True</property></object></child></object></child></object></child><child><object class=\"GtkMenuItem\" id=\"menuitem3\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"label\" translatable=\"yes\">_Nápověda</property><property name=\"use_underline\">True</property><child type=\"submenu\"><object class=\"GtkMenu\" id=\"menu3\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><child><object class=\"GtkImageMenuItem\" id=\"imagemenuitem31\"><property name=\"label\">gtk-help</property><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"use_underline\">True</property><property name=\"use_stock\">True</property><property name=\"always_show_image\">True</property></object></child><child><object class=\"GtkImageMenuItem\" id=\"imagemenuitem32\"><property name=\"label\">O programu CALCULATOR</property><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"image\">iconNo3</property><property name=\"use_stock\">False</property></object></child></object></child></object></child></object><packing><property name=\"expand\">False</property><property name=\"fill\">True</property><property name=\"position\">0</property></packing></child><child><object class=\"GtkScrolledWindow\" id=\"scrolledwindow1\"><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"hscrollbar_policy\">never</property><property name=\"shadow_type\">in</property><child><object class=\"GtkTextView\" id=\"textview1\"><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"editable\">False</property><property name=\"justification\">right</property><property name=\"indent\">10</property></object></child></object><packing><property name=\"expand\">True</property><property name=\"fill\">True</property><property name=\"position\">1</property></packing></child><child><object class=\"GtkEntry\" id=\"entry1\"><property name=\"name\">entrybox</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"editable\">False</property><property name=\"invisible_char\">●</property><property name=\"truncate_multiline\">True</property><property name=\"caps_lock_warning\">False</property><property name=\"primary_icon_stock\">gtk-go-up</property><property name=\"secondary_icon_stock\">gtk-clear</property><property name=\"placeholder_text\" translatable=\"yes\">výpočet</property></object><packing><property name=\"expand\">False</property><property name=\"fill\">True</property><property name=\"position\">2</property></packing></child><child><object class=\"GtkGrid\" id=\"grid1\"><property name=\"visible\">True</property><property name=\"can_focus\">False</property><property name=\"row_homogeneous\">True</property><property name=\"column_homogeneous\">True</property><child><object class=\"GtkButton\" id=\"button1\"><property name=\"label\">n!</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"hexpand\">True</property><property name=\"relief\">none</property><property name=\"use_underline\">True</property><property name=\"always_show_image\">True</property></object><packing><property name=\"left_attach\">0</property><property name=\"top_attach\">0</property></packing></child><child><object class=\"GtkButton\" id=\"button2\"><property name=\"label\">y√x</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"hexpand\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">1</property><property name=\"top_attach\">0</property></packing></child><child><object class=\"GtkButton\" id=\"button3\"><property name=\"label\" translatable=\"yes\">x^y</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"hexpand\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">2</property><property name=\"top_attach\">0</property></packing></child><child><object class=\"GtkButton\" id=\"button4\"><property name=\"label\" translatable=\"yes\">b LOG(x)</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"hexpand\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">3</property><property name=\"top_attach\">0</property></packing></child><child><object class=\"GtkButton\" id=\"button5\"><property name=\"label\" translatable=\"yes\">C</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"hexpand\">True</property><property name=\"relief\">none</property><property name=\"image_position\">right</property></object><packing><property name=\"left_attach\">4</property><property name=\"top_attach\">0</property></packing></child><child><object class=\"GtkButton\" id=\"button6\"><property name=\"label\" translatable=\"yes\">1</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">0</property><property name=\"top_attach\">1</property></packing></child><child><object class=\"GtkButton\" id=\"button7\"><property name=\"label\" translatable=\"yes\">2</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">1</property><property name=\"top_attach\">1</property></packing></child><child><object class=\"GtkButton\" id=\"button8\"><property name=\"label\" translatable=\"yes\">3</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">2</property><property name=\"top_attach\">1</property></packing></child><child><object class=\"GtkButton\" id=\"button9\"><property name=\"label\" translatable=\"yes\">+</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">3</property><property name=\"top_attach\">1</property></packing></child><child><object class=\"GtkButton\" id=\"button10\"><property name=\"label\" translatable=\"yes\">Mr</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">4</property><property name=\"top_attach\">1</property></packing></child><child><object class=\"GtkButton\" id=\"button11\"><property name=\"label\" translatable=\"yes\">4</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">0</property><property name=\"top_attach\">2</property></packing></child><child><object class=\"GtkButton\" id=\"button12\"><property name=\"label\" translatable=\"yes\">5</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">1</property><property name=\"top_attach\">2</property></packing></child><child><object class=\"GtkButton\" id=\"button13\"><property name=\"label\" translatable=\"yes\">6</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">2</property><property name=\"top_attach\">2</property></packing></child><child><object class=\"GtkButton\" id=\"button14\"><property name=\"label\" translatable=\"yes\">-</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">3</property><property name=\"top_attach\">2</property></packing></child><child><object class=\"GtkButton\" id=\"button15\"><property name=\"label\" translatable=\"yes\">MMr</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">4</property><property name=\"top_attach\">2</property></packing></child><child><object class=\"GtkButton\" id=\"button16\"><property name=\"label\" translatable=\"yes\">7</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">0</property><property name=\"top_attach\">3</property></packing></child><child><object class=\"GtkButton\" id=\"button17\"><property name=\"label\" translatable=\"yes\">8</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">1</property><property name=\"top_attach\">3</property></packing></child><child><object class=\"GtkButton\" id=\"button18\"><property name=\"label\" translatable=\"yes\">9</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">2</property><property name=\"top_attach\">3</property></packing></child><child><object class=\"GtkButton\" id=\"button19\"><property name=\"label\" translatable=\"yes\">*</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">3</property><property name=\"top_attach\">3</property></packing></child><child><object class=\"GtkButton\" id=\"button20\"><property name=\"label\" translatable=\"yes\">Mw</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">4</property><property name=\"top_attach\">3</property></packing></child><child><object class=\"GtkButton\" id=\"button21\"><property name=\"label\" translatable=\"yes\">,</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">0</property><property name=\"top_attach\">4</property></packing></child><child><object class=\"GtkButton\" id=\"button22\"><property name=\"label\" translatable=\"yes\">0</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">1</property><property name=\"top_attach\">4</property></packing></child><child><object class=\"GtkButton\" id=\"button23\"><property name=\"label\" translatable=\"yes\">===</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">2</property><property name=\"top_attach\">4</property></packing></child><child><object class=\"GtkButton\" id=\"button24\"><property name=\"label\" translatable=\"yes\">/</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">3</property><property name=\"top_attach\">4</property></packing></child><child><object class=\"GtkButton\" id=\"button25\"><property name=\"label\" translatable=\"yes\">MMw</property><property name=\"visible\">True</property><property name=\"can_focus\">True</property><property name=\"receives_default\">True</property><property name=\"relief\">none</property></object><packing><property name=\"left_attach\">4</property><property name=\"top_attach\">4</property></packing></child></object><packing><property name=\"expand\">False</property><property name=\"fill\">True</property><property name=\"position\">3</property></packing></child></object></child></object></interface>";
+	gtk_builder_add_from_string(builder, XML_DATA, strlen(XML_DATA), &gerror);
+	//gtk_builder_add_from_file(builder, FILE_UI, &gerror);
+	if(gerror != NULL){
 		g_warning("ERROR loading UI: %s", gerror->message);
 		g_free(gerror);
 		return;
@@ -608,12 +672,13 @@ static void Activate(GtkApplication *app, gpointer userData)
 	// CSS for UI
 	GtkCssProvider *cssProvider = gtk_css_provider_new();
 	gerror = NULL;
-	//const char *CSS_DATA = "";	
-	//gtk_css_provider_load_from_data(cssProvider, CSS_DATA, strlen(CSS_DATA), &gerror);
-	gtk_css_provider_load_from_path(cssProvider, FILE_UI_STYLES, &gerror);
+	const char *CSS_DATA = "button {     border-width: 1px;     border-radius: 3px;     background-color: #bfbfbf; } button.numbers {     background-color: #e8e8e8;     color: black; } button.button_result {     color: navy; } button.hover {     border-color: gray;     color: green; } button.active {     border-color: red;     color: orange; } entry {     font-size: 24px;     color: black; } textview {     font-size: 18px; }";	
+	gtk_css_provider_load_from_data(cssProvider, CSS_DATA, strlen(CSS_DATA), &gerror);
+	//gtk_css_provider_load_from_path(cssProvider, FILE_UI_STYLES, &gerror);
 	if(gerror != NULL){
 		g_warning("ERROR loading CSS: %s", gerror->message);
 		g_free(gerror);
+		return;
 	}
 	gtk_style_context_add_provider_for_screen(gdk_screen_get_default(), GTK_STYLE_PROVIDER(cssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER); // _PRIORITY_APPLICATION
 	g_object_unref(cssProvider);
