@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Calculator
+Path=/opt/calculator
+Exec=/opt/calculator/calculator
+Icon=accessories-calculator
+Terminal=false
+Categories=Utility;

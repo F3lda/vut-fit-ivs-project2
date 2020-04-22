@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chmod +x /opt/calculator/calculator
+desktop-file-install /usr/share/applications/calculator.desktop
