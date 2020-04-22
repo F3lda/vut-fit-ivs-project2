@@ -1,9 +1,12 @@
-/* https://elementaryos.stackexchange.com/questions/15936/button-css-not-working-in-juno */
+/* Selectors for Gtk widgets: https://elementaryos.stackexchange.com/questions/15936/button-css-not-working-in-juno */
+
+/* reset all styles */
 /** {
     color: inherit;
     background-color: inherit;
 }*/
 
+/* button styles */
 button {
 	border-width: 1px;
 	border-radius: 3px;
@@ -16,6 +19,7 @@ button.numbers {
 button.button_result {
 	color: navy;
 }
+/* button callbacks */
 button.hover {
 	border-color: gray;
 	color: green;
@@ -24,17 +28,18 @@ button.active {
 	border-color: red;
 	color: orange;
 }
-
+/* entry styles */
 entry {
 	font-size: 24px;
 	color: black;
 }
-
+/* textview styles */
 textview {
 	font-size: 18px;
 }
 
-/*
+/* UNUSED EXAMPLES
+********************************
 entry {
 	border: none;
 	border-radius: 0px;
@@ -47,5 +52,4 @@ textview text {
 textview text selection {
 	background-color: blue;
 	color: yellow;
-}
-*/
+}*/

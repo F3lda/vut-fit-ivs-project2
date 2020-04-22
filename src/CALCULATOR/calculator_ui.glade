@@ -42,40 +42,6 @@
           <object class="GtkMenuBar" id="menubar1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <!--<child>
-              <object class="GtkMenuItem" id="menuitem1">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Úpravy</property>
-                <property name="use_underline">True</property>
-                <child type="submenu">
-                  <object class="GtkMenu" id="menu1">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem11">
-                        <property name="label">gtk-paste</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem12">
-                        <property name="label">gtk-copy</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_underline">True</property>
-                        <property name="use_stock">True</property>
-                        <property name="always_show_image">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>-->
             <child>
               <object class="GtkMenuItem" id="menuitem2">
                 <property name="visible">True</property>
@@ -106,7 +72,7 @@
                         <property name="always_show_image">True</property>
                       </object>
                     </child>
-                    <child>
+                    <!--<child>
                       <object class="GtkSeparatorMenuItem" id="separatormenuitem23">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -114,7 +80,7 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="imagemenuitem24">
-                        <property name="label">obvody pajik</property>
+                        <property name="label">circuits 1</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="image">iconNo4</property>
@@ -124,14 +90,14 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="imagemenuitem25">
-                        <property name="label">obvody ja</property>
+                        <property name="label">circuits 2</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="image">iconNo5</property>
                         <property name="use_stock">False</property>
                         <property name="always_show_image">True</property>
                       </object>
-                    </child>
+                    </child>-->
                   </object>
                 </child>
               </object>
@@ -157,7 +123,13 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="imagemenuitem32">
+                      <object class="GtkSeparatorMenuItem" id="separatormenuitem32">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="imagemenuitem33">
                         <property name="label">O programu CALCULATOR</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
