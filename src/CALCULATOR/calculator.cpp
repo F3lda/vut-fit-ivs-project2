@@ -33,7 +33,6 @@ char OPERATION[STR_BUFFER_SIZE] = "";
 char MEM1[STR_BUFFER_SIZE] = "";
 char MEM2[STR_BUFFER_SIZE] = "";
 
-void gtk_textview_scroll_to_bottom(GtkTextView *text_view);
 void handleInput(char keyButton);
 void handleOPERAND(char operand);
 void handleOPERATION(char operation);
@@ -43,28 +42,201 @@ void handleResult(double result, int herror);
 void updateUI();
 
 
-/*
-** MAIN WINDOW CALLBACKS
-*********************************************************
-*********************************************************/
 
-// App is finished. Clean up everything.
 //*********************************************************
+//*  CUSTOM FUNCTIONS
+//*********************************************************
+
+/**
+ * @brief Funkce pro otevření url adresy ve webovém prohlížeči
+ *
+ * @param *url Ukazatel na řetězec obsahující url adresu
+ * @return TRUE - při chybě, FALSE - při správném otevření přohlížeče
+ */
+int open_url(const char *url)
+{
+	char URL[strlen(url)+50];
+	strcpy(URL, "xdg-open ");
+	strcat(URL, url);
+	if(system(URL) == 0){// linux
+		return 0;
+	}
+	strcpy(URL, "start ");
+	strcat(URL, url);
+	if(system(URL) == 0){// windows
+		return 0;
+	}
+	strcpy(URL, "cmd /c start \"\" \"");
+	strcat(URL, url);
+	strcat(URL, "\"");
+	if(system(URL) == 0){// windows
+		return 0;
+	}
+	strcpy(URL, "open ");
+	strcat(URL, url);
+	if(system(URL) == 0){// macos
+		return 0;
+	}
+	return 1;
+}
+
+/**
+ * @brief Funkce pro zobrazení dialogu O programu
+ *
+ * @param *parentWindow Ukazatel na nadřazené okno, ke kterému bude dialog přiřazen
+ */
+void show_about(GtkWindow *parentWindow)
+{
+	GError *gerror = NULL;
+	//GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file("icon.png", &gerror);
+	GdkPixbuf *pixbuf = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(), APP_ICON, 64, (GtkIconLookupFlags)NULL, &gerror);
+	if(gerror != NULL){
+		g_warning("ERROR loading CSS: %s", gerror->message);
+		g_free(gerror);
+		return;
+	}
+	GtkWidget *dialog = gtk_about_dialog_new();
+	gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog), APP_TITLE);
+	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), APP_VERSION); 
+	gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog), APP_COPYRIGHT);
+	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog), APP_DESCRIPTION);
+	gtk_about_dialog_set_license_type(GTK_ABOUT_DIALOG(dialog), GTK_LICENSE_GPL_3_0);
+	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), APP_WEBSITE);
+	gtk_about_dialog_set_website_label(GTK_ABOUT_DIALOG(dialog), APP_WEB_LABEL);
+	if(!pixbuf){
+		g_print("pixbuffer error\n");
+	} else {
+		gtk_about_dialog_set_logo(GTK_ABOUT_DIALOG(dialog), pixbuf);	
+		g_object_unref(pixbuf), pixbuf = NULL;
+	}
+	gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
+	gtk_window_set_transient_for(GTK_WINDOW(dialog), parentWindow);
+	gtk_dialog_run(GTK_DIALOG(dialog));
+	gtk_widget_destroy(dialog);
+}
+
+
+
+//*********************************************************
+//*  GTK CUSTOM TEXTVIEW FUNCTIONS
+//*********************************************************
+
+/**
+ * @brief Funkce pro získání textu z prvku TextView
+ *
+ * @param *text_view Ukazatel na prvek TextView
+ * @return Ukazatel na řetězec obsahující text z TextView [Nutnost uvolnit pamět pomocí funkce free()]
+ */
+char * gtk_textview_get_text(GtkTextView *text_view)
+{
+	GtkTextBuffer *buffer;
+	GtkTextIter start, end;
+	char *text;
+
+	buffer = gtk_text_view_get_buffer(text_view);
+	gtk_text_buffer_get_bounds(buffer, &start, &end);
+	text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
+	return text; //need to free text
+}
+
+/**
+ * @brief Funkce pro změnu obsahu prvku TextView
+ *
+ * @param *text_view Ukazatel na prvek TextView
+ * @param *text Ukazatel na na řetězec, jehož obsah bude zkopírován do prvku TextView
+ */
+void gtk_textview_set_text(GtkTextView *text_view, char *text)
+{
+	GtkTextBuffer *buffer;
+	GtkTextIter start, end;
+
+	buffer = gtk_text_view_get_buffer(text_view);
+	gtk_text_buffer_set_text(buffer, text, strlen(text));
+}
+
+/**
+ * @brief Funkce pro přidání obsahu prvku TextView
+ *
+ * @param *text_view Ukazatel na prvek TextView
+ * @param *text Ukazatel na na řetězec, jehož obsah bude přidán na konec TextView
+ */
+void gtk_textview_append_text(GtkTextView *text_view, char * text)
+{
+	GtkTextBuffer *buffer;
+	GtkTextIter start, end;
+
+	buffer = gtk_text_view_get_buffer(text_view);
+	if (gtk_text_buffer_get_char_count(buffer))
+		gtk_text_buffer_insert_at_cursor(buffer, "\n", 1);
+	
+	gtk_text_buffer_insert_at_cursor(buffer, text, strlen(text));
+}
+
+/**
+ * @brief Funkce pro vertikální zascrollování na konec (spodní část) prvku TextView
+ *
+ * @param *text_view Ukazatel na prvek TextView
+ */
+void gtk_textview_scroll_to_bottom(GtkTextView *text_view)
+{
+	GtkTextBuffer *buffer;
+	GtkTextIter iter;
+	GtkTextMark *mark;
+
+	buffer = gtk_text_view_get_buffer(text_view);
+	gtk_text_buffer_get_end_iter(buffer, &iter);
+	//gtk_text_iter_set_line_offset(&iter, 0);// move the iterator to the beginning of line -> so it doesn't scroll in horizontal direction
+	mark = gtk_text_buffer_create_mark(buffer, NULL, &iter, FALSE);
+	gtk_text_buffer_place_cursor(buffer, &iter);
+	gtk_text_view_scroll_mark_onscreen(text_view, mark);
+	gtk_text_buffer_delete_mark(buffer, mark);
+}
+
+
+
+//*********************************************************
+//*  MAIN WINDOW CALLBACKS
+//*********************************************************
+
+
+// Window Callbacks
+//*********************************************************
+
+/**
+ * @brief Funkce volaná těsně před ukončením programu [na tomto místě se může uvolnit všechna alokovaná paměť]
+ *
+ * @param *widget Ukazatel na volající prvek
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
+ */
 void on_window_destroy(GtkWidget *widget, gpointer user_data)
 {
 	g_print("Done.\n");
 }
 
-// When window is closed
-//*********************************************************
+/**
+ * @brief Funkce volaná při zavření programu
+ *
+ * @param *widget Ukazatel na volající prvek
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
+ * @return TRUE - při zrušení zavření programu, FALSE - pro dokončení zavření programu
+ */
 int on_window_close(GtkWidget *widget, gpointer user_data)
 {
 	//return TRUE;	// Returning TRUE stops the window being deleted.
 	return FALSE;	// Returning FALSE allows deletion.   
 }
 
-// When key is pressed
+
+// Keyboard Callbacks
 //*********************************************************
+
+/**
+ * @brief Funkce volaná při stisku klávesy na klávesnici
+ *
+ * @param *widget Ukazatel na volající prvek
+ * @param *event Ukazatel na strukturu obsahující informace o vzniklé události
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
+ */
 char lastCharStillDown = '\0';
 void on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 {
@@ -87,8 +259,13 @@ void on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 	}
 }
 
-// When key is released
-//*********************************************************
+/**
+ * @brief Funkce volaná při uvolnění klávesy na klávesnici
+ *
+ * @param *widget Ukazatel na volající prvek
+ * @param *event Ukazatel na strukturu obsahující informace o vzniklé události
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
+ */
 void on_key_release(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 {
 	//g_print("Key released: %u\n", event->keyval);
@@ -131,13 +308,16 @@ void on_key_release(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 }
 
 
-/*
-** CALLBACKS
-*********************************************************
-*********************************************************/
-
-// Button callbacks
+// Button Callbacks
 //*********************************************************
+
+/**
+ * @brief Funkce volaná při najetí myší na tlačítko uživatelského rozhraní
+ *
+ * @param *button Ukazatel na volající prvek/tlačítko
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
+ * @return TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při najetí myší na tlačítko], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování]
+ */
 int on_button_hover(GtkWidget *button, gpointer user_data)
 {
 	//g_print("hover\n");
@@ -145,6 +325,13 @@ int on_button_hover(GtkWidget *button, gpointer user_data)
 	return TRUE;
 }
 
+/**
+ * @brief Funkce volaná při odjetí myší z tlačítka uživatelského rozhraní
+ *
+ * @param *button Ukazatel na volající prvek/tlačítko
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
+ * @return TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při odjetí myší z tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování]
+ */
 int on_button_leave(GtkWidget *button, gpointer user_data)
 {
 	//g_print("leave\n");
@@ -152,6 +339,13 @@ int on_button_leave(GtkWidget *button, gpointer user_data)
 	return TRUE;
 }
 
+/**
+ * @brief Funkce volaná při zmáčknutí tlačítka uživatelského rozhraní
+ *
+ * @param *button Ukazatel na volající prvek/tlačítko
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
+ * @return TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při zmáčknutí tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování]
+ */
 int on_button_press(GtkWidget *button, gpointer user_data)
 {
 	//g_print("click\n");
@@ -159,6 +353,13 @@ int on_button_press(GtkWidget *button, gpointer user_data)
 	return TRUE;
 }
 
+/**
+ * @brief Funkce volaná při uvolnění tlačítka uživatelského rozhraní
+ *
+ * @param *button Ukazatel na volající prvek/tlačítko
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
+ * @return TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při uvolnění tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování]
+ */
 int on_button_release(GtkWidget *button, gpointer user_data)
 {
 	//g_print("release\n");
@@ -191,8 +392,15 @@ int on_button_release(GtkWidget *button, gpointer user_data)
 	return TRUE;
 }
 
-// Textview callbacks
+
+// TextView Callbacks
 //*********************************************************
+
+/**
+ * @brief Funkce volaná při trojkliknutí na jakýkoliv řádek prvku TextView
+ *
+ * @param *text_view Ukazatel na volající prvek TextView
+ */
 void on_textview_row_selection(GtkTextView *text_view) // unused
 {
 	GtkTextBuffer *buffer = gtk_text_view_get_buffer(text_view);
@@ -208,6 +416,11 @@ void on_textview_row_selection(GtkTextView *text_view) // unused
 	}
 }
 
+/**
+ * @brief Funkce volaná pro zpracování pohybu kurzoru v prvku TextView
+ *
+ * @param *text_view Ukazatel na volající prvek TextView
+ */
 void on_textview_cursor_move_timeout(GtkTextView *text_view)
 {
 	GtkTextBuffer *buffer = gtk_text_view_get_buffer(text_view);
@@ -234,21 +447,41 @@ void on_textview_cursor_move_timeout(GtkTextView *text_view)
 	free(text);
 }
 
+/**
+ * @brief Funkce volaná při pohybu kurzoru v prvku TextView [funkce volá po uplynutí času další funkci, která pohyb kurzoru zpracuje; čeká se na přesun kurzoru a obnovení UI]
+ *
+ * @param *text_view Ukazatel na volající prvek TextView
+ */
 void on_textview_cursor_move(GtkTextView *text_view)
-{
+{//TODO gtk_text_iter_is_end -> dont use timeout
 	g_timeout_add(33, (int (*)(void*))G_CALLBACK(on_textview_cursor_move_timeout), text_view);
 	//guint threadID =
 	//g_source_remove(threadID); // stop timeout
 }
 
+/**
+ * @brief Funkce volaná při změně velikosti prvku TextView
+ *
+ * @param *text_view Ukazatel na volající prvek TextView
+ */
 void on_textview_resize(GtkTextView *text_view, GdkRectangle *allocation, gpointer user_data) //allocation->x, allocation->y, allocation->width, allocation->height
 {
 	// auto scroll to bottom
 	gtk_textview_scroll_to_bottom(text_view);
 }
 
-// Entry callbacks
+
+// Entry Callbacks
 //*********************************************************
+
+/**
+ * @brief Funkce volaná při kliknutí na ikonku prvku Entry
+ *
+ * @param *entry Ukazatel na volající prvek Entry
+ * @param icon_pos Identifikátor ikony
+ * @param *event Ukazatel na strukturu obsahující informace o vzniklé události
+ * @param *text_view Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy ukazatel na prvek TextView]
+ */
 void on_entry_icon_click(GtkEntry *entry, int icon_pos, GdkEvent *event, GtkTextView *text_view)
 {
 	if(icon_pos == 0){
@@ -275,69 +508,41 @@ void on_entry_icon_click(GtkEntry *entry, int icon_pos, GdkEvent *event, GtkText
 }
 
 
-/*
-** FUNCTIONS
-*********************************************************
-*********************************************************/
-
-// Textview functions
+// MenuBar Callbacks
 //*********************************************************
-char * gtk_textview_get_text(GtkTextView *text_view)
+
+/**
+ * @brief Funkce volaná při kliknutí na tličítko menu lišty
+ *
+ * @param *menu_item Ukazatel na volající talčítko/prvek MenuItem
+ * @param *parentWindow Ukazatel na nadřazené okno programu [slouží k zobrazení dialogu O programu]
+ */
+void on_toolbar_button_clicked(GtkWidget *menu_item, GtkWindow *parentWindow)
 {
-	GtkTextBuffer *buffer;
-	GtkTextIter start, end;
-	char *text;
-
-	buffer = gtk_text_view_get_buffer(text_view);
-	gtk_text_buffer_get_bounds(buffer, &start, &end);
-	text = gtk_text_buffer_get_text(buffer, &start, &end, TRUE);
-	return text; //need to free text
-}
-
-void gtk_textview_append_text(GtkTextView *text_view, char * text)
-{
-	GtkTextBuffer *buffer;
-	GtkTextIter start, end;
-
-	buffer = gtk_text_view_get_buffer(text_view);
-	if (gtk_text_buffer_get_char_count(buffer))
-		gtk_text_buffer_insert_at_cursor(buffer, "\n", 1);
-	
-	gtk_text_buffer_insert_at_cursor(buffer, text, strlen(text));
-}
-
-void gtk_textview_set_text(GtkTextView *text_view, char * text)
-{
-	GtkTextBuffer *buffer;
-	GtkTextIter start, end;
-
-	buffer = gtk_text_view_get_buffer(text_view);
-	gtk_text_buffer_set_text(buffer, text, strlen(text));
-}
-
-void gtk_textview_scroll_to_bottom(GtkTextView *text_view)
-{
-	GtkTextBuffer *buffer;
-	GtkTextIter iter;
-	GtkTextMark *mark;
-
-	buffer = gtk_text_view_get_buffer(text_view);
-	gtk_text_buffer_get_end_iter(buffer, &iter);
-	//gtk_text_iter_set_line_offset(&iter, 0);// Move the iterator to the beginning of line, so we don't scroll in horizontal direction.
-	mark = gtk_text_buffer_create_mark(buffer, NULL, &iter, FALSE);
-	gtk_text_buffer_place_cursor(buffer, &iter);
-	gtk_text_view_scroll_mark_onscreen(text_view, mark);
-	gtk_text_buffer_delete_mark(buffer, mark);
+	const char *itemLabel = gtk_menu_item_get_label(GTK_MENU_ITEM(menu_item));
+	//g_print("Item: %s\n", itemLabel);
+	if(itemLabel[0] == 'W'){
+		open_url("https://www.wolframalpha.com");
+	} else if(itemLabel[0] == 'G'){
+		open_url("https://www.geogebra.org");
+	} else if(itemLabel[0] == 'g'){// documentation
+		open_url(APP_DOCUMENT);
+	} else 	if(itemLabel[0] == 'O'){
+		show_about(parentWindow);
+	}
 }
 
 
-/*
-** WORKING FUNCTIONS
-*********************************************************
-*********************************************************/
 
-// Handle input
 //*********************************************************
+//*  WORKING FUNCTIONS
+//*********************************************************
+
+/**
+ * @brief Funkce volaná při jakémkoliv přijmu vstupních dat [klávesnice, myš (tlačítka)]
+ *
+ * @param keyButton Vstupní data v podobě jednoho znaku <char>
+ */
 void handleInput(char keyButton)
 {
 	//g_print("Key: %c\n", keyButton);
@@ -352,6 +557,11 @@ void handleInput(char keyButton)
 	updateUI();
 }
 
+/**
+ * @brief Funkce volaná při zachycení části operandu na vstupu. Funkce jej uloží do paměti aktuálně aktivního operandu [první/levý nebo druhý/pravý]
+ *
+ * @param keyButton Vstupní data v podobě jednoho znaku <char> [zde číslo od 0 do 9 a znak čárky (,)]
+ */
 void handleOPERAND(char operand)
 {
 	// maybe TODO max double size in input to avoid buffer overflow
@@ -370,6 +580,11 @@ void handleOPERAND(char operand)
 	}
 }
 
+/**
+ * @brief Funkce volaná při zachycení operace na vstupu. Funkce operaci dešifruje ze znaku na vstupu a uloží ji do paměti již jako znak dané operace
+ *
+ * @param keyButton Vstupní data v podobě jednoho znaku <char> [zde znaky A, X, Y, Z nebo /, *, -, +]
+ */
 void handleOPERATION(char operation)
 {
 	if(strcmp(OPERAND1, "") != 0){
@@ -387,6 +602,11 @@ void handleOPERATION(char operation)
 	}
 }
 
+/**
+ * @brief Funkce volaná při zachycení akce na vstupu. Funkce akci dešifruje ze znaku na vstupu a provede
+ *
+ * @param keyButton Vstupní data v podobě jednoho znaku <char> [zde znaky r, f, w, s, nebo =, C, K]
+ */
 void handleACTION(char action)
 {
 	// OPERATION-ACTION	
@@ -441,6 +661,10 @@ void handleACTION(char action)
 	}
 }
 
+/**
+ * @brief Funkce volaná při zachycení akce k vyřešení zadaného příkladu. Funkce dešifruje jaká matematická funkce má být použita a provede výpočet na zadaných operandech
+ *
+ */
 void actionSOLVE()
 {
 	if(strcmp(OPERAND1, "") != 0 && strcmp(OPERATION, "") != 0){
@@ -475,6 +699,12 @@ void actionSOLVE()
 	}
 }
 
+/**
+ * @brief Funkce volaná po vyřešení matematického problému. Funkce zjistí, zda při řešení nedošlo k chybě a výsledek uloží do paměti
+ *
+ * @param result Výsledek matematické operace
+ * @param herror Proměnná pro kontrulu, zda nenastal chyba při výpočtu
+ */
 void handleResult(double result, int herror)
 {
 	char error_table[8][64] = {"ZERO_DIVISION", "INVALID_FACTORIAL", "FACTORIAL_OVERFLOW", "ROOT_NEGATIVE", "EXPONENT_NEG_BASE_FRAC_POW", "LOG_DF_BASE", "LOG_DF_NUM", "LOG_BASE_1"};
@@ -487,6 +717,10 @@ void handleResult(double result, int herror)
 	}
 }
 
+/**
+ * @brief Funkce volaná po zachycení vstupu. Při změně dat je aplikuje do uživatelského prostředí
+ *
+ */
 void updateUI()
 {
 	if(ENTRY != NULL){
@@ -516,83 +750,18 @@ void updateUI()
 }
 
 
-int open_url(const char *url)
-{
-	char URL[strlen(url)+50];
-	strcpy(URL, "xdg-open ");
-	strcat(URL, url);
-	if(system(URL) == 0){// linux
-		return 0;
-	}
-	strcpy(URL, "start ");
-	strcat(URL, url);
-	if(system(URL) == 0){// windows
-		return 0;
-	}
-	strcpy(URL, "cmd /c start \"\" \"");
-	strcat(URL, url);
-	strcat(URL, "\"");
-	if(system(URL) == 0){// windows
-		return 0;
-	}
-	strcpy(URL, "open ");
-	strcat(URL, url);
-	if(system(URL) == 0){// macos
-		return 0;
-	}
-	return 1;
-}
 
+//*********************************************************
+//*  MAIN
+//*********************************************************
 
-void show_about(GtkWindow *parentWindow)
-{
-	GError *gerror = NULL;
-	//GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file("icon.png", &gerror);
-	GdkPixbuf *pixbuf = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(), APP_ICON, 64, (GtkIconLookupFlags)NULL, &gerror);
-	if(gerror != NULL){
-		g_warning("ERROR loading CSS: %s", gerror->message);
-		g_free(gerror);
-		return;
-	}
-	GtkWidget *dialog = gtk_about_dialog_new();
-	gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog), APP_TITLE);
-	gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), APP_VERSION); 
-	gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog), APP_COPYRIGHT);
-	gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog), APP_DESCRIPTION);
-	gtk_about_dialog_set_license_type(GTK_ABOUT_DIALOG(dialog), GTK_LICENSE_GPL_3_0);
-	gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), APP_WEBSITE);
-	gtk_about_dialog_set_website_label(GTK_ABOUT_DIALOG(dialog), APP_WEB_LABEL);
-	if(!pixbuf){
-		g_print("pixbuffer error\n");
-	} else {
-		gtk_about_dialog_set_logo(GTK_ABOUT_DIALOG(dialog), pixbuf);	
-		g_object_unref(pixbuf), pixbuf = NULL;
-	}
-	gtk_window_set_destroy_with_parent(GTK_WINDOW(dialog), TRUE);
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), parentWindow);
-	gtk_dialog_run(GTK_DIALOG(dialog));
-	gtk_widget_destroy(dialog);
-}
-
-void on_toolbar_button_clicked(GtkWidget *menu_item, GtkWindow *parentWindow)
-{
-	const char *itemLabel = gtk_menu_item_get_label(GTK_MENU_ITEM(menu_item));
-	//g_print("Item: %s\n", itemLabel);
-	if(itemLabel[0] == 'W'){
-		open_url("https://www.wolframalpha.com");
-	} else if(itemLabel[0] == 'G'){
-		open_url("https://www.geogebra.org");
-	} else if(itemLabel[0] == 'g'){// documentation
-		open_url(APP_DOCUMENT);
-	} else 	if(itemLabel[0] == 'O'){
-		show_about(parentWindow);
-	}
-}
-
-/*
-** MAIN
-*********************************************************
-*********************************************************/
+/**
+ * @brief Hlavní funkce volaná při inicializaci uživatelského prostředí. Slouží k základnímu nastavení aplikace a uživatelského prostředí [nachazí se zde registrování událostí]
+ *
+ * @param *app Ukazatel na prvek GtkApplication
+ * @param *window Ukazatel na hlavní okno aplikace
+ * @param *builder Ukazatel na prvek GtkBuilder pro práci s uživatelským prostředím
+ */
 void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 {
 	// GET SETTINGS
@@ -665,9 +834,18 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 	g_signal_connect(widget, "move-cursor", G_CALLBACK(on_textview_cursor_move), NULL);
 	TEXTVIEW = GTK_TEXT_VIEW(widget);
 }
-/* ********************************************************
-******************************************************** */
+//*********************************************************
+//*  MAIN - END
+//*********************************************************
 
+
+/**
+ * @brief Funkce knihovny GTK při spuštění aplikace nainicializuje uživatelské prostředí a zobrazí je (hlavní okno) -> spustí celou aplikaci
+ *
+ * @param *app Ukazatel na prvek GtkApplication
+ * @param *window Ukazatel na hlavní okno aplikace
+ * @param *builder Ukazatel na prvek GtkBuilder pro práci s uživatelským prostředím
+ */
 static void Activate(GtkApplication *app, gpointer userData)
 {
 	GError *gerror;
@@ -727,6 +905,12 @@ static void Activate(GtkApplication *app, gpointer userData)
 	gtk_widget_show_all(window);
 }
 
+/**
+ * @brief První volaná funkce po spuštění programu. Funkce spouští funkce a celou aplikace postavenou na knihovně GTK
+ *
+ * @param argc Počet argumentů při spuštění aplikace
+ * @param *argv[] ukazatel na řetězce obsahují argumenty
+ */
 int main(int argc, char *argv[])
 {
 	GtkApplication *app = gtk_application_new(APP_NAME, G_APPLICATION_FLAGS_NONE);
@@ -829,5 +1013,4 @@ void CreateWindow(GtkApplication *app)
 
 	g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(onDestroyWindow), app);
 	gtk_widget_show_all(window);
-}
-*/
+}*/
