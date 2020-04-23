@@ -453,7 +453,7 @@ void on_textview_cursor_move_timeout(GtkTextView *text_view)
  * @param *text_view Ukazatel na volající prvek TextView
  */
 void on_textview_cursor_move(GtkTextView *text_view)
-{//TODO gtk_text_iter_is_end -> dont use timeout
+{
 	g_timeout_add(33, (int (*)(void*))G_CALLBACK(on_textview_cursor_move_timeout), text_view);
 	//guint threadID =
 	//g_source_remove(threadID); // stop timeout
@@ -553,6 +553,9 @@ void handleInput(char keyButton)
 	} else {// ACTION
 		handleACTION(keyButton);
 	}
+	//ENTRY SET FOCUS on input
+	gtk_widget_set_can_focus(GTK_WIDGET(ENTRY), TRUE);
+	gtk_widget_grab_focus(GTK_WIDGET(ENTRY));
 	//UPDATE UI
 	updateUI();
 }
