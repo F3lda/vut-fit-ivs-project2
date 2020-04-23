@@ -9,10 +9,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <iostream>
-#include "adv_math.h"
-#include "basic_math.h"
-#include "adv_math.cpp"
-#include "basic_math.cpp"
+#include "./../libs/basic_math.h"
+#include "./../libs/adv_math.h"
 
 
 int main()

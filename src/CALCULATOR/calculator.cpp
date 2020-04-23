@@ -1,3 +1,10 @@
+/**
+ * @file calculator.cpp
+ * @author Karel Jirgl
+ * @brief Main & GUI soubor
+ */
+
+
 #include <gtk/gtk.h>
 #include "./../libs/basic_math.h"
 #include "./../libs/adv_math.h"
@@ -50,7 +57,7 @@ void updateUI();
 /**
  * @brief Funkce pro otevření url adresy ve webovém prohlížeči
  *
- * @param *url Ukazatel na řetězec obsahující url adresu
+ * @param url Ukazatel na řetězec obsahující url adresu
  * @return TRUE - při chybě, FALSE - při správném otevření přohlížeče
  */
 int open_url(const char *url)
@@ -81,9 +88,9 @@ int open_url(const char *url)
 }
 
 /**
- * @brief Funkce pro zobrazení dialogu O programu
+ * @brief Funkce pro zobrazení dialogu o programu
  *
- * @param *parentWindow Ukazatel na nadřazené okno, ke kterému bude dialog přiřazen
+ * @param parentWindow Ukazatel na nadřazené okno, ke kterému bude dialog přiřazen
  */
 void show_about(GtkWindow *parentWindow)
 {
@@ -124,7 +131,7 @@ void show_about(GtkWindow *parentWindow)
 /**
  * @brief Funkce pro získání textu z prvku TextView
  *
- * @param *text_view Ukazatel na prvek TextView
+ * @param text_view Ukazatel na prvek TextView
  * @return Ukazatel na řetězec obsahující text z TextView [Nutnost uvolnit pamět pomocí funkce free()]
  */
 char * gtk_textview_get_text(GtkTextView *text_view)
@@ -142,8 +149,8 @@ char * gtk_textview_get_text(GtkTextView *text_view)
 /**
  * @brief Funkce pro změnu obsahu prvku TextView
  *
- * @param *text_view Ukazatel na prvek TextView
- * @param *text Ukazatel na na řetězec, jehož obsah bude zkopírován do prvku TextView
+ * @param text_view Ukazatel na prvek TextView
+ * @param text Ukazatel na na řetězec, jehož obsah bude zkopírován do prvku TextView
  */
 void gtk_textview_set_text(GtkTextView *text_view, char *text)
 {
@@ -157,8 +164,8 @@ void gtk_textview_set_text(GtkTextView *text_view, char *text)
 /**
  * @brief Funkce pro přidání obsahu prvku TextView
  *
- * @param *text_view Ukazatel na prvek TextView
- * @param *text Ukazatel na na řetězec, jehož obsah bude přidán na konec TextView
+ * @param text_view Ukazatel na prvek TextView
+ * @param text Ukazatel na na řetězec, jehož obsah bude přidán na konec TextView
  */
 void gtk_textview_append_text(GtkTextView *text_view, char * text)
 {
@@ -175,7 +182,7 @@ void gtk_textview_append_text(GtkTextView *text_view, char * text)
 /**
  * @brief Funkce pro vertikální zascrollování na konec (spodní část) prvku TextView
  *
- * @param *text_view Ukazatel na prvek TextView
+ * @param text_view Ukazatel na prvek TextView
  */
 void gtk_textview_scroll_to_bottom(GtkTextView *text_view)
 {
@@ -205,7 +212,7 @@ void gtk_textview_scroll_to_bottom(GtkTextView *text_view)
 /**
  * @brief Funkce volaná těsně před ukončením programu [na tomto místě se může uvolnit všechna alokovaná paměť]
  *
- * @param *widget Ukazatel na volající prvek
+ * @param widget Ukazatel na volající prvek
  * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  */
 void on_window_destroy(GtkWidget *widget, gpointer user_data)
@@ -216,7 +223,7 @@ void on_window_destroy(GtkWidget *widget, gpointer user_data)
 /**
  * @brief Funkce volaná při zavření programu
  *
- * @param *widget Ukazatel na volající prvek
+ * @param widget Ukazatel na volající prvek
  * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  * @return TRUE - při zrušení zavření programu, FALSE - pro dokončení zavření programu
  */
@@ -233,8 +240,8 @@ int on_window_close(GtkWidget *widget, gpointer user_data)
 /**
  * @brief Funkce volaná při stisku klávesy na klávesnici
  *
- * @param *widget Ukazatel na volající prvek
- * @param *event Ukazatel na strukturu obsahující informace o vzniklé události
+ * @param widget Ukazatel na volající prvek
+ * @param event Ukazatel na strukturu obsahující informace o vzniklé události
  * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  */
 char lastCharStillDown = '\0';
@@ -262,8 +269,8 @@ void on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 /**
  * @brief Funkce volaná při uvolnění klávesy na klávesnici
  *
- * @param *widget Ukazatel na volající prvek
- * @param *event Ukazatel na strukturu obsahující informace o vzniklé události
+ * @param widget Ukazatel na volající prvek
+ * @param event Ukazatel na strukturu obsahující informace o vzniklé události
  * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  */
 void on_key_release(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
@@ -314,7 +321,7 @@ void on_key_release(GtkWidget *widget, GdkEventKey *event, gpointer user_data)
 /**
  * @brief Funkce volaná při najetí myší na tlačítko uživatelského rozhraní
  *
- * @param *button Ukazatel na volající prvek/tlačítko
+ * @param button Ukazatel na volající prvek/tlačítko
  * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  * @return TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při najetí myší na tlačítko], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování]
  */
@@ -328,7 +335,7 @@ int on_button_hover(GtkWidget *button, gpointer user_data)
 /**
  * @brief Funkce volaná při odjetí myší z tlačítka uživatelského rozhraní
  *
- * @param *button Ukazatel na volající prvek/tlačítko
+ * @param button Ukazatel na volající prvek/tlačítko
  * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  * @return TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při odjetí myší z tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování]
  */
@@ -342,7 +349,7 @@ int on_button_leave(GtkWidget *button, gpointer user_data)
 /**
  * @brief Funkce volaná při zmáčknutí tlačítka uživatelského rozhraní
  *
- * @param *button Ukazatel na volající prvek/tlačítko
+ * @param button Ukazatel na volající prvek/tlačítko
  * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  * @return TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při zmáčknutí tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování]
  */
@@ -356,7 +363,7 @@ int on_button_press(GtkWidget *button, gpointer user_data)
 /**
  * @brief Funkce volaná při uvolnění tlačítka uživatelského rozhraní
  *
- * @param *button Ukazatel na volající prvek/tlačítko
+ * @param button Ukazatel na volající prvek/tlačítko
  * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  * @return TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při uvolnění tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování]
  */
@@ -399,7 +406,7 @@ int on_button_release(GtkWidget *button, gpointer user_data)
 /**
  * @brief Funkce volaná při trojkliknutí na jakýkoliv řádek prvku TextView
  *
- * @param *text_view Ukazatel na volající prvek TextView
+ * @param text_view Ukazatel na volající prvek TextView
  */
 void on_textview_row_selection(GtkTextView *text_view) // unused
 {
@@ -419,7 +426,7 @@ void on_textview_row_selection(GtkTextView *text_view) // unused
 /**
  * @brief Funkce volaná pro zpracování pohybu kurzoru v prvku TextView
  *
- * @param *text_view Ukazatel na volající prvek TextView
+ * @param text_view Ukazatel na volající prvek TextView
  */
 void on_textview_cursor_move_timeout(GtkTextView *text_view)
 {
@@ -450,7 +457,7 @@ void on_textview_cursor_move_timeout(GtkTextView *text_view)
 /**
  * @brief Funkce volaná při pohybu kurzoru v prvku TextView [funkce volá po uplynutí času další funkci, která pohyb kurzoru zpracuje; čeká se na přesun kurzoru a obnovení UI]
  *
- * @param *text_view Ukazatel na volající prvek TextView
+ * @param text_view Ukazatel na volající prvek TextView
  */
 void on_textview_cursor_move(GtkTextView *text_view)
 {
@@ -462,7 +469,9 @@ void on_textview_cursor_move(GtkTextView *text_view)
 /**
  * @brief Funkce volaná při změně velikosti prvku TextView
  *
- * @param *text_view Ukazatel na volající prvek TextView
+ * @param text_view Ukazatel na volající prvek TextView
+ * @param allocation Ukazatel na nové rozměry 
+ * @param user_data Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  */
 void on_textview_resize(GtkTextView *text_view, GdkRectangle *allocation, gpointer user_data) //allocation->x, allocation->y, allocation->width, allocation->height
 {
@@ -477,10 +486,10 @@ void on_textview_resize(GtkTextView *text_view, GdkRectangle *allocation, gpoint
 /**
  * @brief Funkce volaná při kliknutí na ikonku prvku Entry
  *
- * @param *entry Ukazatel na volající prvek Entry
+ * @param entry Ukazatel na volající prvek Entry
  * @param icon_pos Identifikátor ikony
- * @param *event Ukazatel na strukturu obsahující informace o vzniklé události
- * @param *text_view Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy ukazatel na prvek TextView]
+ * @param event Ukazatel na strukturu obsahující informace o vzniklé události
+ * @param text_view Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy ukazatel na prvek TextView]
  */
 void on_entry_icon_click(GtkEntry *entry, int icon_pos, GdkEvent *event, GtkTextView *text_view)
 {
@@ -514,8 +523,8 @@ void on_entry_icon_click(GtkEntry *entry, int icon_pos, GdkEvent *event, GtkText
 /**
  * @brief Funkce volaná při kliknutí na tličítko menu lišty
  *
- * @param *menu_item Ukazatel na volající talčítko/prvek MenuItem
- * @param *parentWindow Ukazatel na nadřazené okno programu [slouží k zobrazení dialogu O programu]
+ * @param menu_item Ukazatel na volající talčítko/prvek MenuItem
+ * @param parentWindow Ukazatel na nadřazené okno programu [slouží k zobrazení dialogu O programu]
  */
 void on_toolbar_button_clicked(GtkWidget *menu_item, GtkWindow *parentWindow)
 {
@@ -541,7 +550,7 @@ void on_toolbar_button_clicked(GtkWidget *menu_item, GtkWindow *parentWindow)
 /**
  * @brief Funkce volaná při jakémkoliv přijmu vstupních dat [klávesnice, myš (tlačítka)]
  *
- * @param keyButton Vstupní data v podobě jednoho znaku <char>
+ * @param keyButton Vstupní data v podobě jednoho znaku "char"
  */
 void handleInput(char keyButton)
 {
@@ -563,7 +572,7 @@ void handleInput(char keyButton)
 /**
  * @brief Funkce volaná při zachycení části operandu na vstupu. Funkce jej uloží do paměti aktuálně aktivního operandu [první/levý nebo druhý/pravý]
  *
- * @param keyButton Vstupní data v podobě jednoho znaku <char> [zde číslo od 0 do 9 a znak čárky (,)]
+ * @param operand Vstupní data v podobě jednoho znaku "char" [zde číslo od 0 do 9 a znak čárky (,)]
  */
 void handleOPERAND(char operand)
 {
@@ -586,7 +595,7 @@ void handleOPERAND(char operand)
 /**
  * @brief Funkce volaná při zachycení operace na vstupu. Funkce operaci dešifruje ze znaku na vstupu a uloží ji do paměti již jako znak dané operace
  *
- * @param keyButton Vstupní data v podobě jednoho znaku <char> [zde znaky A, X, Y, Z nebo /, *, -, +]
+ * @param operation Vstupní data v podobě jednoho znaku "char" [zde znaky A, X, Y, Z nebo /, *, -, +]
  */
 void handleOPERATION(char operation)
 {
@@ -608,7 +617,7 @@ void handleOPERATION(char operation)
 /**
  * @brief Funkce volaná při zachycení akce na vstupu. Funkce akci dešifruje ze znaku na vstupu a provede
  *
- * @param keyButton Vstupní data v podobě jednoho znaku <char> [zde znaky r, f, w, s, nebo =, C, K]
+ * @param action Vstupní data v podobě jednoho znaku "char" [zde znaky r, f, w, s, nebo =, C, K]
  */
 void handleACTION(char action)
 {
@@ -761,9 +770,9 @@ void updateUI()
 /**
  * @brief Hlavní funkce volaná při inicializaci uživatelského prostředí. Slouží k základnímu nastavení aplikace a uživatelského prostředí [nachazí se zde registrování událostí]
  *
- * @param *app Ukazatel na prvek GtkApplication
- * @param *window Ukazatel na hlavní okno aplikace
- * @param *builder Ukazatel na prvek GtkBuilder pro práci s uživatelským prostředím
+ * @param app Ukazatel na prvek GtkApplication
+ * @param window Ukazatel na hlavní okno aplikace
+ * @param builder Ukazatel na prvek GtkBuilder pro práci s uživatelským prostředím
  */
 void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 {
@@ -845,9 +854,8 @@ void mainSetup(GtkApplication *app, GtkWidget *window, GtkBuilder *builder)
 /**
  * @brief Funkce knihovny GTK při spuštění aplikace nainicializuje uživatelské prostředí a zobrazí je (hlavní okno) -> spustí celou aplikaci
  *
- * @param *app Ukazatel na prvek GtkApplication
- * @param *window Ukazatel na hlavní okno aplikace
- * @param *builder Ukazatel na prvek GtkBuilder pro práci s uživatelským prostředím
+ * @param app Ukazatel na prvek GtkApplication
+ * @param userData Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL]
  */
 static void Activate(GtkApplication *app, gpointer userData)
 {
@@ -912,7 +920,7 @@ static void Activate(GtkApplication *app, gpointer userData)
  * @brief První volaná funkce po spuštění programu. Funkce spouští funkce a celou aplikace postavenou na knihovně GTK
  *
  * @param argc Počet argumentů při spuštění aplikace
- * @param *argv[] ukazatel na řetězce obsahují argumenty
+ * @param argv Ukazatel na řetězce obsahují argumenty
  */
 int main(int argc, char *argv[])
 {
@@ -925,16 +933,14 @@ int main(int argc, char *argv[])
 
 
 
-
-
 /*
-** UNUSED CODE EXAMPLES
+UNUSED CODE EXAMPLES
 *********************************************************
 *********************************************************/
 /*
-//*
-//* Show question dialog
-//*********************************************************
+//
+// Show question dialog
+//
 int show_question(const char *title, const char *message, GtkApplication *app)
 {
 	//GTK_RESPONSE_NONE         = -1,
@@ -971,19 +977,18 @@ int show_question(const char *title, const char *message, GtkApplication *app)
 }
 
 
-//*
-//* Child Window Example
-//*********************************************************
-//*********************************************************
+//
+// Child Window Example
+//
 void onDestroyWindow(GtkWidget *widget, GtkApplication *app)
 {
 	GtkWindow *parentWindow = gtk_application_get_active_window(app);
 	gtk_application_remove_window(app, parentWindow);
 	g_print("Child window destroyed!\n");
 }
-//*
-//* Create window
-//*********************************************************
+//
+// Create window
+//
 void CreateWindow(GtkApplication *app)
 {
 	GtkWindow *parentWindow = gtk_application_get_active_window(app);
@@ -1017,3 +1022,5 @@ void CreateWindow(GtkApplication *app)
 	g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(onDestroyWindow), app);
 	gtk_widget_show_all(window);
 }*/
+
+/*** Konec souboru calculator.cpp ***/

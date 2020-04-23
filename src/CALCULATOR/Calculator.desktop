@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Calculator
-Exec=bash -c 'cd "$(dirname %k)" && "./calculator"'
-Comment=A simple calculator created using GTK library for linux.
-Icon=accessories-calculator
-Terminal=false
-Categories=Calculator;

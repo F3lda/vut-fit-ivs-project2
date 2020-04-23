@@ -76,7 +76,7 @@ double factorial(double num, int *err)
 /**
  * @brief Pomocná funkce pro výpočet mocniny, pokud základem je celé číslo
  *
- * @param num Číslo k určení mocniny
+ * @param cislo Číslo k určení mocniny
  * @param power Základ k určení mocniny
  * @return Výsledek mocniny
  */
