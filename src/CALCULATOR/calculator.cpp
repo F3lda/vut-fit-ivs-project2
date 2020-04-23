@@ -608,9 +608,13 @@ void handleOPERATION(char operation)
 			sprintf(OPERATION, "^");
 		} else if(operation == 'Z'){// b LOG(x)
 			sprintf(OPERATION, "LOG");
-		} else {
+		} else if(operation == '-' && strcmp(OPERATION, "") != 0 && strcmp(OPERAND2, "") == 0) {
+			sprintf(OPERAND2, "%c", operation);
+		} else if(strcmp(OPERAND1, "-") != 0){
 			sprintf(OPERATION, "%c", operation);
 		}
+	} else if(operation == '-'){
+		sprintf(OPERAND1, "%c", operation);
 	}
 }
 
@@ -666,7 +670,7 @@ void handleACTION(char action)
 		if(strcmp(OPERAND2,"") != 0){
 			OPERAND2[strlen(OPERAND2)-1] = '\0';
 		} else if(strcmp(OPERATION,"") != 0){
-			OPERATION[strlen(OPERATION)-1] = '\0';
+			strcpy(OPERATION, "");
 		} else if(strcmp(OPERAND1,"") != 0){
 			OPERAND1[strlen(OPERAND1)-1] = '\0';
 		}
