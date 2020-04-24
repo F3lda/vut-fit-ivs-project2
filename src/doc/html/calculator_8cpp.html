@@ -1,0 +1,1783 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Calculator: Dokumentace souboru CALCULATOR/calculator.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Calculator
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Hledat');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('calculator_8cpp.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Definice maker</a> &#124;
+<a href="#func-members">Funkce</a> &#124;
+<a href="#var-members">Proměnné</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentace souboru calculator.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Main &amp; GUI soubor.  
+<a href="#details">...</a></p>
+<div class="textblock"><code>#include &lt;gtk/gtk.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="basic__math_8h_source.html">./../libs/basic_math.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="adv__math_8h_source.html">./../libs/adv_math.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graf závislostí na vkládaných souborech pro calculator.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="calculator_8cpp__incl.png" border="0" usemap="#CALCULATOR_2calculator_8cpp" alt=""/></div>
+<map name="CALCULATOR_2calculator_8cpp" id="CALCULATOR_2calculator_8cpp">
+</map>
+</div>
+</div>
+<p><a href="calculator_8cpp_source.html">Zobrazit zdrojový text tohoto souboru.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definice maker</h2></td></tr>
+<tr class="memitem:abce3c9120e09e75fd797f72f1b4a4cfb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#abce3c9120e09e75fd797f72f1b4a4cfb">APP_TITLE</a>&#160;&#160;&#160;&quot;Calculator - COGFIT1920&quot;</td></tr>
+<tr class="separator:abce3c9120e09e75fd797f72f1b4a4cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92673e33f27532767749b79edb8ef806"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a92673e33f27532767749b79edb8ef806">APP_VERSION</a>&#160;&#160;&#160;&quot;1.0&quot;</td></tr>
+<tr class="separator:a92673e33f27532767749b79edb8ef806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0b5cfa4242ae7f98ba80fd23ef8afa9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#af0b5cfa4242ae7f98ba80fd23ef8afa9">APP_NAME</a>&#160;&#160;&#160;&quot;cz.vutbr.fit.ivs.calculator&quot;</td></tr>
+<tr class="separator:af0b5cfa4242ae7f98ba80fd23ef8afa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76822fedb12f5009c197389a5f06c0ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a76822fedb12f5009c197389a5f06c0ed">APP_ICON</a>&#160;&#160;&#160;&quot;accessories-calculator&quot;</td></tr>
+<tr class="separator:a76822fedb12f5009c197389a5f06c0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3a27f4744861d365acfc20bbdcb1c0f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ad3a27f4744861d365acfc20bbdcb1c0f">APP_DOCUMENT</a>&#160;&#160;&#160;&quot;https://github.com/F3lda/vut-fit-ivs-project2/blob/master/dokumentace.pdf&quot;</td></tr>
+<tr class="separator:ad3a27f4744861d365acfc20bbdcb1c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cf15f62d0ce89ef66e46d834242993e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a9cf15f62d0ce89ef66e46d834242993e">APP_COPYRIGHT</a>&#160;&#160;&#160;&quot;(c) GviDream&quot;</td></tr>
+<tr class="separator:a9cf15f62d0ce89ef66e46d834242993e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97bea58e03f30d19be475b85c5da904"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#af97bea58e03f30d19be475b85c5da904">APP_DESCRIPTION</a>&#160;&#160;&#160;&quot;A simple calculator created using GTK library for linux.&quot;</td></tr>
+<tr class="separator:af97bea58e03f30d19be475b85c5da904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f36177660af792f1be313a3a66edeb1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a4f36177660af792f1be313a3a66edeb1">APP_WEBSITE</a>&#160;&#160;&#160;&quot;https://github.com/F3lda/vut-fit-ivs-project2/&quot;</td></tr>
+<tr class="separator:a4f36177660af792f1be313a3a66edeb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1743ff0ae9a7fd1a773b9d1647658db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#af1743ff0ae9a7fd1a773b9d1647658db">APP_WEB_LABEL</a>&#160;&#160;&#160;&quot;GitHub&quot;</td></tr>
+<tr class="separator:af1743ff0ae9a7fd1a773b9d1647658db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5ed9cabf0e22a2564552a8e8d22e3b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#af5ed9cabf0e22a2564552a8e8d22e3b1">WINDOW_WIDGET</a>&#160;&#160;&#160;&quot;mainWindow&quot;</td></tr>
+<tr class="separator:af5ed9cabf0e22a2564552a8e8d22e3b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a498d9f026138406895e9a34b504ac6a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a498d9f026138406895e9a34b504ac6a6">WINDOW_WIDTH</a>&#160;&#160;&#160;480</td></tr>
+<tr class="separator:a498d9f026138406895e9a34b504ac6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5473cf64fa979b48335079c99532e243"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a5473cf64fa979b48335079c99532e243">WINDOW_HEIGHT</a>&#160;&#160;&#160;380</td></tr>
+<tr class="separator:a5473cf64fa979b48335079c99532e243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acce916562855ec2d3b22a49ef60694e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#acce916562855ec2d3b22a49ef60694e1">FILE_UI</a>&#160;&#160;&#160;&quot;calculator_ui.glade&quot;</td></tr>
+<tr class="separator:acce916562855ec2d3b22a49ef60694e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d5810966dae94cc83f5116cbab5ce9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a3d5810966dae94cc83f5116cbab5ce9c">FILE_UI_STYLES</a>&#160;&#160;&#160;&quot;calculator_ui_styles.css&quot;</td></tr>
+<tr class="separator:a3d5810966dae94cc83f5116cbab5ce9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e531d3a58c0adb143121e47391de94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>&#160;&#160;&#160;255</td></tr>
+<tr class="separator:a95e531d3a58c0adb143121e47391de94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6fac6a5f954b06932ab7b02031de85c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#aa6fac6a5f954b06932ab7b02031de85c">MATH_PRECISION</a>&#160;&#160;&#160;0.001</td></tr>
+<tr class="separator:aa6fac6a5f954b06932ab7b02031de85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a60d8934eb87a2a673553afbd2e4495"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a6a60d8934eb87a2a673553afbd2e4495">XML_DATA</a>&#160;&#160;&#160;&quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;interface&gt;&lt;requires lib=\&quot;gtk+\&quot; version=\&quot;3.20\&quot;/&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;stock\&quot;&gt;gtk-index&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo2\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;stock\&quot;&gt;gtk-index&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo3\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;resource\&quot;&gt;iconNo&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo4\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;stock\&quot;&gt;gtk-index&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo5\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;stock\&quot;&gt;gtk-index&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkWindow\&quot; id=\&quot;mainWindow\&quot;&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;icon_name\&quot;&gt;accessories-calculator&lt;/property&gt;&lt;child type=\&quot;titlebar\&quot;&gt;&lt;placeholder/&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkBox\&quot; id=\&quot;box1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;orientation\&quot;&gt;vertical&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkMenuBar\&quot; id=\&quot;menubar1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkMenuItem\&quot; id=\&quot;menuitem2\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;_Odkazy&lt;/property&gt;&lt;property name=\&quot;use_underline\&quot;&gt;True&lt;/property&gt;&lt;child type=\&quot;submenu\&quot;&gt;&lt;object class=\&quot;GtkMenu\&quot; id=\&quot;menu2\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkImageMenuItem\&quot; id=\&quot;imagemenuitem21\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;Wolfram Alpha&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;image\&quot;&gt;iconNo1&lt;/property&gt;&lt;property name=\&quot;use_stock\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;always_show_image\&quot;&gt;True&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkImageMenuItem\&quot; id=\&quot;imagemenuitem22\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;GeoGebra&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;image\&quot;&gt;iconNo2&lt;/property&gt;&lt;property name=\&quot;use_stock\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;always_show_image\&quot;&gt;True&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkMenuItem\&quot; id=\&quot;menuitem3\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;_Nápověda&lt;/property&gt;&lt;property name=\&quot;use_underline\&quot;&gt;True&lt;/property&gt;&lt;child type=\&quot;submenu\&quot;&gt;&lt;object class=\&quot;GtkMenu\&quot; id=\&quot;menu3\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkImageMenuItem\&quot; id=\&quot;imagemenuitem31\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;gtk-help&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;use_underline\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;use_stock\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;always_show_image\&quot;&gt;True&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkSeparatorMenuItem\&quot; id=\&quot;separatormenuitem32\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkImageMenuItem\&quot; id=\&quot;imagemenuitem33\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;O programu CALCULATOR&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;image\&quot;&gt;iconNo3&lt;/property&gt;&lt;property name=\&quot;use_stock\&quot;&gt;False&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;expand\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;fill\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;position\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkScrolledWindow\&quot; id=\&quot;scrolledwindow1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hscrollbar_policy\&quot;&gt;never&lt;/property&gt;&lt;property name=\&quot;shadow_type\&quot;&gt;in&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkTextView\&quot; id=\&quot;textview1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;editable\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;justification\&quot;&gt;right&lt;/property&gt;&lt;property name=\&quot;indent\&quot;&gt;10&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;expand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;fill\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;position\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkEntry\&quot; id=\&quot;entry1\&quot;&gt;&lt;property name=\&quot;name\&quot;&gt;entrybox&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;editable\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;invisible_char\&quot;&gt;●&lt;/property&gt;&lt;property name=\&quot;truncate_multiline\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;caps_lock_warning\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;primary_icon_stock\&quot;&gt;gtk-go-up&lt;/property&gt;&lt;property name=\&quot;secondary_icon_stock\&quot;&gt;gtk-clear&lt;/property&gt;&lt;property name=\&quot;placeholder_text\&quot; translatable=\&quot;yes\&quot;&gt;výpočet&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;expand\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;fill\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;position\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkGrid\&quot; id=\&quot;grid1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;row_homogeneous\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;column_homogeneous\&quot;&gt;True&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button1\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;n!&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;property name=\&quot;use_underline\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;always_show_image\&quot;&gt;True&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button2\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;y√x&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button3\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;x^y&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button4\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;b LOG(x)&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button5\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;C&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;property name=\&quot;image_position\&quot;&gt;right&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button6\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button7\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button8\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button9\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;+&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button10\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;Mr&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button11\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button12\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;5&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button13\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;6&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button14\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;-&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button15\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;MMr&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button16\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;7&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button17\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;8&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button18\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;9&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button19\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;*&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button20\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;Mw&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button21\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;,&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button22\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button23\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;===&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button24\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;/&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button25\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;MMw&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;expand\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;fill\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;position\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/interface&gt;&quot;</td></tr>
+<tr class="separator:a6a60d8934eb87a2a673553afbd2e4495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3120d9e8b46f3d2a550374e82554a140"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a3120d9e8b46f3d2a550374e82554a140">CSS_DATA</a>&#160;&#160;&#160;&quot;button {border-width: 1px;border-radius: 3px; background-color: #bfbfbf;} button.numbers {background-color: #e8e8e8; color: black;} button.button_result {color: navy;} button.hover {border-color: gray; color: green;} button.active {border-color: red; color: orange;} entry {font-size: 24px; color: black;} textview {font-size: 18px;}&quot;</td></tr>
+<tr class="separator:a3120d9e8b46f3d2a550374e82554a140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkce</h2></td></tr>
+<tr class="memitem:ad42c8ae3c7a4582aa3ceac78dff6b31b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ad42c8ae3c7a4582aa3ceac78dff6b31b">handleInput</a> (char keyButton)</td></tr>
+<tr class="memdesc:ad42c8ae3c7a4582aa3ceac78dff6b31b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při jakémkoliv přijmu vstupních dat [klávesnice, myš (tlačítka)].  <a href="#ad42c8ae3c7a4582aa3ceac78dff6b31b">...</a><br /></td></tr>
+<tr class="separator:ad42c8ae3c7a4582aa3ceac78dff6b31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add5e7f82fe9bbef91f9668a19fbb5dcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#add5e7f82fe9bbef91f9668a19fbb5dcd">handleOPERAND</a> (char operand)</td></tr>
+<tr class="memdesc:add5e7f82fe9bbef91f9668a19fbb5dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při zachycení části operandu na vstupu. Funkce jej uloží do paměti aktuálně aktivního operandu [první/levý nebo druhý/pravý].  <a href="#add5e7f82fe9bbef91f9668a19fbb5dcd">...</a><br /></td></tr>
+<tr class="separator:add5e7f82fe9bbef91f9668a19fbb5dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4e54d41a89fb0279e11e94ab687d8b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ab4e54d41a89fb0279e11e94ab687d8b3">handleOPERATION</a> (char operation)</td></tr>
+<tr class="memdesc:ab4e54d41a89fb0279e11e94ab687d8b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při zachycení operace na vstupu. Funkce operaci dešifruje ze znaku na vstupu a uloží ji do paměti již jako znak dané operace.  <a href="#ab4e54d41a89fb0279e11e94ab687d8b3">...</a><br /></td></tr>
+<tr class="separator:ab4e54d41a89fb0279e11e94ab687d8b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe9e69fc96c1ac52074d6ecf4fbaad6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a8fe9e69fc96c1ac52074d6ecf4fbaad6">handleACTION</a> (char action)</td></tr>
+<tr class="memdesc:a8fe9e69fc96c1ac52074d6ecf4fbaad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při zachycení akce na vstupu. Funkce akci dešifruje ze znaku na vstupu a provede.  <a href="#a8fe9e69fc96c1ac52074d6ecf4fbaad6">...</a><br /></td></tr>
+<tr class="separator:a8fe9e69fc96c1ac52074d6ecf4fbaad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a669867eecc4a62969cf848e1e27c9635"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a669867eecc4a62969cf848e1e27c9635">actionSOLVE</a> ()</td></tr>
+<tr class="memdesc:a669867eecc4a62969cf848e1e27c9635"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při zachycení akce k vyřešení zadaného příkladu. Funkce dešifruje jaká matematická funkce má být použita a provede výpočet na zadaných operandech.  <a href="#a669867eecc4a62969cf848e1e27c9635">...</a><br /></td></tr>
+<tr class="separator:a669867eecc4a62969cf848e1e27c9635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4e4b20cd6e4a8a9d2bcea2d3dfe8845"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#aa4e4b20cd6e4a8a9d2bcea2d3dfe8845">handleResult</a> (double result, int herror)</td></tr>
+<tr class="memdesc:aa4e4b20cd6e4a8a9d2bcea2d3dfe8845"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná po vyřešení matematického problému. Funkce zjistí, zda při řešení nedošlo k chybě a výsledek uloží do paměti.  <a href="#aa4e4b20cd6e4a8a9d2bcea2d3dfe8845">...</a><br /></td></tr>
+<tr class="separator:aa4e4b20cd6e4a8a9d2bcea2d3dfe8845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b2f0a3bdf1a1cc6a8547cdd5deb1084"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a9b2f0a3bdf1a1cc6a8547cdd5deb1084">updateUI</a> ()</td></tr>
+<tr class="memdesc:a9b2f0a3bdf1a1cc6a8547cdd5deb1084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná po zachycení vstupu. Při změně dat je aplikuje do uživatelského prostředí  <a href="#a9b2f0a3bdf1a1cc6a8547cdd5deb1084">...</a><br /></td></tr>
+<tr class="separator:a9b2f0a3bdf1a1cc6a8547cdd5deb1084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5acb3c1ff73cc6e258c54751f9c7cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ada5acb3c1ff73cc6e258c54751f9c7cd">open_url</a> (const char *url)</td></tr>
+<tr class="memdesc:ada5acb3c1ff73cc6e258c54751f9c7cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce pro otevření url adresy ve webovém prohlížeči.  <a href="#ada5acb3c1ff73cc6e258c54751f9c7cd">...</a><br /></td></tr>
+<tr class="separator:ada5acb3c1ff73cc6e258c54751f9c7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7401b1a48832406add53b324e7fee74c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a7401b1a48832406add53b324e7fee74c">show_about</a> (GtkWindow *parentWindow)</td></tr>
+<tr class="memdesc:a7401b1a48832406add53b324e7fee74c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce pro zobrazení dialogu o programu.  <a href="#a7401b1a48832406add53b324e7fee74c">...</a><br /></td></tr>
+<tr class="separator:a7401b1a48832406add53b324e7fee74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88bd1e94c6ae81d7c44264e425bfa41b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a88bd1e94c6ae81d7c44264e425bfa41b">gtk_textview_get_text</a> (GtkTextView *text_view)</td></tr>
+<tr class="memdesc:a88bd1e94c6ae81d7c44264e425bfa41b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce pro získání textu z prvku TextView.  <a href="#a88bd1e94c6ae81d7c44264e425bfa41b">...</a><br /></td></tr>
+<tr class="separator:a88bd1e94c6ae81d7c44264e425bfa41b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85ad4b0e4825a4f799ff94261d09c987"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a85ad4b0e4825a4f799ff94261d09c987">gtk_textview_set_text</a> (GtkTextView *text_view, char *text)</td></tr>
+<tr class="memdesc:a85ad4b0e4825a4f799ff94261d09c987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce pro změnu obsahu prvku TextView.  <a href="#a85ad4b0e4825a4f799ff94261d09c987">...</a><br /></td></tr>
+<tr class="separator:a85ad4b0e4825a4f799ff94261d09c987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa706056827239fbea885a761b89fed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a4aa706056827239fbea885a761b89fed">gtk_textview_append_text</a> (GtkTextView *text_view, char *text)</td></tr>
+<tr class="memdesc:a4aa706056827239fbea885a761b89fed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce pro přidání obsahu prvku TextView.  <a href="#a4aa706056827239fbea885a761b89fed">...</a><br /></td></tr>
+<tr class="separator:a4aa706056827239fbea885a761b89fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc635a383e5a91a722e88a4e31d26328"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#afc635a383e5a91a722e88a4e31d26328">gtk_textview_scroll_to_bottom</a> (GtkTextView *text_view)</td></tr>
+<tr class="memdesc:afc635a383e5a91a722e88a4e31d26328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce pro vertikální zascrollování na konec (spodní část) prvku TextView.  <a href="#afc635a383e5a91a722e88a4e31d26328">...</a><br /></td></tr>
+<tr class="separator:afc635a383e5a91a722e88a4e31d26328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e4d8d53656f62c5f7f90a50c473225"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a01e4d8d53656f62c5f7f90a50c473225">on_window_destroy</a> (GtkWidget *widget, gpointer user_data)</td></tr>
+<tr class="memdesc:a01e4d8d53656f62c5f7f90a50c473225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná těsně před ukončením programu [na tomto místě se může uvolnit všechna alokovaná paměť].  <a href="#a01e4d8d53656f62c5f7f90a50c473225">...</a><br /></td></tr>
+<tr class="separator:a01e4d8d53656f62c5f7f90a50c473225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0452a2b659fad2739cdc8ba4ba67bfd1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a0452a2b659fad2739cdc8ba4ba67bfd1">on_window_close</a> (GtkWidget *widget, gpointer user_data)</td></tr>
+<tr class="memdesc:a0452a2b659fad2739cdc8ba4ba67bfd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při zavření programu.  <a href="#a0452a2b659fad2739cdc8ba4ba67bfd1">...</a><br /></td></tr>
+<tr class="separator:a0452a2b659fad2739cdc8ba4ba67bfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f76c80a0d53b79a675155031ae721fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a3f76c80a0d53b79a675155031ae721fb">on_key_press</a> (GtkWidget *widget, GdkEventKey *event, gpointer user_data)</td></tr>
+<tr class="separator:a3f76c80a0d53b79a675155031ae721fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1a4280b5801e7f00531f8b1bf97324a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ac1a4280b5801e7f00531f8b1bf97324a">on_key_release</a> (GtkWidget *widget, GdkEventKey *event, gpointer user_data)</td></tr>
+<tr class="memdesc:ac1a4280b5801e7f00531f8b1bf97324a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při uvolnění klávesy na klávesnici.  <a href="#ac1a4280b5801e7f00531f8b1bf97324a">...</a><br /></td></tr>
+<tr class="separator:ac1a4280b5801e7f00531f8b1bf97324a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a557f0ad732e2cbca1e1c2d7aa3839986"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a557f0ad732e2cbca1e1c2d7aa3839986">on_button_hover</a> (GtkWidget *button, gpointer user_data)</td></tr>
+<tr class="memdesc:a557f0ad732e2cbca1e1c2d7aa3839986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při najetí myší na tlačítko uživatelského rozhraní  <a href="#a557f0ad732e2cbca1e1c2d7aa3839986">...</a><br /></td></tr>
+<tr class="separator:a557f0ad732e2cbca1e1c2d7aa3839986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64326848cb271417a86151a7df78eee9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a64326848cb271417a86151a7df78eee9">on_button_leave</a> (GtkWidget *button, gpointer user_data)</td></tr>
+<tr class="memdesc:a64326848cb271417a86151a7df78eee9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při odjetí myší z tlačítka uživatelského rozhraní  <a href="#a64326848cb271417a86151a7df78eee9">...</a><br /></td></tr>
+<tr class="separator:a64326848cb271417a86151a7df78eee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc2e20dc324ae5c0fd455c7a24f89c72"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#acc2e20dc324ae5c0fd455c7a24f89c72">on_button_press</a> (GtkWidget *button, gpointer user_data)</td></tr>
+<tr class="memdesc:acc2e20dc324ae5c0fd455c7a24f89c72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při zmáčknutí tlačítka uživatelského rozhraní  <a href="#acc2e20dc324ae5c0fd455c7a24f89c72">...</a><br /></td></tr>
+<tr class="separator:acc2e20dc324ae5c0fd455c7a24f89c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a219ba7fa1cced31bcd6894bf6ac73fa7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a219ba7fa1cced31bcd6894bf6ac73fa7">on_button_release</a> (GtkWidget *button, gpointer user_data)</td></tr>
+<tr class="memdesc:a219ba7fa1cced31bcd6894bf6ac73fa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při uvolnění tlačítka uživatelského rozhraní  <a href="#a219ba7fa1cced31bcd6894bf6ac73fa7">...</a><br /></td></tr>
+<tr class="separator:a219ba7fa1cced31bcd6894bf6ac73fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9ce72dca1a7e15288915ebd96c591bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ac9ce72dca1a7e15288915ebd96c591bc">on_textview_row_selection</a> (GtkTextView *text_view)</td></tr>
+<tr class="memdesc:ac9ce72dca1a7e15288915ebd96c591bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při trojkliknutí na jakýkoliv řádek prvku TextView.  <a href="#ac9ce72dca1a7e15288915ebd96c591bc">...</a><br /></td></tr>
+<tr class="separator:ac9ce72dca1a7e15288915ebd96c591bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a174a8c6a114ec3da8bdec448edc5935c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a174a8c6a114ec3da8bdec448edc5935c">on_textview_cursor_move_timeout</a> (GtkTextView *text_view)</td></tr>
+<tr class="memdesc:a174a8c6a114ec3da8bdec448edc5935c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná pro zpracování pohybu kurzoru v prvku TextView.  <a href="#a174a8c6a114ec3da8bdec448edc5935c">...</a><br /></td></tr>
+<tr class="separator:a174a8c6a114ec3da8bdec448edc5935c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a7ae6c5d14903e580818961ff7c8219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a3a7ae6c5d14903e580818961ff7c8219">on_textview_cursor_move</a> (GtkTextView *text_view)</td></tr>
+<tr class="memdesc:a3a7ae6c5d14903e580818961ff7c8219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při pohybu kurzoru v prvku TextView [funkce volá po uplynutí času další funkci, která pohyb kurzoru zpracuje; čeká se na přesun kurzoru a obnovení UI].  <a href="#a3a7ae6c5d14903e580818961ff7c8219">...</a><br /></td></tr>
+<tr class="separator:a3a7ae6c5d14903e580818961ff7c8219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bac037905fb38b81dffadc0b41a0b6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a1bac037905fb38b81dffadc0b41a0b6e">on_textview_resize</a> (GtkTextView *text_view, GdkRectangle *allocation, gpointer user_data)</td></tr>
+<tr class="memdesc:a1bac037905fb38b81dffadc0b41a0b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při změně velikosti prvku TextView.  <a href="#a1bac037905fb38b81dffadc0b41a0b6e">...</a><br /></td></tr>
+<tr class="separator:a1bac037905fb38b81dffadc0b41a0b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e11fe9f001ea63e166767a471a3497e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a2e11fe9f001ea63e166767a471a3497e">on_entry_icon_click</a> (GtkEntry *entry, int icon_pos, GdkEvent *event, GtkTextView *text_view)</td></tr>
+<tr class="memdesc:a2e11fe9f001ea63e166767a471a3497e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při kliknutí na ikonku prvku Entry.  <a href="#a2e11fe9f001ea63e166767a471a3497e">...</a><br /></td></tr>
+<tr class="separator:a2e11fe9f001ea63e166767a471a3497e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8d91005617a4c1ed1d44faa7d3b8fc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ad8d91005617a4c1ed1d44faa7d3b8fc9">on_toolbar_button_clicked</a> (GtkWidget *menu_item, GtkWindow *parentWindow)</td></tr>
+<tr class="memdesc:ad8d91005617a4c1ed1d44faa7d3b8fc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při kliknutí na tličítko menu lišty.  <a href="#ad8d91005617a4c1ed1d44faa7d3b8fc9">...</a><br /></td></tr>
+<tr class="separator:ad8d91005617a4c1ed1d44faa7d3b8fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c9c27ef3345552c435aec0a6412e50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a99c9c27ef3345552c435aec0a6412e50">mainSetup</a> (GtkApplication *app, GtkWidget *window, GtkBuilder *builder)</td></tr>
+<tr class="memdesc:a99c9c27ef3345552c435aec0a6412e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hlavní funkce volaná při inicializaci uživatelského prostředí. Slouží k základnímu nastavení aplikace a uživatelského prostředí [nachazí se zde registrování událostí].  <a href="#a99c9c27ef3345552c435aec0a6412e50">...</a><br /></td></tr>
+<tr class="separator:a99c9c27ef3345552c435aec0a6412e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42d16c5879fc251009bba15c05098543"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a42d16c5879fc251009bba15c05098543">Activate</a> (GtkApplication *app, gpointer userData)</td></tr>
+<tr class="memdesc:a42d16c5879fc251009bba15c05098543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce knihovny GTK při spuštění aplikace nainicializuje uživatelské prostředí a zobrazí je (hlavní okno) -&gt; spustí celou aplikaci.  <a href="#a42d16c5879fc251009bba15c05098543">...</a><br /></td></tr>
+<tr class="separator:a42d16c5879fc251009bba15c05098543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">První volaná funkce po spuštění programu. Funkce spouští funkce a celou aplikace postavenou na knihovně GTK.  <a href="#a0ddf1224851353fc92bfbff6f499fa97">...</a><br /></td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Proměnné</h2></td></tr>
+<tr class="memitem:a6d2f01247ac691cf4fc4ce80260e4c78"><td class="memItemLeft" align="right" valign="top">GtkEntry *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a6d2f01247ac691cf4fc4ce80260e4c78">ENTRY</a> = NULL</td></tr>
+<tr class="separator:a6d2f01247ac691cf4fc4ce80260e4c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fca0b5e003f16cf3cf3b4442e2145b6"><td class="memItemLeft" align="right" valign="top">GtkTextView *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a9fca0b5e003f16cf3cf3b4442e2145b6">TEXTVIEW</a> = NULL</td></tr>
+<tr class="separator:a9fca0b5e003f16cf3cf3b4442e2145b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adadf8854f9769b18c8de2f6adba49e33"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#adadf8854f9769b18c8de2f6adba49e33">RESULT</a> [<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td></tr>
+<tr class="separator:adadf8854f9769b18c8de2f6adba49e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb32bccb5557f964ebb9a2376564914"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#acbb32bccb5557f964ebb9a2376564914">OPERAND1</a> [<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td></tr>
+<tr class="separator:acbb32bccb5557f964ebb9a2376564914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2633125577856dceb7d2b4acd69f90f7"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a2633125577856dceb7d2b4acd69f90f7">OPERAND2</a> [<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td></tr>
+<tr class="separator:a2633125577856dceb7d2b4acd69f90f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad57a1ae23d2fec8a9da3b52d44555878"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ad57a1ae23d2fec8a9da3b52d44555878">OPERATION</a> [<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td></tr>
+<tr class="separator:ad57a1ae23d2fec8a9da3b52d44555878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada3ec13ed75e64e5251f9715757072ba"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#ada3ec13ed75e64e5251f9715757072ba">MEM1</a> [<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td></tr>
+<tr class="separator:ada3ec13ed75e64e5251f9715757072ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbeb705c7488c21f2740035785b57f75"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#acbeb705c7488c21f2740035785b57f75">MEM2</a> [<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td></tr>
+<tr class="separator:acbeb705c7488c21f2740035785b57f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a722648d202b543855362cda6e95863dd"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="calculator_8cpp.html#a722648d202b543855362cda6e95863dd">lastCharStillDown</a> = '\0'</td></tr>
+<tr class="memdesc:a722648d202b543855362cda6e95863dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkce volaná při stisku klávesy na klávesnici.  <a href="#a722648d202b543855362cda6e95863dd">...</a><br /></td></tr>
+<tr class="separator:a722648d202b543855362cda6e95863dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailní popis</h2>
+<div class="textblock"><p>Main &amp; GUI soubor. </p>
+<dl class="section author"><dt>Autor</dt><dd>Karel Jirgl </dd></dl>
+
+<p class="definition">Definice v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+</div><h2 class="groupheader">Dokumentace k definicím maker</h2>
+<a id="a9cf15f62d0ce89ef66e46d834242993e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cf15f62d0ce89ef66e46d834242993e">&#9670;&nbsp;</a></span>APP_COPYRIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_COPYRIGHT&#160;&#160;&#160;&quot;(c) GviDream&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00018">18</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af97bea58e03f30d19be475b85c5da904"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97bea58e03f30d19be475b85c5da904">&#9670;&nbsp;</a></span>APP_DESCRIPTION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_DESCRIPTION&#160;&#160;&#160;&quot;A simple calculator created using GTK library for linux.&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00019">19</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad3a27f4744861d365acfc20bbdcb1c0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3a27f4744861d365acfc20bbdcb1c0f">&#9670;&nbsp;</a></span>APP_DOCUMENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_DOCUMENT&#160;&#160;&#160;&quot;https://github.com/F3lda/vut-fit-ivs-project2/blob/master/dokumentace.pdf&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00017">17</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a76822fedb12f5009c197389a5f06c0ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76822fedb12f5009c197389a5f06c0ed">&#9670;&nbsp;</a></span>APP_ICON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_ICON&#160;&#160;&#160;&quot;accessories-calculator&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00016">16</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af0b5cfa4242ae7f98ba80fd23ef8afa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0b5cfa4242ae7f98ba80fd23ef8afa9">&#9670;&nbsp;</a></span>APP_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_NAME&#160;&#160;&#160;&quot;cz.vutbr.fit.ivs.calculator&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00015">15</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="abce3c9120e09e75fd797f72f1b4a4cfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abce3c9120e09e75fd797f72f1b4a4cfb">&#9670;&nbsp;</a></span>APP_TITLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_TITLE&#160;&#160;&#160;&quot;Calculator - COGFIT1920&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00013">13</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a92673e33f27532767749b79edb8ef806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92673e33f27532767749b79edb8ef806">&#9670;&nbsp;</a></span>APP_VERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_VERSION&#160;&#160;&#160;&quot;1.0&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00014">14</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af1743ff0ae9a7fd1a773b9d1647658db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1743ff0ae9a7fd1a773b9d1647658db">&#9670;&nbsp;</a></span>APP_WEB_LABEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_WEB_LABEL&#160;&#160;&#160;&quot;GitHub&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00021">21</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4f36177660af792f1be313a3a66edeb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f36177660af792f1be313a3a66edeb1">&#9670;&nbsp;</a></span>APP_WEBSITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APP_WEBSITE&#160;&#160;&#160;&quot;https://github.com/F3lda/vut-fit-ivs-project2/&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00020">20</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3120d9e8b46f3d2a550374e82554a140"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3120d9e8b46f3d2a550374e82554a140">&#9670;&nbsp;</a></span>CSS_DATA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CSS_DATA&#160;&#160;&#160;&quot;button {border-width: 1px;border-radius: 3px; background-color: #bfbfbf;} button.numbers {background-color: #e8e8e8; color: black;} button.button_result {color: navy;} button.hover {border-color: gray; color: green;} button.active {border-color: red; color: orange;} entry {font-size: 24px; color: black;} textview {font-size: 18px;}&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00031">31</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acce916562855ec2d3b22a49ef60694e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acce916562855ec2d3b22a49ef60694e1">&#9670;&nbsp;</a></span>FILE_UI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FILE_UI&#160;&#160;&#160;&quot;calculator_ui.glade&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00025">25</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3d5810966dae94cc83f5116cbab5ce9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d5810966dae94cc83f5116cbab5ce9c">&#9670;&nbsp;</a></span>FILE_UI_STYLES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FILE_UI_STYLES&#160;&#160;&#160;&quot;calculator_ui_styles.css&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00026">26</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa6fac6a5f954b06932ab7b02031de85c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6fac6a5f954b06932ab7b02031de85c">&#9670;&nbsp;</a></span>MATH_PRECISION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MATH_PRECISION&#160;&#160;&#160;0.001</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00028">28</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a95e531d3a58c0adb143121e47391de94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95e531d3a58c0adb143121e47391de94">&#9670;&nbsp;</a></span>STR_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STR_BUFFER_SIZE&#160;&#160;&#160;255</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00027">27</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5473cf64fa979b48335079c99532e243"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5473cf64fa979b48335079c99532e243">&#9670;&nbsp;</a></span>WINDOW_HEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WINDOW_HEIGHT&#160;&#160;&#160;380</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00024">24</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af5ed9cabf0e22a2564552a8e8d22e3b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5ed9cabf0e22a2564552a8e8d22e3b1">&#9670;&nbsp;</a></span>WINDOW_WIDGET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WINDOW_WIDGET&#160;&#160;&#160;&quot;mainWindow&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00022">22</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a498d9f026138406895e9a34b504ac6a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a498d9f026138406895e9a34b504ac6a6">&#9670;&nbsp;</a></span>WINDOW_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WINDOW_WIDTH&#160;&#160;&#160;480</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00023">23</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6a60d8934eb87a2a673553afbd2e4495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a60d8934eb87a2a673553afbd2e4495">&#9670;&nbsp;</a></span>XML_DATA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define XML_DATA&#160;&#160;&#160;&quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;&lt;interface&gt;&lt;requires lib=\&quot;gtk+\&quot; version=\&quot;3.20\&quot;/&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;stock\&quot;&gt;gtk-index&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo2\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;stock\&quot;&gt;gtk-index&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo3\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;resource\&quot;&gt;iconNo&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo4\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;stock\&quot;&gt;gtk-index&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkImage\&quot; id=\&quot;iconNo5\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;stock\&quot;&gt;gtk-index&lt;/property&gt;&lt;/object&gt;&lt;object class=\&quot;GtkWindow\&quot; id=\&quot;mainWindow\&quot;&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;icon_name\&quot;&gt;accessories-calculator&lt;/property&gt;&lt;child type=\&quot;titlebar\&quot;&gt;&lt;placeholder/&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkBox\&quot; id=\&quot;box1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;orientation\&quot;&gt;vertical&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkMenuBar\&quot; id=\&quot;menubar1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkMenuItem\&quot; id=\&quot;menuitem2\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;_Odkazy&lt;/property&gt;&lt;property name=\&quot;use_underline\&quot;&gt;True&lt;/property&gt;&lt;child type=\&quot;submenu\&quot;&gt;&lt;object class=\&quot;GtkMenu\&quot; id=\&quot;menu2\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkImageMenuItem\&quot; id=\&quot;imagemenuitem21\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;Wolfram Alpha&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;image\&quot;&gt;iconNo1&lt;/property&gt;&lt;property name=\&quot;use_stock\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;always_show_image\&quot;&gt;True&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkImageMenuItem\&quot; id=\&quot;imagemenuitem22\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;GeoGebra&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;image\&quot;&gt;iconNo2&lt;/property&gt;&lt;property name=\&quot;use_stock\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;always_show_image\&quot;&gt;True&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkMenuItem\&quot; id=\&quot;menuitem3\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;_Nápověda&lt;/property&gt;&lt;property name=\&quot;use_underline\&quot;&gt;True&lt;/property&gt;&lt;child type=\&quot;submenu\&quot;&gt;&lt;object class=\&quot;GtkMenu\&quot; id=\&quot;menu3\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkImageMenuItem\&quot; id=\&quot;imagemenuitem31\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;gtk-help&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;use_underline\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;use_stock\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;always_show_image\&quot;&gt;True&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkSeparatorMenuItem\&quot; id=\&quot;separatormenuitem32\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkImageMenuItem\&quot; id=\&quot;imagemenuitem33\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;O programu CALCULATOR&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;image\&quot;&gt;iconNo3&lt;/property&gt;&lt;property name=\&quot;use_stock\&quot;&gt;False&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;expand\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;fill\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;position\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkScrolledWindow\&quot; id=\&quot;scrolledwindow1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hscrollbar_policy\&quot;&gt;never&lt;/property&gt;&lt;property name=\&quot;shadow_type\&quot;&gt;in&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkTextView\&quot; id=\&quot;textview1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;editable\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;justification\&quot;&gt;right&lt;/property&gt;&lt;property name=\&quot;indent\&quot;&gt;10&lt;/property&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;expand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;fill\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;position\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkEntry\&quot; id=\&quot;entry1\&quot;&gt;&lt;property name=\&quot;name\&quot;&gt;entrybox&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;editable\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;invisible_char\&quot;&gt;●&lt;/property&gt;&lt;property name=\&quot;truncate_multiline\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;caps_lock_warning\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;primary_icon_stock\&quot;&gt;gtk-go-up&lt;/property&gt;&lt;property name=\&quot;secondary_icon_stock\&quot;&gt;gtk-clear&lt;/property&gt;&lt;property name=\&quot;placeholder_text\&quot; translatable=\&quot;yes\&quot;&gt;výpočet&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;expand\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;fill\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;position\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkGrid\&quot; id=\&quot;grid1\&quot;&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;row_homogeneous\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;column_homogeneous\&quot;&gt;True&lt;/property&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button1\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;n!&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;property name=\&quot;use_underline\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;always_show_image\&quot;&gt;True&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button2\&quot;&gt;&lt;property name=\&quot;label\&quot;&gt;y√x&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button3\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;x^y&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button4\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;b LOG(x)&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button5\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;C&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;hexpand\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;property name=\&quot;image_position\&quot;&gt;right&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;0&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button6\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button7\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button8\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button9\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;+&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button10\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;Mr&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;1&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button11\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button12\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;5&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button13\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;6&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button14\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;-&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button15\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;MMr&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;2&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button16\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;7&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button17\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;8&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button18\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;9&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button19\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;*&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button20\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;Mw&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button21\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;,&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button22\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;0&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;1&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button23\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;===&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;2&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button24\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;/&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;3&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;child&gt;&lt;object class=\&quot;GtkButton\&quot; id=\&quot;button25\&quot;&gt;&lt;property name=\&quot;label\&quot; translatable=\&quot;yes\&quot;&gt;MMw&lt;/property&gt;&lt;property name=\&quot;visible\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;can_focus\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;receives_default\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;relief\&quot;&gt;none&lt;/property&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;left_attach\&quot;&gt;4&lt;/property&gt;&lt;property name=\&quot;top_attach\&quot;&gt;4&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;/object&gt;&lt;packing&gt;&lt;property name=\&quot;expand\&quot;&gt;False&lt;/property&gt;&lt;property name=\&quot;fill\&quot;&gt;True&lt;/property&gt;&lt;property name=\&quot;position\&quot;&gt;3&lt;/property&gt;&lt;/packing&gt;&lt;/child&gt;&lt;/object&gt;&lt;/child&gt;&lt;/object&gt;&lt;/interface&gt;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00030">30</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace funkcí</h2>
+<a id="a669867eecc4a62969cf848e1e27c9635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a669867eecc4a62969cf848e1e27c9635">&#9670;&nbsp;</a></span>actionSOLVE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void actionSOLVE </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při zachycení akce k vyřešení zadaného příkladu. Funkce dešifruje jaká matematická funkce má být použita a provede výpočet na zadaných operandech. </p>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00684">684</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a42d16c5879fc251009bba15c05098543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42d16c5879fc251009bba15c05098543">&#9670;&nbsp;</a></span>Activate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Activate </td>
+          <td>(</td>
+          <td class="paramtype">GtkApplication *&#160;</td>
+          <td class="paramname"><em>app</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>userData</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Funkce knihovny GTK při spuštění aplikace nainicializuje uživatelské prostředí a zobrazí je (hlavní okno) -&gt; spustí celou aplikaci. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">app</td><td>Ukazatel na prvek GtkApplication </td></tr>
+    <tr><td class="paramname">userData</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00864">864</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4aa706056827239fbea885a761b89fed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aa706056827239fbea885a761b89fed">&#9670;&nbsp;</a></span>gtk_textview_append_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gtk_textview_append_text </td>
+          <td>(</td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce pro přidání obsahu prvku TextView. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_view</td><td>Ukazatel na prvek TextView </td></tr>
+    <tr><td class="paramname">text</td><td>Ukazatel na na řetězec, jehož obsah bude přidán na konec TextView </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00170">170</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a88bd1e94c6ae81d7c44264e425bfa41b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88bd1e94c6ae81d7c44264e425bfa41b">&#9670;&nbsp;</a></span>gtk_textview_get_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* gtk_textview_get_text </td>
+          <td>(</td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce pro získání textu z prvku TextView. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_view</td><td>Ukazatel na prvek TextView </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Návratová hodnota</dt><dd>Ukazatel na řetězec obsahující text z TextView [Nutnost uvolnit pamět pomocí funkce free()] </dd></dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00137">137</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afc635a383e5a91a722e88a4e31d26328"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc635a383e5a91a722e88a4e31d26328">&#9670;&nbsp;</a></span>gtk_textview_scroll_to_bottom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gtk_textview_scroll_to_bottom </td>
+          <td>(</td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce pro vertikální zascrollování na konec (spodní část) prvku TextView. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_view</td><td>Ukazatel na prvek TextView </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00187">187</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a85ad4b0e4825a4f799ff94261d09c987"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85ad4b0e4825a4f799ff94261d09c987">&#9670;&nbsp;</a></span>gtk_textview_set_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gtk_textview_set_text </td>
+          <td>(</td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>text</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce pro změnu obsahu prvku TextView. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_view</td><td>Ukazatel na prvek TextView </td></tr>
+    <tr><td class="paramname">text</td><td>Ukazatel na na řetězec, jehož obsah bude zkopírován do prvku TextView </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00155">155</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8fe9e69fc96c1ac52074d6ecf4fbaad6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fe9e69fc96c1ac52074d6ecf4fbaad6">&#9670;&nbsp;</a></span>handleACTION()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handleACTION </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>action</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při zachycení akce na vstupu. Funkce akci dešifruje ze znaku na vstupu a provede. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>Vstupní data v podobě jednoho znaku "char" [zde znaky r, f, w, s, nebo =, C, K] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00626">626</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad42c8ae3c7a4582aa3ceac78dff6b31b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad42c8ae3c7a4582aa3ceac78dff6b31b">&#9670;&nbsp;</a></span>handleInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handleInput </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>keyButton</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při jakémkoliv přijmu vstupních dat [klávesnice, myš (tlačítka)]. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyButton</td><td>Vstupní data v podobě jednoho znaku "char" </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00555">555</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="add5e7f82fe9bbef91f9668a19fbb5dcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add5e7f82fe9bbef91f9668a19fbb5dcd">&#9670;&nbsp;</a></span>handleOPERAND()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handleOPERAND </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>operand</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při zachycení části operandu na vstupu. Funkce jej uloží do paměti aktuálně aktivního operandu [první/levý nebo druhý/pravý]. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">operand</td><td>Vstupní data v podobě jednoho znaku "char" [zde číslo od 0 do 9 a znak čárky (,)] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00577">577</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab4e54d41a89fb0279e11e94ab687d8b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4e54d41a89fb0279e11e94ab687d8b3">&#9670;&nbsp;</a></span>handleOPERATION()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handleOPERATION </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>operation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při zachycení operace na vstupu. Funkce operaci dešifruje ze znaku na vstupu a uloží ji do paměti již jako znak dané operace. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">operation</td><td>Vstupní data v podobě jednoho znaku "char" [zde znaky A, X, Y, Z nebo /, *, -, +] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00600">600</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa4e4b20cd6e4a8a9d2bcea2d3dfe8845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4e4b20cd6e4a8a9d2bcea2d3dfe8845">&#9670;&nbsp;</a></span>handleResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handleResult </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>herror</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná po vyřešení matematického problému. Funkce zjistí, zda při řešení nedošlo k chybě a výsledek uloží do paměti. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td>Výsledek matematické operace </td></tr>
+    <tr><td class="paramname">herror</td><td>Proměnná pro kontrulu, zda nenastal chyba při výpočtu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00724">724</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>První volaná funkce po spuštění programu. Funkce spouští funkce a celou aplikace postavenou na knihovně GTK. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Počet argumentů při spuštění aplikace </td></tr>
+    <tr><td class="paramname">argv</td><td>Ukazatel na řetězce obsahují argumenty </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00929">929</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a99c9c27ef3345552c435aec0a6412e50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99c9c27ef3345552c435aec0a6412e50">&#9670;&nbsp;</a></span>mainSetup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mainSetup </td>
+          <td>(</td>
+          <td class="paramtype">GtkApplication *&#160;</td>
+          <td class="paramname"><em>app</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GtkBuilder *&#160;</td>
+          <td class="paramname"><em>builder</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Hlavní funkce volaná při inicializaci uživatelského prostředí. Slouží k základnímu nastavení aplikace a uživatelského prostředí [nachazí se zde registrování událostí]. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">app</td><td>Ukazatel na prvek GtkApplication </td></tr>
+    <tr><td class="paramname">window</td><td>Ukazatel na hlavní okno aplikace </td></tr>
+    <tr><td class="paramname">builder</td><td>Ukazatel na prvek GtkBuilder pro práci s uživatelským prostředím </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00781">781</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a557f0ad732e2cbca1e1c2d7aa3839986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a557f0ad732e2cbca1e1c2d7aa3839986">&#9670;&nbsp;</a></span>on_button_hover()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int on_button_hover </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>button</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při najetí myší na tlačítko uživatelského rozhraní </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>Ukazatel na volající prvek/tlačítko </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Návratová hodnota</dt><dd>TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při najetí myší na tlačítko], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování] </dd></dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00328">328</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a64326848cb271417a86151a7df78eee9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64326848cb271417a86151a7df78eee9">&#9670;&nbsp;</a></span>on_button_leave()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int on_button_leave </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>button</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při odjetí myší z tlačítka uživatelského rozhraní </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>Ukazatel na volající prvek/tlačítko </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Návratová hodnota</dt><dd>TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při odjetí myší z tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování] </dd></dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00342">342</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acc2e20dc324ae5c0fd455c7a24f89c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc2e20dc324ae5c0fd455c7a24f89c72">&#9670;&nbsp;</a></span>on_button_press()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int on_button_press </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>button</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při zmáčknutí tlačítka uživatelského rozhraní </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>Ukazatel na volající prvek/tlačítko </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Návratová hodnota</dt><dd>TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při zmáčknutí tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování] </dd></dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00356">356</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a219ba7fa1cced31bcd6894bf6ac73fa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a219ba7fa1cced31bcd6894bf6ac73fa7">&#9670;&nbsp;</a></span>on_button_release()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int on_button_release </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>button</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při uvolnění tlačítka uživatelského rozhraní </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>Ukazatel na volající prvek/tlačítko </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Návratová hodnota</dt><dd>TRUE - pokud funkce odpověděla na událost [zamezí se defaultnímu chování při uvolnění tlačítka], FALSE - pokud funkce neodpověděla na událost [systém provede defaultní chování] </dd></dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00370">370</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e11fe9f001ea63e166767a471a3497e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e11fe9f001ea63e166767a471a3497e">&#9670;&nbsp;</a></span>on_entry_icon_click()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_entry_icon_click </td>
+          <td>(</td>
+          <td class="paramtype">GtkEntry *&#160;</td>
+          <td class="paramname"><em>entry</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>icon_pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GdkEvent *&#160;</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při kliknutí na ikonku prvku Entry. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entry</td><td>Ukazatel na volající prvek Entry </td></tr>
+    <tr><td class="paramname">icon_pos</td><td>Identifikátor ikony </td></tr>
+    <tr><td class="paramname">event</td><td>Ukazatel na strukturu obsahující informace o vzniklé události </td></tr>
+    <tr><td class="paramname">text_view</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy ukazatel na prvek TextView] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00494">494</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3f76c80a0d53b79a675155031ae721fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f76c80a0d53b79a675155031ae721fb">&#9670;&nbsp;</a></span>on_key_press()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_key_press </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GdkEventKey *&#160;</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00248">248</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac1a4280b5801e7f00531f8b1bf97324a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1a4280b5801e7f00531f8b1bf97324a">&#9670;&nbsp;</a></span>on_key_release()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_key_release </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GdkEventKey *&#160;</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při uvolnění klávesy na klávesnici. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widget</td><td>Ukazatel na volající prvek </td></tr>
+    <tr><td class="paramname">event</td><td>Ukazatel na strukturu obsahující informace o vzniklé události </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00276">276</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3a7ae6c5d14903e580818961ff7c8219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a7ae6c5d14903e580818961ff7c8219">&#9670;&nbsp;</a></span>on_textview_cursor_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_textview_cursor_move </td>
+          <td>(</td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při pohybu kurzoru v prvku TextView [funkce volá po uplynutí času další funkci, která pohyb kurzoru zpracuje; čeká se na přesun kurzoru a obnovení UI]. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_view</td><td>Ukazatel na volající prvek TextView </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00462">462</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a174a8c6a114ec3da8bdec448edc5935c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a174a8c6a114ec3da8bdec448edc5935c">&#9670;&nbsp;</a></span>on_textview_cursor_move_timeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_textview_cursor_move_timeout </td>
+          <td>(</td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná pro zpracování pohybu kurzoru v prvku TextView. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_view</td><td>Ukazatel na volající prvek TextView </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00431">431</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a1bac037905fb38b81dffadc0b41a0b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bac037905fb38b81dffadc0b41a0b6e">&#9670;&nbsp;</a></span>on_textview_resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_textview_resize </td>
+          <td>(</td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GdkRectangle *&#160;</td>
+          <td class="paramname"><em>allocation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při změně velikosti prvku TextView. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_view</td><td>Ukazatel na volající prvek TextView </td></tr>
+    <tr><td class="paramname">allocation</td><td>Ukazatel na nové rozměry </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00476">476</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac9ce72dca1a7e15288915ebd96c591bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9ce72dca1a7e15288915ebd96c591bc">&#9670;&nbsp;</a></span>on_textview_row_selection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_textview_row_selection </td>
+          <td>(</td>
+          <td class="paramtype">GtkTextView *&#160;</td>
+          <td class="paramname"><em>text_view</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při trojkliknutí na jakýkoliv řádek prvku TextView. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_view</td><td>Ukazatel na volající prvek TextView </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00411">411</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad8d91005617a4c1ed1d44faa7d3b8fc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8d91005617a4c1ed1d44faa7d3b8fc9">&#9670;&nbsp;</a></span>on_toolbar_button_clicked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_toolbar_button_clicked </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>menu_item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GtkWindow *&#160;</td>
+          <td class="paramname"><em>parentWindow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při kliknutí na tličítko menu lišty. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">menu_item</td><td>Ukazatel na volající talčítko/prvek MenuItem </td></tr>
+    <tr><td class="paramname">parentWindow</td><td>Ukazatel na nadřazené okno programu [slouží k zobrazení dialogu O programu] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00529">529</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0452a2b659fad2739cdc8ba4ba67bfd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0452a2b659fad2739cdc8ba4ba67bfd1">&#9670;&nbsp;</a></span>on_window_close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int on_window_close </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při zavření programu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widget</td><td>Ukazatel na volající prvek </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Návratová hodnota</dt><dd>TRUE - při zrušení zavření programu, FALSE - pro dokončení zavření programu </dd></dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00230">230</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a01e4d8d53656f62c5f7f90a50c473225"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e4d8d53656f62c5f7f90a50c473225">&#9670;&nbsp;</a></span>on_window_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_window_destroy </td>
+          <td>(</td>
+          <td class="paramtype">GtkWidget *&#160;</td>
+          <td class="paramname"><em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná těsně před ukončením programu [na tomto místě se může uvolnit všechna alokovaná paměť]. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widget</td><td>Ukazatel na volající prvek </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00218">218</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ada5acb3c1ff73cc6e258c54751f9c7cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada5acb3c1ff73cc6e258c54751f9c7cd">&#9670;&nbsp;</a></span>open_url()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int open_url </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce pro otevření url adresy ve webovém prohlížeči. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">url</td><td>Ukazatel na řetězec obsahující url adresu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Návratová hodnota</dt><dd>TRUE - při chybě, FALSE - při správném otevření přohlížeče </dd></dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00063">63</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7401b1a48832406add53b324e7fee74c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7401b1a48832406add53b324e7fee74c">&#9670;&nbsp;</a></span>show_about()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void show_about </td>
+          <td>(</td>
+          <td class="paramtype">GtkWindow *&#160;</td>
+          <td class="paramname"><em>parentWindow</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce pro zobrazení dialogu o programu. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parentWindow</td><td>Ukazatel na nadřazené okno, ke kterému bude dialog přiřazen </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00095">95</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9b2f0a3bdf1a1cc6a8547cdd5deb1084"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b2f0a3bdf1a1cc6a8547cdd5deb1084">&#9670;&nbsp;</a></span>updateUI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateUI </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná po zachycení vstupu. Při změně dat je aplikuje do uživatelského prostředí </p>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00740">740</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentace proměnných</h2>
+<a id="a6d2f01247ac691cf4fc4ce80260e4c78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d2f01247ac691cf4fc4ce80260e4c78">&#9670;&nbsp;</a></span>ENTRY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GtkEntry* ENTRY = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00033">33</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a722648d202b543855362cda6e95863dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a722648d202b543855362cda6e95863dd">&#9670;&nbsp;</a></span>lastCharStillDown</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char lastCharStillDown = '\0'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Funkce volaná při stisku klávesy na klávesnici. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widget</td><td>Ukazatel na volající prvek </td></tr>
+    <tr><td class="paramname">event</td><td>Ukazatel na strukturu obsahující informace o vzniklé události </td></tr>
+    <tr><td class="paramname">user_data</td><td>Uživatelská data připojená k volání při jeho registraci [V tomto případě vždy NULL] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00247">247</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ada3ec13ed75e64e5251f9715757072ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada3ec13ed75e64e5251f9715757072ba">&#9670;&nbsp;</a></span>MEM1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char MEM1[<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00040">40</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acbeb705c7488c21f2740035785b57f75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbeb705c7488c21f2740035785b57f75">&#9670;&nbsp;</a></span>MEM2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char MEM2[<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00041">41</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acbb32bccb5557f964ebb9a2376564914"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbb32bccb5557f964ebb9a2376564914">&#9670;&nbsp;</a></span>OPERAND1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char OPERAND1[<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00037">37</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2633125577856dceb7d2b4acd69f90f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2633125577856dceb7d2b4acd69f90f7">&#9670;&nbsp;</a></span>OPERAND2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char OPERAND2[<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00038">38</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad57a1ae23d2fec8a9da3b52d44555878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad57a1ae23d2fec8a9da3b52d44555878">&#9670;&nbsp;</a></span>OPERATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char OPERATION[<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00039">39</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="adadf8854f9769b18c8de2f6adba49e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adadf8854f9769b18c8de2f6adba49e33">&#9670;&nbsp;</a></span>RESULT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char RESULT[<a class="el" href="calculator_8cpp.html#a95e531d3a58c0adb143121e47391de94">STR_BUFFER_SIZE</a>] = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00036">36</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9fca0b5e003f16cf3cf3b4442e2145b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fca0b5e003f16cf3cf3b4442e2145b6">&#9670;&nbsp;</a></span>TEXTVIEW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GtkTextView* TEXTVIEW = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definice je uvedena na řádku <a class="el" href="calculator_8cpp_source.html#l00034">34</a> v souboru <a class="el" href="calculator_8cpp_source.html">calculator.cpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d887fd63f1dc83e19e8245367ac684d3.html">CALCULATOR</a></li><li class="navelem"><a class="el" href="calculator_8cpp.html">calculator.cpp</a></li>
+    <li class="footer">Generováno programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

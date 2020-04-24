@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Calculator: Zdrojový soubor libs/basic_math.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Calculator
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generováno programem Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Hledat');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Hledat');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('basic__math_8cpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">basic_math.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="basic__math_8cpp.html">Zobrazit dokumentaci tohoto souboru.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * @file basic_math.cpp</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * </span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @brief Implementace základních matematických funkcí</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="basic__math_8h.html">basic_math.h</a>&quot;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="basic__math_8h.html#a2e071552e22a04b53011be4e26dce1d0">   13</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="basic__math_8cpp.html#a2e071552e22a04b53011be4e26dce1d0">ZERO_DIVISION</a> = 1;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="basic__math_8h.html#ac31874a3c42f8c02d8cc55e05f8eb4d1">   14</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="basic__math_8cpp.html#ac31874a3c42f8c02d8cc55e05f8eb4d1">INVALID_FACTORIAL</a> = 2;</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="basic__math_8h.html#a0515d37f93758d0ea23fabe5318d8e02">   15</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="basic__math_8cpp.html#a0515d37f93758d0ea23fabe5318d8e02">FACTORIAL_OVERFLOW</a> = 3;</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="basic__math_8h.html#aa57b449391b530c7aadaab101c5163da">   16</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="basic__math_8cpp.html#aa57b449391b530c7aadaab101c5163da">ROOT_NEGATIVE</a> = 4;</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="basic__math_8h.html#a856b1a14f01d84e42ecd68e8ace57539">   17</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="basic__math_8cpp.html#a856b1a14f01d84e42ecd68e8ace57539">EXPONENT_NEG_BASE_FRAC_POW</a> = 5;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="basic__math_8h.html#a8731a5230be406e7b62dcd74718122d6">   18</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="basic__math_8cpp.html#a8731a5230be406e7b62dcd74718122d6">LOG_DF_BASE</a> = 6;</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="basic__math_8h.html#a5e8438193d8908ebf5b0d5ecc9a0605d">   19</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="basic__math_8cpp.html#a5e8438193d8908ebf5b0d5ecc9a0605d">LOG_DF_NUM</a> = 7;</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="basic__math_8h.html#a648c1f7eab4d7d033973117e3c891640">   20</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="basic__math_8cpp.html#a648c1f7eab4d7d033973117e3c891640">LOG_BASE_1</a> = 8;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/**</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * @brief Funkce pro sčítání dvou čísel</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * @param num1 První číslo sčítání</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * @param num2 Druhé číslo sčítání</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * @return Výsledek sčítání</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="basic__math_8h.html#aa0740fa8d4643a57a686fb4153617843">   30</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="basic__math_8cpp.html#aa0740fa8d4643a57a686fb4153617843">add</a>(<span class="keywordtype">double</span> num1, <span class="keywordtype">double</span> num2)</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> num1+num2;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/**</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * @brief Funkce pro odečítání dvou čísel</span></div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * @param num1 První číslo odečítání (menšenec)</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> * @param num2 Druhé číslo odečítání (menšitel)</span></div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * @return Výsledek odčítání</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="basic__math_8h.html#a37cbc75fada045a9385fe40a8d2875e5">   42</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="basic__math_8cpp.html#a37cbc75fada045a9385fe40a8d2875e5">sub</a>(<span class="keywordtype">double</span> num1, <span class="keywordtype">double</span> num2)</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> num1-num2;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/**</span></div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * @brief Funkce pro násobení dvou čísel</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * @param num1 První číslo násobení</span></div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> * @param num2 Druhé číslo násobení</span></div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @return Výsledek násobení</span></div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="basic__math_8h.html#acac8727ebc6f835075ce68ae3e0eda56">   54</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="basic__math_8cpp.html#acac8727ebc6f835075ce68ae3e0eda56">multiply</a>(<span class="keywordtype">double</span> num1, <span class="keywordtype">double</span> num2)</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> num1*num2;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/**</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> * @brief Funkce pro dělení dvou čísel</span></div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> *</span></div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * @param num1 První číslo k dělení (dělenec)</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> * @param num2 Druhé číslo k dělení (dělitel)</span></div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> * @param err Proměnná určená k chybě</span></div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment"> * @return Výsledek dělení</span></div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> */</span></div><div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="basic__math_8h.html#aa584be523a8ff1a3a5beb6888d493c37">   67</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="basic__math_8cpp.html#aa584be523a8ff1a3a5beb6888d493c37">divide</a>(<span class="keywordtype">double</span> num1, <span class="keywordtype">double</span> num2, <span class="keywordtype">int</span> *err)</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span>(err != NULL) *err = 0;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (num2 == 0)</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span>(err != NULL) *err = <a class="code" href="basic__math_8cpp.html#a2e071552e22a04b53011be4e26dce1d0">ZERO_DIVISION</a>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> -69;</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">return</span> num1/num2;</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div><div class="ttc" id="basic__math_8cpp_html_aa0740fa8d4643a57a686fb4153617843"><div class="ttname"><a href="basic__math_8cpp.html#aa0740fa8d4643a57a686fb4153617843">add</a></div><div class="ttdeci">double add(double num1, double num2)</div><div class="ttdoc">Funkce pro sčítání dvou čísel. </div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00030">basic_math.cpp:30</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_aa57b449391b530c7aadaab101c5163da"><div class="ttname"><a href="basic__math_8cpp.html#aa57b449391b530c7aadaab101c5163da">ROOT_NEGATIVE</a></div><div class="ttdeci">const int ROOT_NEGATIVE</div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00016">basic_math.cpp:16</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_a648c1f7eab4d7d033973117e3c891640"><div class="ttname"><a href="basic__math_8cpp.html#a648c1f7eab4d7d033973117e3c891640">LOG_BASE_1</a></div><div class="ttdeci">const int LOG_BASE_1</div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00020">basic_math.cpp:20</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_a856b1a14f01d84e42ecd68e8ace57539"><div class="ttname"><a href="basic__math_8cpp.html#a856b1a14f01d84e42ecd68e8ace57539">EXPONENT_NEG_BASE_FRAC_POW</a></div><div class="ttdeci">const int EXPONENT_NEG_BASE_FRAC_POW</div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00017">basic_math.cpp:17</a></div></div>
+<div class="ttc" id="basic__math_8h_html"><div class="ttname"><a href="basic__math_8h.html">basic_math.h</a></div><div class="ttdoc">Hlavička základních matematických funkcí </div></div>
+<div class="ttc" id="basic__math_8cpp_html_a37cbc75fada045a9385fe40a8d2875e5"><div class="ttname"><a href="basic__math_8cpp.html#a37cbc75fada045a9385fe40a8d2875e5">sub</a></div><div class="ttdeci">double sub(double num1, double num2)</div><div class="ttdoc">Funkce pro odečítání dvou čísel. </div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00042">basic_math.cpp:42</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_a0515d37f93758d0ea23fabe5318d8e02"><div class="ttname"><a href="basic__math_8cpp.html#a0515d37f93758d0ea23fabe5318d8e02">FACTORIAL_OVERFLOW</a></div><div class="ttdeci">const int FACTORIAL_OVERFLOW</div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00015">basic_math.cpp:15</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_acac8727ebc6f835075ce68ae3e0eda56"><div class="ttname"><a href="basic__math_8cpp.html#acac8727ebc6f835075ce68ae3e0eda56">multiply</a></div><div class="ttdeci">double multiply(double num1, double num2)</div><div class="ttdoc">Funkce pro násobení dvou čísel. </div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00054">basic_math.cpp:54</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_a5e8438193d8908ebf5b0d5ecc9a0605d"><div class="ttname"><a href="basic__math_8cpp.html#a5e8438193d8908ebf5b0d5ecc9a0605d">LOG_DF_NUM</a></div><div class="ttdeci">const int LOG_DF_NUM</div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00019">basic_math.cpp:19</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_ac31874a3c42f8c02d8cc55e05f8eb4d1"><div class="ttname"><a href="basic__math_8cpp.html#ac31874a3c42f8c02d8cc55e05f8eb4d1">INVALID_FACTORIAL</a></div><div class="ttdeci">const int INVALID_FACTORIAL</div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00014">basic_math.cpp:14</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_aa584be523a8ff1a3a5beb6888d493c37"><div class="ttname"><a href="basic__math_8cpp.html#aa584be523a8ff1a3a5beb6888d493c37">divide</a></div><div class="ttdeci">double divide(double num1, double num2, int *err)</div><div class="ttdoc">Funkce pro dělení dvou čísel. </div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00067">basic_math.cpp:67</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_a8731a5230be406e7b62dcd74718122d6"><div class="ttname"><a href="basic__math_8cpp.html#a8731a5230be406e7b62dcd74718122d6">LOG_DF_BASE</a></div><div class="ttdeci">const int LOG_DF_BASE</div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00018">basic_math.cpp:18</a></div></div>
+<div class="ttc" id="basic__math_8cpp_html_a2e071552e22a04b53011be4e26dce1d0"><div class="ttname"><a href="basic__math_8cpp.html#a2e071552e22a04b53011be4e26dce1d0">ZERO_DIVISION</a></div><div class="ttdeci">const int ZERO_DIVISION</div><div class="ttdef"><b>Definition:</b> <a href="basic__math_8cpp_source.html#l00013">basic_math.cpp:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="basic__math_8cpp.html">basic_math.cpp</a></li>
+    <li class="footer">Generováno programem
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/adv__math_8h__dep__incl.dot" -Tpng -o "/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/adv__math_8h__dep__incl.png"'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/adv__math_8cpp__incl.dot" -Tpng -o "/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/adv__math_8cpp__incl.png"'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/calculator_8cpp__incl.dot" -Tpng -o "/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/calculator_8cpp__incl.png"'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/basic__math_8cpp__incl.dot" -Tpng -o "/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/basic__math_8cpp__incl.png"'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/basic__math_8h__dep__incl.dot" -Tpng -o "/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/basic__math_8h__dep__incl.png"'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/graph_legend.dot" -Tpng -o "/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/graph_legend.png"'
+error: Problems running dot: exit code=127, command='dot', arguments='"/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/dir_d887fd63f1dc83e19e8245367ac684d3_dep.dot" -Tpng -o "/home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/dir_d887fd63f1dc83e19e8245367ac684d3_dep.png"'
+error: problems opening map file /home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/calculator_8cpp__incl.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file /home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/adv__math_8cpp__incl.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file /home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/adv__math_8h__dep__incl.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file /home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/basic__math_8cpp__incl.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file /home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/basic__math_8h__dep__incl.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
+error: problems opening map file /home/michal/Desktop/vut-fit-ivs-project2/src/doc/html/dir_d887fd63f1dc83e19e8245367ac684d3_dep.map for inclusion in the docs!
+If you installed Graphviz/dot after a previous failing run, 
+try deleting the output directory and rerun doxygen.
