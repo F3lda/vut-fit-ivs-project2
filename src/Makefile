@@ -5,24 +5,20 @@ CC=g++
 
 .PHONY: All
 
-All: buildcal buildprof buildtests clean
+All: buildcal profile
 
 buildcal:
-	cd CALCULATOR && $(CC) -o calculator *.cpp ../libs/*.cpp 
+	cd CALCULATOR && cmake . && make 
 profile:
 	cd profiling && $(CC) -o profiling *.cpp ../libs/*.cpp
-buildtests:
-	cd TESTS && make
+test:
+	cd TESTS && make && ./run_tests
 pack:
 
 clean:
 
-test: buildtests
-	cd TESTS && ./run_tests
-
 doc:
 	doxygen Doxyfile && rm -f warning_doxygen.txt
 run:
-
-cleanOfiles:
+	cd CALCULATOR && ./calculator
 
