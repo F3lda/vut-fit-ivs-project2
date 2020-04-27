@@ -1,3 +1,3 @@
-xjirgl01 100 (cel· aplikace kalkul·tor [GUI, backend])
-xpysik00 100 (z·kladnÌ a pokroËilÈ mat. knihovny, testy, makefile)
-xtrant02 100 (profiling, dokumentace, instal·tor)
+xjirgl01 100 (cel√° aplikace kalkul√°tor [GUI, backend])
+xpysik00 100 (z√°kladn√≠ a pokroƒçil√© mat. knihovny, testy, makefile)
+xtrant02 100 (profiling, dokumentace, instal√°tor)
