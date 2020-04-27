@@ -13,8 +13,8 @@ profile:
 	cd profiling && $(CC) -o profiling *.cpp ../libs/*.cpp
 test:
 	cd TESTS && make && ./run_tests
-pack:
-
+pack: doc
+	mkdir ../../repo && cp -r ../ ../../repo && mkdir ../../install && cp ./installer/*.deb ../../install && mv doc ../.. && cd ../.. && zip -r odevzdani.zip repo doc install && rm -fr repo install doc 
 clean:
 
 doc:
