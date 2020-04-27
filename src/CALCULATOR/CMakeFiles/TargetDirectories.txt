@@ -1,0 +1,4 @@
+/home/michal/Desktop/vut-fit-ivs-project2/src/CALCULATOR/CMakeFiles/rebuild_cache.dir
+/home/michal/Desktop/vut-fit-ivs-project2/src/CALCULATOR/CMakeFiles/edit_cache.dir
+/home/michal/Desktop/vut-fit-ivs-project2/src/CALCULATOR/CMakeFiles/MATH_LIBRARIES.dir
+/home/michal/Desktop/vut-fit-ivs-project2/src/CALCULATOR/CMakeFiles/calculator.dir
