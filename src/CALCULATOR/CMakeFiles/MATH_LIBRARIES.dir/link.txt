@@ -1,2 +1,0 @@
-/usr/bin/ar qc libMATH_LIBRARIES.a  CMakeFiles/MATH_LIBRARIES.dir/home/michal/Desktop/vut-fit-ivs-project2/src/libs/basic_math.cpp.o CMakeFiles/MATH_LIBRARIES.dir/home/michal/Desktop/vut-fit-ivs-project2/src/libs/adv_math.cpp.o
-/usr/bin/ranlib libMATH_LIBRARIES.a

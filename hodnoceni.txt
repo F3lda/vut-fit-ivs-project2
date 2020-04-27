@@ -1,0 +1,3 @@
+xjirgl01 100 (celá aplikace kalkulátor [GUI, backend])
+xpysik00 100 (základní a pokroèilé mat. knihovny, testy, makefile)
+xtrant02 100 (profiling, dokumentace, instalátor)
