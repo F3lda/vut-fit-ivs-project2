@@ -1,5 +1,7 @@
 #Makefile pro IVS Projekt 2
 #pro instalaci knihoven potrebnych pro GUI slouzi prikaz: make getlibs
+#pokud kalkulacka nejde nainstalovat, spustte nejprve prikaz: make unlock
+
 CC=g++
 TEAM=xtrant02_xjirgl01_xpysik00
 
@@ -23,4 +25,5 @@ run:
 	cd CALCULATOR && ./calculator
 getlibs:
 	sudo apt-get install pkg-config && sudo apt-get install libgtk-3-dev
-
+unlock:
+	sudo rm /var/lib/apt/lists/lock /var/cache/apt/archives/lock /var/lib/dpkg/lock*
