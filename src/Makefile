@@ -1,5 +1,5 @@
 #Makefile pro IVS Projekt 2
-
+#pro instalaci knihoven potrebnych pro GUI slouzi prikaz: make getlibs
 CC=g++
 TEAM=xtrant02_xjirgl01_xpysik00
 
@@ -21,4 +21,6 @@ doc:
 	doxygen Doxyfile && rm -f warning_doxygen.txt
 run:
 	cd CALCULATOR && ./calculator
+getlibs:
+	sudo apt-get install pkg-config && sudo apt-get install libgtk-3-dev
 
