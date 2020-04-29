@@ -2,6 +2,7 @@
  * @file adv_math.cpp
  * 
  * @brief Implementace pokročilých matematických funkcí
+ * @author Michal Pyšík
  */
 
 #include <stdio.h>

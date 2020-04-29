@@ -46,12 +46,12 @@ int main()
         while(scanf("%lf%c", &number, &whiteSpace)!=EOF)
         {
             tmp = sub(number, ariMean);
-            tmp = Exponent(tmp, 2, 0.000001, 0);
+            tmp = Exponent(tmp, 2, 0.000000000001, 0);
             devSum = add(devSum, tmp);
         }
 
         //Směrodatná odchylka
-        stdDev = NthRoot(divide(devSum, count, 0), 2, 0.000001, 0);
+        stdDev = NthRoot(divide(devSum, count, 0), 2, 0.000000000001, 0);
 
         //printf("Smerodatna odchylka:\nCitatel: %lf\nJmenovatel: %.0lf\nSměrodatná odchylka: %0.5lf\n", devSum, count, stdDev);
     }

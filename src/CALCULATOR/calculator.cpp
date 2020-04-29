@@ -25,7 +25,7 @@
 #define FILE_UI         "calculator_ui.glade" /**< Soubor UI */
 #define FILE_UI_STYLES  "calculator_ui_styles.css" /**< Soubor CSS UI */
 #define STR_BUFFER_SIZE 255 /**< Velikost  */
-#define MATH_PRECISION  0.001 /**< Přesnost matematických operací */
+#define MATH_PRECISION  0.000000000001 /**< Přesnost matematických operací */
 
 /** @cond */
 
@@ -41,8 +41,8 @@ char RESULT[STR_BUFFER_SIZE] = ""; /**< Výsledek matematické operace */
 char OPERAND1[STR_BUFFER_SIZE] = ""; /**< První číslo k provedení operace */
 char OPERAND2[STR_BUFFER_SIZE] = ""; /**< Druhé číslo k provedení operace */
 char OPERATION[STR_BUFFER_SIZE] = ""; /**< Zvolená operace */
-char MEM1[STR_BUFFER_SIZE] = "";
-char MEM2[STR_BUFFER_SIZE] = "";
+char MEM1[STR_BUFFER_SIZE] = ""; /**< Paměť kalkulačky 1 */
+char MEM2[STR_BUFFER_SIZE] = ""; /**< Paměť kalkulačky 2 */
 
 void handleInput(char keyButton);
 void handleOPERAND(char operand);

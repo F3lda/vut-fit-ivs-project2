@@ -2,6 +2,7 @@
  * @file adv_math.h
  * 
  * @brief Hlavička pokročilých matematických funkcí
+ * @author Michal Pyšík
  */
 
 #ifndef ADV_MATH_H_

@@ -2,6 +2,7 @@
  * @file basic_math.cpp
  * 
  * @brief Implementace základních matematických funkcí
+ * @author Michal Pyšík
  */
 
 #include <stdio.h>

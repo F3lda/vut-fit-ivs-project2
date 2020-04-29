@@ -2,6 +2,7 @@
  * @file basic_math.h
  * 
  * @brief Hlavička základních matematických funkcí
+ * @author Michal Pyšík
  */
 
 #ifndef BASIC_MATH_H_
