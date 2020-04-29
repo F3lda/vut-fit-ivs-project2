@@ -1,0 +1,7 @@
+V souboru outpout.pdf je ukázán výsledek profilingu směrodatné odchylky na KCachegrindu (za pomocí callgrindu). K profilování byl použit také gprof. 
+
+Ke callgrindu a gprof bylo testováno 10, 100 a 1000 čísel. 
+U každého vstupu v gprof byl čas pro každou volanou funkci pod 0.00 sekund. Až pro 1 milion prvků byla vidět malá změna v čase.
+V callgrindu je zase u každého vstupu ukázán počet volaní funkcí.
+
+Z výstupu lze vyhodnotit, že by se měli vylepšit funkce s rekurzivním voláním s parametrem epsilon (např. Exponent) pro lepší přesnost pro větší epsilon.
