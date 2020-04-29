@@ -25,7 +25,7 @@
 #define FILE_UI         "calculator_ui.glade" /**< Soubor UI */
 #define FILE_UI_STYLES  "calculator_ui_styles.css" /**< Soubor CSS UI */
 #define STR_BUFFER_SIZE 255 /**< Velikost  */
-#define MATH_PRECISION  0.000000000001 /**< Přesnost matematických operací */
+#define MATH_PRECISION  0.000000000001 /**< Přesnost epsilon */
 
 /** @cond */
 
